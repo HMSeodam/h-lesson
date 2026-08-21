@@ -28,7 +28,14 @@
 
   <main class="app-shell">
     <aside class="sidebar">
-      <div class="sidebar-card">
+      <button id="mobileFilterToggle" class="mobile-filter-toggle" type="button" aria-expanded="false" aria-controls="mobileFilterPanel">
+        <span class="mobile-filter-copy">
+          <strong>수업 선택</strong>
+          <small id="mobileFilterSummary">학교 · 과목 · 주차</small>
+        </span>
+        <span class="mobile-filter-chevron" aria-hidden="true">⌄</span>
+      </button>
+      <div class="sidebar-card" id="mobileFilterPanel">
         <div class="field"><label>학교</label><select id="schoolSelect"></select></div>
         <div class="field"><label>연도</label><select id="yearSelect"></select></div>
         <div class="field"><label>학기</label><select id="semesterSelect"></select></div>
