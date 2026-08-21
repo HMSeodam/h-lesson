@@ -340,3 +340,337 @@ h1,h2,h3,p,span,small,strong{
   .learn-controls{flex-direction:column}
   .ghost-btn{padding:8px 12px}
 }
+
+/* =========================================================
+   HLL MOBILE EXPERIENCE v3
+   Desktop rules above remain unchanged. These overrides only
+   apply to phone-sized screens.
+   ========================================================= */
+.mobile-filter-toggle,.spectrum-mobile{display:none}
+
+@media (max-width:760px){
+  html{scroll-padding-top:128px}
+  body{overflow-x:hidden}
+
+  /* Header: compact, balanced, touch-friendly */
+  .site-header{
+    min-height:64px;
+    align-items:center;
+    padding:10px 12px;
+    gap:10px;
+  }
+  .brand-wrap{gap:10px;min-width:0}
+  .brand-mark{width:44px;height:44px;border-radius:14px;padding:5px}
+  .mark-disc{border-radius:12px}
+  .page{left:9px;right:9px;height:3px}
+  .page-1{top:11px}.page-2{top:18px;left:11px;right:11px}.page-3{top:25px;left:13px;right:13px}
+  .spine{left:9px;top:9px;bottom:9px;width:4px}
+  .brand-stack{align-items:flex-start}
+  .brand{font-size:28px;line-height:.95;letter-spacing:.04em;text-align:left}
+  .brand-sub{font-size:9px!important;line-height:1.15;letter-spacing:.08em!important;white-space:nowrap!important;text-align:left;margin-top:4px}
+  .ghost-btn{padding:8px 10px;font-size:12px;white-space:nowrap}
+
+  /* Main mobile canvas */
+  .app-shell{
+    display:block;
+    max-width:none;
+    padding:10px 12px 72px;
+  }
+  .sidebar{
+    position:static;
+    display:grid;
+    gap:8px;
+    margin:0 0 10px;
+  }
+
+  /* Lesson picker collapses by default on phones */
+  .mobile-filter-toggle{
+    width:100%;
+    min-height:54px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:10px 14px;
+    border:1px solid var(--line);
+    border-radius:16px;
+    background:var(--panel);
+    color:var(--ink);
+    box-shadow:0 8px 24px rgba(31,49,42,.06);
+    text-align:left;
+    cursor:pointer;
+  }
+  .mobile-filter-copy{display:grid;gap:2px;min-width:0}
+  .mobile-filter-copy strong{font-size:13px}
+  .mobile-filter-copy small{
+    display:block;
+    max-width:calc(100vw - 90px);
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    color:var(--muted);
+    font-size:11px;
+  }
+  .mobile-filter-chevron{font-size:18px;line-height:1;transition:transform .2s ease;flex:0 0 auto}
+  .sidebar.filters-open .mobile-filter-chevron{transform:rotate(180deg)}
+
+  .sidebar-card{
+    display:none!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:10px!important;
+    padding:14px!important;
+    border-radius:16px!important;
+    box-shadow:none!important;
+  }
+  .sidebar.filters-open .sidebar-card{display:grid!important}
+  .sidebar-card .field{margin:0!important;min-width:0}
+  .sidebar-card .field:nth-child(1),
+  .sidebar-card .field:nth-child(4),
+  .sidebar-card .field:nth-child(5){grid-column:1 / -1!important}
+  .field label{font-size:11px}
+  .field select{
+    min-height:44px;
+    padding:10px 11px;
+    border-radius:11px;
+    font-size:14px;
+  }
+
+  /* Mode selector stays visible while reading */
+  .mode-nav{
+    position:sticky;
+    top:64px;
+    z-index:18;
+    display:grid!important;
+    grid-template-columns:repeat(3,1fr)!important;
+    gap:4px!important;
+    padding:4px;
+    border:1px solid var(--line);
+    border-radius:15px;
+    background:color-mix(in srgb,var(--panel) 94%,transparent);
+    backdrop-filter:blur(14px);
+    box-shadow:0 8px 22px rgba(31,49,42,.06);
+  }
+  .mode-btn{
+    min-height:40px;
+    padding:8px 6px!important;
+    border-radius:11px!important;
+    text-align:center!important;
+    font-size:12px!important;
+  }
+  .progress-card{display:none!important}
+
+  /* Content header */
+  .content-area{width:100%;min-width:0}
+  .loading{padding:26px 8px;text-align:center}
+  .lesson-banner{
+    display:block!important;
+    margin:0 0 10px;
+    padding:12px 14px;
+    border-radius:15px;
+    box-shadow:none;
+  }
+  .lesson-banner .week{
+    display:inline-block;
+    margin-bottom:5px;
+    font-size:11px;
+    letter-spacing:.05em;
+  }
+  .lesson-banner .title{font-size:14px;line-height:1.4}
+  .lesson-banner .desc{font-size:10.5px;line-height:1.45;margin-top:4px}
+
+  /* Hero: no artificial tall box on phones */
+  .hero{
+    min-height:0!important;
+    padding:28px 20px 22px!important;
+    border-radius:22px!important;
+    align-content:start!important;
+    gap:6px;
+    box-shadow:0 12px 30px rgba(31,49,42,.10);
+  }
+  .hero .eyebrow{font-size:10px}
+  .hero h1{
+    max-width:none;
+    margin:10px 0 8px;
+    font-size:clamp(30px,9.3vw,40px)!important;
+    line-height:1.12;
+    letter-spacing:-.045em;
+    text-wrap:balance;
+  }
+  .hero p{
+    margin:0 0 12px;
+    font-size:14px!important;
+    line-height:1.6;
+  }
+  .core-question{
+    width:100%;
+    display:block;
+    padding:12px 13px;
+    border-radius:15px;
+    font-size:12px;
+    line-height:1.55;
+  }
+  .core-question b{display:inline-block;margin-right:4px}
+
+  /* Generic content cards */
+  .block{
+    margin-top:14px;
+    padding:18px!important;
+    border-radius:18px!important;
+    box-shadow:0 8px 24px rgba(31,49,42,.055);
+    overflow:hidden;
+  }
+  .block-head{display:block!important;margin-bottom:16px}
+  .block h2{
+    font-size:clamp(23px,7vw,28px);
+    line-height:1.2;
+    letter-spacing:-.035em;
+  }
+  .block-message{margin-top:6px;font-size:13px;line-height:1.58}
+  .source-ref{display:inline-flex!important;margin-top:9px;padding:5px 8px;font-size:10px}
+
+  /* Compare */
+  .compare-grid{grid-template-columns:1fr!important;gap:10px!important}
+  .compare-side{padding:16px;border-radius:15px}
+  .compare-side h3{font-size:22px}
+  .compare-items{margin-top:12px;gap:4px}
+  .compare-item{
+    grid-template-columns:68px minmax(0,1fr)!important;
+    gap:10px!important;
+    padding:10px 0;
+  }
+  .compare-item strong{font-size:11px}
+  .compare-item span{font-size:13px;line-height:1.5}
+  .versus{height:22px!important;font-size:0!important}
+  .versus::after{content:"↕";font-family:system-ui,sans-serif;font-style:normal;font-size:18px;color:var(--gold)}
+
+  /* Quote */
+  .big-quote{
+    margin:8px 0 12px;
+    font-size:clamp(25px,8vw,34px)!important;
+    line-height:1.42;
+  }
+  .quote-caption{font-size:13px;line-height:1.65}
+
+  /* Flow */
+  .flow-grid{grid-template-columns:1fr!important;gap:10px!important}
+  .flow-card{padding:16px;border-radius:15px}
+  .flow-card h3{font-size:19px;margin:7px 0 5px}
+  .flow-card p{font-size:13px;line-height:1.55}
+
+  /* Check point + quiz touch targets */
+  .checkpoint h3{font-size:21px;line-height:1.42;margin:13px 0}
+  .choices{gap:8px}
+  .quiz-option{
+    min-height:50px;
+    padding:13px 14px;
+    border-radius:13px;
+    font-size:14px;
+    line-height:1.45;
+  }
+  .explanation{padding:13px 14px;font-size:13px;line-height:1.6}
+
+  /* Concept map becomes a readable vertical story */
+  .concept-canvas{
+    grid-template-columns:1fr!important;
+    grid-template-areas:"left" "center" "right" "bottom"!important;
+    gap:10px!important;
+  }
+  .concept-node,
+  .concept-node.center,
+  .concept-node.bottom{
+    width:100%!important;
+    min-height:0!important;
+    padding:16px!important;
+    border-radius:15px;
+    text-align:left;
+  }
+  .concept-node.center{order:0;padding:18px!important}
+  .concept-node h3{font-size:20px;margin-bottom:6px}
+  .concept-node p{font-size:13px;line-height:1.55}
+
+  /* Spectrum: dedicated mobile cards instead of overlapping absolute labels */
+  .spectrum-desktop{display:none!important}
+  .spectrum-mobile{display:grid!important;gap:8px}
+  .spectrum-mobile-labels{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    padding:0 2px 2px;
+    color:var(--muted);
+    font-size:10px;
+    font-weight:800;
+  }
+  .spectrum-mobile-item{
+    display:grid;
+    grid-template-columns:30px minmax(0,1fr);
+    gap:10px;
+    align-items:start;
+    padding:12px;
+    border:1px solid var(--line);
+    border-radius:14px;
+    background:var(--bg);
+  }
+  .spectrum-mobile-index{
+    width:28px;height:28px;border-radius:10px;
+    display:grid;place-items:center;
+    background:var(--deep);color:var(--bg);
+    font-size:11px;font-weight:900;
+  }
+  .spectrum-mobile-item strong{font-size:14px}
+  .spectrum-mobile-item p{margin:3px 0 0;color:var(--muted);font-size:12px;line-height:1.5}
+  .spectrum-footer{margin-top:10px!important;padding:13px 14px;font-size:12px;line-height:1.55;border-radius:14px}
+
+  /* Cause/effect */
+  .cause-grid{grid-template-columns:1fr!important;gap:8px!important}
+  .cause-col{gap:8px}
+  .cause-card,.bridge-card,.result-card{padding:15px!important;border-radius:15px!important}
+  .cause-card h3,.bridge-card h3,.result-card h3{font-size:18px}
+  .cause-card p,.bridge-card p,.result-card p{font-size:13px;line-height:1.55}
+  .arrow-col{height:24px!important;font-size:0!important}
+  .arrow-col::before{content:"↓";font-size:19px!important}
+
+  /* Recap */
+  .recap-grid{grid-template-columns:1fr!important;gap:10px!important}
+  .remember-list{gap:8px}
+  .remember{grid-template-columns:34px minmax(0,1fr);gap:10px;padding:13px;border-radius:14px}
+  .num{width:30px;height:30px;border-radius:10px;font-size:12px}
+  .remember p{font-size:13px;line-height:1.55}
+  .keyword-box{padding:15px;border-radius:15px}
+  .chip{padding:7px 9px;font-size:11px}
+  .relation-card{margin-top:10px;padding:14px;border-radius:14px;font-size:13px}
+
+  /* Learning mode controls: compact two-button dock */
+  .learn-controls{
+    bottom:8px;
+    flex-direction:row!important;
+    gap:8px;
+    margin-top:12px;
+    padding:8px;
+    border-radius:15px;
+  }
+  .learn-controls .next-btn{flex:1;min-height:44px;padding:10px 12px}
+
+  /* Final quiz */
+  .quiz-shell{gap:12px}
+  .quiz-intro{padding:22px 18px;border-radius:20px}
+  .quiz-intro h1{font-size:30px;line-height:1.15}
+  .quiz-intro p{font-size:13px;line-height:1.55}
+  .quiz-card{padding:17px;border-radius:17px;box-shadow:0 8px 24px rgba(31,49,42,.055)}
+  .quiz-card h3{font-size:19px;line-height:1.45;margin:12px 0}
+  .quiz-meta{font-size:10px}
+  .short-input{min-height:48px;font-size:16px}
+  .quiz-result{padding:20px;border-radius:18px}
+  .score{font-size:42px}
+
+  /* Infographic-only links should also look correct on phone */
+  .infographic-only .app-shell{padding:10px 10px 48px!important}
+}
+
+@media (max-width:370px){
+  .brand-sub{display:none!important}
+  .ghost-btn{font-size:11px;padding:7px 9px}
+  .hero h1{font-size:29px!important}
+  .block{padding:16px!important}
+  .compare-item{grid-template-columns:1fr!important;gap:3px!important}
+  .mode-btn{font-size:11px!important}
+}
