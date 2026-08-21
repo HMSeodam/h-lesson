@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#f7f4ed" />
+  <title>Hmseodam Learning Lab</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand-wrap">
+      <div class="brand-mark" aria-hidden="true">
+        <div class="mark-disc">
+          <span class="page page-1"></span>
+          <span class="page page-2"></span>
+          <span class="page page-3"></span>
+          <span class="spine"></span>
+        </div>
+      </div>
+      <div class="brand-stack">
+        <div class="brand">HLL</div>
+        <div class="brand-sub">Hmseodam Learning Lab</div>
+      </div>
+    </div>
+    <button id="themeBtn" class="ghost-btn" type="button">다크 모드</button>
+  </header>
+
+  <main class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-card">
+        <div class="field"><label>학교</label><select id="schoolSelect"></select></div>
+        <div class="field"><label>연도</label><select id="yearSelect"></select></div>
+        <div class="field"><label>학기</label><select id="semesterSelect"></select></div>
+        <div class="field"><label>과목</label><select id="courseSelect"></select></div>
+        <div class="field"><label>주차</label><select id="weekSelect"></select></div>
+      </div>
+      <nav class="mode-nav" aria-label="학습 모드">
+        <button class="mode-btn active" data-mode="overview">한눈에 보기</button>
+        <button class="mode-btn" data-mode="learn">학습하기</button>
+        <button class="mode-btn" data-mode="quiz">퀴즈</button>
+      </nav>
+      <div class="progress-card">
+        <div class="progress-head"><span>학습 진도</span><strong id="progressText">0%</strong></div>
+        <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+        <button id="resetProgress" class="text-btn" type="button">진도 초기화</button>
+      </div>
+    </aside>
+
+    <section class="content-area">
+      <div id="loading" class="loading">자료를 불러오는 중…</div>
+      <div id="content"></div>
+    </section>
+  </main>
+
+  <template id="toastTemplate"><div class="toast"></div></template>
+  <script src="app.js"></script>
+</body>
+</html>

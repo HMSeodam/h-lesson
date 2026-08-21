@@ -1,0 +1,91 @@
+{
+  "metadata": {
+    "school": "학교명",
+    "year": "2026",
+    "semester": "2학기",
+    "course": "과목명",
+    "week": "01",
+    "title": "주차 제목",
+    "sourceSection": "출처 페이지/절명",
+    "sourceTitle": "도서명",
+    "sourceAuthor": "저자명"
+  },
+  "lesson": {
+    "coreQuestion": "이번 주차의 핵심 질문",
+    "oneSentence": "한 문장 요약",
+    "estimatedMinutes": 10
+  },
+  "blocks": [
+    {
+      "id": "hero-01",
+      "type": "HERO",
+      "eyebrow": "WEEK 01",
+      "title": "가장 크게 보여줄 핵심 제목",
+      "subtitle": "학생이 처음 읽는 짧은 설명",
+      "coreQuestion": "이번 시간의 핵심 질문"
+    },
+    {
+      "id": "compare-01",
+      "type": "COMPARE",
+      "title": "비교 제목",
+      "message": "비교해야 할 이유",
+      "sourceRef": "PDF 1~2쪽",
+      "left": {
+        "title": "A",
+        "tag": "한 줄 규정",
+        "items": [
+          {"label": "관점", "value": "설명"},
+          {"label": "방법", "value": "설명"}
+        ]
+      },
+      "right": {
+        "title": "B",
+        "tag": "한 줄 규정",
+        "items": [
+          {"label": "관점", "value": "설명"},
+          {"label": "방법", "value": "설명"}
+        ]
+      }
+    },
+    {
+      "id": "checkpoint-01",
+      "type": "CHECKPOINT",
+      "question": "중간 확인 문제",
+      "choices": ["보기 1", "보기 2", "보기 3", "보기 4"],
+      "answer": 1,
+      "explanation": "정답 해설"
+    },
+    {
+      "id": "recap-01",
+      "type": "RECAP",
+      "title": "오늘의 정리",
+      "message": "학생이 끝에서 다시 확인할 내용",
+      "mustRemember": ["핵심 1", "핵심 2", "핵심 3"],
+      "keywords": ["키워드1", "키워드2", "키워드3"],
+      "coreRelation": "핵심 관계를 한 문장으로"
+    }
+  ],
+  "finalQuiz": {
+    "title": "종합 퀴즈",
+    "questions": [
+      {
+        "id": "q01",
+        "type": "multiple_choice",
+        "question": "객관식 질문",
+        "choices": ["보기1", "보기2", "보기3", "보기4"],
+        "answer": 0,
+        "explanation": "정답 해설",
+        "relatedBlockId": "compare-01"
+      },
+      {
+        "id": "q02",
+        "type": "short_answer",
+        "question": "짧은 서술형 질문",
+        "acceptableAnswers": ["정답 예시 1", "정답 예시 2"],
+        "requiredKeywords": ["핵심어1", "핵심어2"],
+        "explanation": "정답 해설",
+        "relatedBlockId": "recap-01"
+      }
+    ]
+  }
+}

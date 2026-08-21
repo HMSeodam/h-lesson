@@ -1,0 +1,141 @@
+{
+  "title": "선과 유식 · 최종 복습",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "multiple_choice",
+      "question": "자료에서 선의 취지로 제시되는 표현은 무엇인가?",
+      "choices": [
+        "직지인심·견성성불",
+        "상분·견분·자증분·증자증분",
+        "자성신·수용신·변화신",
+        "삼대아승기"
+      ],
+      "answer": 0,
+      "explanation": "자료는 선이 ‘직지인심·견성성불’을 취지로 한다고 설명한다.",
+      "relatedBlockId": "contrast-01",
+      "sourceRef": "PDF 1쪽"
+    },
+    {
+      "id": "q2",
+      "type": "multiple_choice",
+      "question": "유식이 마음과 세계를 다루는 방식으로 가장 적절한 것은?",
+      "choices": [
+        "언어 사용을 전면 부정한다",
+        "개념과 논리를 통해 세밀하게 분석한다",
+        "오직 공안 수행만을 인정한다",
+        "모든 수행 단계를 하나로 축약한다"
+      ],
+      "answer": 1,
+      "explanation": "유식은 아뢰야식, 마음의 여러 작용, 삼신과 사지 등 다양한 주제를 치밀한 이론체계 속에서 논한다.",
+      "relatedBlockId": "yogacara-01",
+      "sourceRef": "PDF 1-2쪽"
+    },
+    {
+      "id": "q3",
+      "type": "multiple_choice",
+      "question": "자료에서 선과 유식의 깨달음·성불 시간관을 대비한 설명으로 옳은 것은?",
+      "choices": [
+        "선은 돈오를 말하고, 유식은 삼대아승기의 수행 과정을 말한다",
+        "선과 유식 모두 삼대아승기만을 인정한다",
+        "유식은 돈오만을 말하고, 선은 점진 수행만을 말한다",
+        "두 전통 모두 시간 문제를 전혀 다루지 않는다"
+      ],
+      "answer": 0,
+      "explanation": "자료는 선의 돈오와 유식의 삼대아승기라는 대조를 대표적인 차이로 제시한다.",
+      "relatedBlockId": "contrast-01",
+      "sourceRef": "PDF 2쪽"
+    },
+    {
+      "id": "q4",
+      "type": "multiple_choice",
+      "question": "저자가 선과 유식의 공통점으로 가장 중요하게 보는 것은?",
+      "choices": [
+        "같은 종파 제도",
+        "같은 경전을 유일한 근거로 삼음",
+        "진실한 자기를 규명하는 길이라는 점",
+        "동일한 용어와 표현 방식을 사용함"
+      ],
+      "answer": 2,
+      "explanation": "자료는 양자가 모두 진실한 자기를 규명하는 길이라는 점에서 결코 다르지 않다고 설명한다.",
+      "relatedBlockId": "common-01",
+      "sourceRef": "PDF 2-3쪽"
+    },
+    {
+      "id": "q5",
+      "type": "multiple_choice",
+      "question": "자료가 제시하는 선과 유식의 근본적 연결고리는 무엇인가?",
+      "choices": [
+        "황제와 관료층의 후원",
+        "유가행과 좌선이라는 수행의 기반",
+        "동일한 중국 종파 계보",
+        "동일한 삼신론"
+      ],
+      "answer": 1,
+      "explanation": "자료는 유식학파를 유가행파라고 부르며, 유가행의 순수한 형태를 좌선으로 볼 수 있어 근본에서 양자가 다르지 않다고 설명한다.",
+      "relatedBlockId": "common-01",
+      "sourceRef": "PDF 3쪽"
+    },
+    {
+      "id": "q6",
+      "type": "multiple_choice",
+      "question": "저자가 최종적으로 선과 유식의 관계를 어떻게 평가하는가?",
+      "choices": [
+        "서로 배타적이므로 함께 논할 수 없다",
+        "선이 유식을 완전히 대체해야 한다",
+        "유식이 선을 완전히 흡수해야 한다",
+        "차이 때문에 오히려 상호보완적이다"
+      ],
+      "answer": 3,
+      "explanation": "마지막 부분에서 저자는 선과 유식이 다르기 때문에 서로 손을 잡고 불도의 본의를 규명해야 하며 상호보완적으로 볼 수 있다고 결론짓는다.",
+      "relatedBlockId": "complement-01",
+      "sourceRef": "PDF 4쪽"
+    },
+    {
+      "id": "q7",
+      "type": "short_answer",
+      "question": "선에서 ‘자기의 일을 규명한다’는 뜻으로 제시된 표현을 쓰세요.",
+      "answerText": "기사구명",
+      "acceptableAnswers": [
+        "기사구명",
+        "己事究明"
+      ],
+      "requiredKeywords": [
+        "기사구명"
+      ],
+      "explanation": "자료는 ‘기사구명(己事究明)’, 즉 자기의 일을 규명하는 것이 선의 진수라고 설명한다.",
+      "relatedBlockId": "common-01",
+      "sourceRef": "PDF 3쪽"
+    },
+    {
+      "id": "q8",
+      "type": "short_answer",
+      "question": "유식학파의 인도 명칭으로 자료에 제시된 이름은 무엇인가요?",
+      "answerText": "유가행파",
+      "acceptableAnswers": [
+        "유가행파",
+        "瑜伽行派"
+      ],
+      "requiredKeywords": [
+        "유가행파"
+      ],
+      "explanation": "자료는 유식학파의 인도 명칭을 ‘유가행파’라고 설명한다.",
+      "relatedBlockId": "common-01",
+      "sourceRef": "PDF 3쪽"
+    },
+    {
+      "id": "q9",
+      "type": "short_answer",
+      "question": "저자가 선과 유식을 상호보완적이라고 보는 이유를 ‘체험’과 ‘논리’라는 두 단어를 모두 사용해 한 문장으로 설명해 보세요.",
+      "answerText": "선의 체험은 의미에 대한 논리적 반성과 검증이 필요하고, 유식의 논리는 실제 수행의 체험을 통해 더 정확히 이해될 수 있기 때문이다.",
+      "acceptableAnswers": [],
+      "requiredKeywords": [
+        "체험",
+        "논리"
+      ],
+      "explanation": "핵심은 선의 직접 체험과 유식의 논리적 체계가 서로의 부족한 부분을 보완한다는 점이다.",
+      "relatedBlockId": "complement-01",
+      "sourceRef": "PDF 4쪽"
+    }
+  ]
+}
