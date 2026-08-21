@@ -1,5 +1,7 @@
 # Hmseodam Learning Lab — 선과 유식 데모
 
+시작하기: https://hmseodam.github.io/h-lesson
+
 사용자가 제공한 PDF 「선과 유식(cut)-시작하며(1).pdf」 4쪽을 예시로 만든 **반응형 인문학 학습 웹앱 + 인포그래픽 + 퀴즈 + GitHub 게시 도구**입니다.
 
 ## 포함 파일
