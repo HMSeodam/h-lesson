@@ -736,6 +736,8 @@ h1,h2,h3,p,span,small,strong{
 }
 .export-filename-box strong{font-size:12px;line-height:1.5;overflow-wrap:anywhere;color:var(--ink)}
 .export-note{margin:14px 0 0;color:var(--muted);font-size:11px;line-height:1.6}
+.export-note>span{display:block}
+.export-note-detail{margin-top:2px;white-space:nowrap;font-size:clamp(7.5px,2.2vw,11px);letter-spacing:-.025em}
 .export-status{min-height:22px;margin-top:12px;color:var(--sage);font-size:12px;font-weight:700;line-height:1.5}
 .export-actions{display:grid;grid-template-columns:1fr 1.4fr;gap:9px;margin-top:10px}
 .export-actions .next-btn{min-height:46px}

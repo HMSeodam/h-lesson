@@ -49,7 +49,7 @@
       </nav>
       <button id="exportOpenBtn" class="export-open-btn" type="button">
         <span class="export-open-icon" aria-hidden="true">↓</span>
-        <span><strong>학습자료 저장</strong><small>PNG · JPG · PDF · DOCX</small></span>
+        <span><strong>학습자료 저장</strong><small>PDF · DOCX · PNG · JPG</small></span>
       </button>
       <div class="progress-card">
         <div class="progress-head"><span>학습 진도</span><strong id="progressText">0%</strong></div>
@@ -77,16 +77,16 @@
         <span>파일 형식</span>
         <select id="exportFormat">
           <option value="pdf">PDF 문서 (.pdf)</option>
+          <option value="docx">Word 문서 - 카드 이미지형 (.docx)</option>
           <option value="png">PNG 이미지 묶음 (.zip)</option>
           <option value="jpg">JPG 이미지 묶음 (.zip)</option>
-          <option value="docx">Word 문서 - 카드 이미지형 (.docx)</option>
         </select>
       </label>
       <div class="export-filename-box">
         <span>기본 저장명</span>
         <strong id="exportFilenamePreview">학교_연도_학기_과목_주차</strong>
       </div>
-      <p class="export-note">한눈에 보기의 학습카드가 저장됩니다. PNG/JPG는 카드별 이미지가 ZIP 파일에 담기며, PDF/DOCX는 카드별 페이지로 구성됩니다.</p>
+      <p class="export-note"><span>학습카드를 저장합니다.</span><span class="export-note-detail">PDF/DOCX는 카드별 이미지가 문서 파일로 담기며, PNG/JPG는 zip 파일로 저장됩니다.</span></p>
       <div class="export-status" id="exportStatus" aria-live="polite"></div>
       <div class="export-actions">
         <button class="next-btn secondary" type="button" data-export-close>취소</button>
