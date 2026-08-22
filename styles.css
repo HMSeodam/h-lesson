@@ -674,3 +674,134 @@ h1,h2,h3,p,span,small,strong{
   .compare-item{grid-template-columns:1fr!important;gap:3px!important}
   .mode-btn{font-size:11px!important}
 }
+
+/* ============================================================
+   Student learning-card download
+   ============================================================ */
+.export-open-btn{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:14px 15px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:var(--panel);
+  color:var(--ink);
+  box-shadow:var(--shadow);
+  cursor:pointer;
+  text-align:left;
+}
+.export-open-btn:hover{transform:translateY(-1px);border-color:color-mix(in srgb,var(--sage) 55%,var(--line))}
+.export-open-icon{
+  width:34px;height:34px;border-radius:11px;display:grid;place-items:center;
+  background:var(--deep);color:var(--bg);font-size:19px;font-weight:900;flex:0 0 auto;
+}
+.export-open-btn strong{display:block;font-size:14px;line-height:1.2}
+.export-open-btn small{display:block;margin-top:4px;color:var(--muted);font-size:10px;letter-spacing:.02em}
+
+.export-modal[hidden]{display:none!important}
+.export-modal{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:18px}
+.export-modal-backdrop{position:absolute;inset:0;background:rgba(17,28,24,.52);backdrop-filter:blur(5px)}
+.export-dialog{
+  position:relative;
+  width:min(520px,100%);
+  max-height:min(720px,calc(100vh - 32px));
+  overflow:auto;
+  padding:28px;
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:var(--panel);
+  color:var(--ink);
+  box-shadow:0 24px 80px rgba(22,36,31,.25);
+}
+.export-close{
+  position:absolute;right:16px;top:14px;
+  width:36px;height:36px;border:0;border-radius:50%;
+  background:var(--bg);color:var(--muted);font-size:24px;line-height:1;cursor:pointer;
+}
+.export-dialog-head{padding-right:42px}
+.export-kicker{font-size:10px;letter-spacing:.14em;color:var(--gold);font-weight:900}
+.export-dialog h2{margin:7px 0 7px;font-size:30px;letter-spacing:-.04em}
+.export-dialog-head p{margin:0 0 20px;color:var(--muted);font-size:13px;line-height:1.6}
+.export-field{display:grid;gap:8px;margin-top:16px}
+.export-field>span,.export-filename-box>span{font-size:11px;color:var(--muted);font-weight:800}
+.export-field select{
+  width:100%;min-height:48px;padding:0 13px;
+  border:1px solid var(--line);border-radius:13px;background:var(--bg);color:var(--ink);
+}
+.export-filename-box{
+  display:grid;gap:7px;margin-top:14px;padding:14px;
+  border:1px solid var(--line);border-radius:14px;background:var(--bg);
+}
+.export-filename-box strong{font-size:12px;line-height:1.5;overflow-wrap:anywhere;color:var(--ink)}
+.export-note{margin:14px 0 0;color:var(--muted);font-size:11px;line-height:1.6}
+.export-status{min-height:22px;margin-top:12px;color:var(--sage);font-size:12px;font-weight:700;line-height:1.5}
+.export-actions{display:grid;grid-template-columns:1fr 1.4fr;gap:9px;margin-top:10px}
+.export-actions .next-btn{min-height:46px}
+.export-modal-open{overflow:hidden}
+
+/* Off-screen, fixed-width export canvas. It intentionally uses the light theme
+   so downloaded files are consistent regardless of the viewer's dark-mode setting. */
+.export-stage{
+  --bg:#f7f4ed;--panel:#fffdf8;--ink:#1e2a26;--muted:#65706c;--line:#ded9ce;
+  --sage:#49685c;--sage2:#7b988d;--gold:#b28a4e;--sand:#ece3d3;--deep:#22352e;
+  --correct:#2e6d50;--wrong:#9b4d48;--shadow:none;--radius:24px;
+  position:fixed!important;
+  left:-20000px!important;
+  top:0!important;
+  z-index:-100!important;
+  width:1080px!important;
+  padding:40px!important;
+  background:#f7f4ed!important;
+  color:#1e2a26!important;
+  font-family:Inter,Pretendard,"Noto Sans KR",system-ui,-apple-system,sans-serif!important;
+}
+.export-stage .export-sheet-head{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  min-height:88px;padding:22px 26px;margin-bottom:18px;
+  border:1px solid #ded9ce;border-radius:22px;background:#fffdf8;color:#1e2a26;
+}
+.export-stage .export-sheet-head strong{font-size:32px;letter-spacing:.08em}
+.export-stage .export-sheet-head span{font-size:13px;color:#65706c;text-align:right}
+.export-stage .hero,.export-stage .block{margin-top:18px!important;box-shadow:none!important}
+.export-stage .hero{min-height:410px!important;padding:54px!important;border-radius:30px!important;align-content:end!important}
+.export-stage .hero h1{font-size:58px!important;line-height:1.08!important}
+.export-stage .hero p{font-size:18px!important}
+.export-stage .block{padding:34px!important;border-radius:24px!important;overflow:visible!important}
+.export-stage .block h2{font-size:34px!important}
+.export-stage .compare-grid{grid-template-columns:minmax(0,1fr) 72px minmax(0,1fr)!important}
+.export-stage .versus{height:auto!important;font-size:30px!important}
+.export-stage .versus::after{content:none!important}
+.export-stage .flow-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))!important}
+.export-stage .concept-canvas{grid-template-columns:minmax(0,1fr) minmax(220px,1.08fr) minmax(0,1fr)!important;grid-template-areas:"left . right" ". center ." "bottom bottom bottom"!important}
+.export-stage .concept-node,.export-stage .concept-node.center,.export-stage .concept-node.bottom{width:auto!important;text-align:center!important;min-height:138px!important}
+.export-stage .concept-node.center{min-height:220px!important}
+.export-stage .concept-node.bottom{width:min(520px,100%)!important}
+.export-stage .spectrum-desktop{display:block!important}
+.export-stage .spectrum-mobile{display:none!important}
+.export-stage .cause-grid{grid-template-columns:minmax(0,1fr) 44px minmax(220px,1.2fr) 44px minmax(0,1fr)!important}
+.export-stage .arrow-col{height:auto!important;font-size:30px!important}
+.export-stage .arrow-col::before{content:none!important}
+.export-stage .recap-grid{grid-template-columns:minmax(0,1.4fr) minmax(0,.8fr)!important}
+.export-stage .quiz-option{pointer-events:none}
+
+@media(max-width:760px){
+  .export-open-btn{
+    min-height:48px;
+    padding:10px 12px;
+    border-radius:14px;
+    box-shadow:none;
+  }
+  .export-open-icon{width:30px;height:30px;border-radius:10px;font-size:17px}
+  .export-open-btn strong{font-size:13px}
+  .export-open-btn small{font-size:9px;margin-top:2px}
+  .export-modal{padding:10px;align-items:end}
+  .export-dialog{
+    width:100%;max-height:88vh;padding:22px 18px 18px;
+    border-radius:22px 22px 14px 14px;
+  }
+  .export-dialog h2{font-size:26px}
+  .export-dialog-head p{font-size:12px;margin-bottom:16px}
+  .export-actions{grid-template-columns:1fr 1.3fr}
+}
