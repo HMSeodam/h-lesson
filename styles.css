@@ -857,3 +857,246 @@ h1,h2,h3,p,span,small,strong{
 @media(max-width:620px){
   .bento-grid,.term-grid,.keyconcept-grid,.generic-grid{grid-template-columns:1fr}.bento-card,.bigidea-claim{min-height:auto}.bigidea-claim h3{font-size:clamp(30px,10vw,44px)}.bigidea-evidence div{grid-template-columns:34px minmax(0,1fr)}.timeline-item > div:last-child{padding:16px}.ladder-item{grid-template-columns:48px minmax(0,1fr);padding:16px}.ladder-step{width:42px;height:42px;border-radius:14px}.quiz-choice-grid .quiz-option{grid-template-columns:32px minmax(0,1fr)}
 }
+
+
+/* =========================================================
+   HLL v6 — balanced layouts and phone-safe variants
+   Keep export-stage at its independent 1080px print canvas.
+   ========================================================= */
+.content-area .bento-grid,
+.content-area .term-grid,
+.content-area .concept-canvas,
+.export-stage .bento-grid,
+.export-stage .term-grid,
+.export-stage .concept-canvas{
+  display:grid;
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  grid-template-areas:none;
+  grid-auto-rows:auto;
+  gap:14px;
+  align-items:stretch;
+}
+.content-area .bento-card,.content-area .term-card,.content-area .concept-node,
+.export-stage .bento-card,.export-stage .term-card,.export-stage .concept-node{
+  grid-area:auto;
+  grid-column:span var(--tile-span,12);
+  grid-row:auto;
+  min-width:0;
+  width:100%;
+  min-height:0;
+  transform:none;
+}
+.content-area .bento-tall,.export-stage .bento-tall{grid-row:auto}
+.content-area .concept-node.center,.export-stage .concept-node.center{
+  grid-column:1 / -1;
+  min-height:0;
+  padding:28px;
+  border-radius:24px;
+}
+.content-area .concept-node.bottom,.export-stage .concept-node.bottom{justify-self:stretch}
+.content-area .block-concept_map.variant-constellation .concept-canvas,
+.export-stage .block-concept_map.variant-constellation .concept-canvas{
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  grid-template-areas:none;
+}
+.content-area .block-concept_map.variant-constellation .concept-node,
+.content-area .block-concept_map.variant-constellation .concept-node.center,
+.content-area .block-concept_map.variant-constellation .concept-node.bottom,
+.export-stage .block-concept_map.variant-constellation .concept-node,
+.export-stage .block-concept_map.variant-constellation .concept-node.center,
+.export-stage .block-concept_map.variant-constellation .concept-node.bottom{
+  grid-area:auto;
+  grid-column:span var(--tile-span,12);
+  min-height:0;
+  transform:none;
+}
+.content-area .block-concept_map.variant-hub .concept-node.center{
+  min-height:0;
+  border-radius:28px;
+}
+.content-area .flow-grid,.export-stage .flow-grid{align-items:stretch}
+.content-area .flow-card,.export-stage .flow-card{
+  min-width:0;
+  align-content:start;
+}
+.content-area .flow-content,.export-stage .flow-content{min-width:0}
+.content-area .block-flow.variant-ladder .flow-card,
+.content-area .block-step_path.variant-ladder .flow-card,
+.export-stage .block-flow.variant-ladder .flow-card,
+.export-stage .block-step_path.variant-ladder .flow-card{
+  display:block;
+  position:relative;
+  padding-left:90px;
+  min-height:0;
+}
+.content-area .block-flow.variant-ladder .flow-card::before,
+.content-area .block-step_path.variant-ladder .flow-card::before,
+.export-stage .block-flow.variant-ladder .flow-card::before,
+.export-stage .block-step_path.variant-ladder .flow-card::before{
+  position:absolute;
+  left:22px;
+  top:22px;
+}
+.content-area .flow-content .kicker{margin:0 0 8px}
+.content-area .flow-content h3{margin:0 0 8px;line-height:1.3}
+.content-area .flow-content p{margin:0;line-height:1.6}
+.content-area .timeline-list::before{pointer-events:none}
+.content-area .timeline-item > div:last-child{min-width:0}
+.content-area .block-compare.variant-stacked-contrast .compare-side{min-width:0}
+.content-area .quiz-choice-grid .quiz-option{min-width:0}
+.content-area .quiz-choice-grid .quiz-option>span:last-child{min-width:0}
+.content-area .block h2,.content-area .block h3,.content-area .block p,
+.content-area .term-card,.content-area .bento-card,.content-area .concept-node{
+  overflow-wrap:anywhere;
+  word-break:keep-all;
+}
+@media (min-width:761px) and (max-width:1100px){
+  .content-area .term-card,.content-area .bento-card,.content-area .concept-node:not(.center){
+    grid-column:span 6;
+  }
+  .content-area .term-card:last-child:nth-child(odd),
+  .content-area .bento-card:last-child:nth-child(odd),
+  .content-area .concept-node:last-child:nth-child(even):not(.center){
+    grid-column:1 / -1;
+  }
+  .content-area .block-flow.variant-ribbon .flow-grid,
+  .content-area .block-step_path.variant-ribbon .flow-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .content-area .block-flow.variant-ribbon .flow-card:last-child:nth-child(odd),
+  .content-area .block-step_path.variant-ribbon .flow-card:last-child:nth-child(odd){grid-column:1 / -1}
+}
+@media (max-width:760px){
+  html{scroll-padding-top:120px}
+  body{overflow-x:clip}
+  .site-header{min-width:0}
+  .brand-wrap,.brand-stack{min-width:0}
+  .app-shell{width:100%;max-width:100%;padding:10px 12px 72px}
+  .content-area,.content-area #content,.sidebar{min-width:0;width:100%}
+  .content-area .block,.content-area .hero{
+    min-width:0;
+    max-width:100%;
+    height:auto;
+    overflow:visible;
+  }
+  .content-area .block-head{min-width:0}
+  .content-area .block h2{font-size:clamp(22px,6.3vw,28px)}
+  .content-area .block h3{font-size:clamp(18px,5.3vw,22px)}
+  .content-area .block-message{font-size:13px;line-height:1.6}
+  .content-area .hero{min-height:0}
+  .content-area .hero h1{font-size:clamp(28px,8vw,40px)!important;line-height:1.18}
+  .content-area .block-compare.variant-debate .compare-grid,
+  .content-area .block-compare.variant-stacked-contrast .compare-grid,
+  .content-area .block-compare.variant-mirror .compare-grid{
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:10px;
+  }
+  .content-area .block-compare.variant-stacked-contrast .compare-side{
+    display:block;
+    grid-template-columns:none;
+  }
+  .content-area .block-compare.variant-stacked-contrast .compare-items{margin-top:12px}
+  .content-area .compare-side,.content-area .compare-item{min-width:0}
+  .content-area .compare-item{grid-template-columns:68px minmax(0,1fr)}
+  .content-area .block-quote.variant-margin-note{
+    display:block;
+    grid-template-columns:none;
+  }
+  .content-area .block-quote.variant-margin-note .quote-caption{margin-top:14px}
+  .content-area .block-quote.variant-focus .big-quote{font-size:clamp(25px,7.5vw,34px)}
+  .content-area .block-flow.variant-ribbon .flow-grid,
+  .content-area .block-step_path.variant-ribbon .flow-grid,
+  .content-area .block-flow.variant-ladder .flow-grid,
+  .content-area .block-step_path.variant-ladder .flow-grid{
+    grid-template-columns:minmax(0,1fr);
+    gap:10px;
+  }
+  .content-area .flow-card:not(:last-child)::after{content:none!important}
+  .content-area .block-flow.variant-ladder .flow-card,
+  .content-area .block-step_path.variant-ladder .flow-card{
+    display:block;
+    padding:16px 16px 16px 62px;
+  }
+  .content-area .block-flow.variant-ladder .flow-card::before,
+  .content-area .block-step_path.variant-ladder .flow-card::before{
+    left:14px;top:16px;width:34px;height:34px;border-radius:12px;
+  }
+  .content-area .block-flow.variant-ladder .flow-card .kicker,
+  .content-area .block-step_path.variant-ladder .flow-card .kicker,
+  .content-area .block-flow.variant-ladder .flow-card h3,
+  .content-area .block-step_path.variant-ladder .flow-card h3,
+  .content-area .block-flow.variant-ladder .flow-card p,
+  .content-area .block-step_path.variant-ladder .flow-card p{grid-column:auto}
+  .content-area .bento-grid,.content-area .term-grid,.content-area .concept-canvas,
+  .content-area .block-concept_map.variant-constellation .concept-canvas{
+    grid-template-columns:minmax(0,1fr);
+    grid-template-areas:none;
+    gap:10px;
+  }
+  .content-area .bento-card,.content-area .term-card,.content-area .concept-node,
+  .content-area .block-concept_map.variant-constellation .concept-node,
+  .content-area .block-concept_map.variant-constellation .concept-node.center,
+  .content-area .block-concept_map.variant-constellation .concept-node.bottom{
+    grid-area:auto;
+    grid-column:1 / -1;
+    grid-row:auto;
+    width:100%;
+    min-height:0;
+    transform:none;
+    padding:16px;
+  }
+  .content-area .bento-card{align-content:start}
+  .content-area .bento-tall{grid-row:auto}
+  .content-area .concept-node.center,.content-area .block-concept_map.variant-hub .concept-node.center{
+    grid-column:1 / -1;
+    border-radius:18px;
+    min-height:0;
+  }
+  .content-area .concept-node h3{margin-bottom:6px}
+  .content-area .concept-relations{gap:7px;margin-top:12px}
+  .content-area .concept-relations span{font-size:11px;line-height:1.5}
+  .content-area .bigidea-layout{grid-template-columns:minmax(0,1fr);gap:10px}
+  .content-area .bigidea-claim{min-height:0;padding:24px 20px}
+  .content-area .bigidea-claim h3{font-size:clamp(28px,8vw,40px);line-height:1.2}
+  .content-area .bigidea-evidence{gap:8px}
+  .content-area .bigidea-evidence div{grid-template-columns:28px minmax(0,1fr);padding:13px}
+  .content-area .timeline-list::before{left:11px;top:12px;bottom:12px}
+  .content-area .timeline-item{
+    grid-template-columns:minmax(0,1fr);
+    gap:8px;
+    padding:12px 0 12px 28px;
+  }
+  .content-area .timeline-date{
+    writing-mode:horizontal-tb;
+    text-orientation:mixed;
+    font-size:12px;
+    line-height:1.4;
+    overflow-wrap:anywhere;
+  }
+  .content-area .timeline-item > div:last-child{padding:14px}
+  .content-area .timeline-item h3{font-size:18px}
+  .content-area .mis-card{grid-template-columns:minmax(0,1fr)}
+  .content-area .mis-before,.content-area .mis-after{min-width:0;padding:15px}
+  .content-area .keyconcept-grid,.content-area .generic-grid{grid-template-columns:minmax(0,1fr)}
+  .content-area .ladder-item{grid-template-columns:42px minmax(0,1fr);gap:12px;padding:14px}
+  .content-area .ladder-step{width:38px;height:38px;border-radius:12px}
+  .content-area .block-spectrum.variant-steps .spectrum-desktop{display:none!important}
+  .content-area .block-spectrum.variant-steps .spectrum-mobile{display:grid!important}
+  .content-area .quiz-choice-grid .quiz-option{grid-template-columns:28px minmax(0,1fr)}
+  .content-area .quiz-option{min-height:48px}
+  .content-area .quiz-card{overflow:visible}
+  .export-dialog{max-height:calc(100dvh - 20px)}
+  .export-note-detail{white-space:normal;font-size:11px;line-height:1.5;letter-spacing:normal}
+}
+@media (max-width:370px){
+  .content-area .block{padding:14px!important}
+  .content-area .compare-item{grid-template-columns:minmax(0,1fr)!important}
+  .content-area .hero h1{font-size:28px!important}
+  .content-area .quiz-option{padding:12px}
+}
+@media (prefers-reduced-motion:reduce){
+  .content-area .block,.content-area .hero,.content-area .concept-node{transition:none;transform:none}
+}
+/* v6 QA correction: keep quiz decoration inside its card. */
+.content-area .quiz-card{overflow:hidden}
+@media(max-width:760px){
+  .content-area .quiz-card::before{display:none}
+}

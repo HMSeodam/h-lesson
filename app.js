@@ -1,3 +1,5 @@
+/* HLL mobile layout v6 */
+document.documentElement.dataset.hllVersion='6.0.0';
 const state={index:null,lesson:null,mode:'overview',learnIndex:0,answers:{}};
 const $=s=>document.querySelector(s);const $$=s=>[...document.querySelectorAll(s)];
 const safe=s=>String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
@@ -141,8 +143,9 @@ function compareSide(s={}){
 }
 function renderFlow(b,cls){
   const steps=b.steps||b.items||[];
-  return `<section class="${cls}" id="${safe(b.id)}">${blockHead(b)}<div class="flow-grid">${steps.map((s,i)=>`<div class="flow-card"><div class="kicker">${safe(s.kicker||s.step||`STEP ${i+1}`)}</div><h3>${safe(s.title||s.label)}</h3><p>${safe(s.text||s.description||s.value)}</p></div>`).join('')}</div></section>`;
+  return `<section class="${cls}" id="${safe(b.id)}">${blockHead(b)}<div class="flow-grid">${steps.map((s,i)=>`<div class="flow-card"><div class="flow-content"><div class="kicker">${safe(s.kicker||s.step||`STEP ${i+1}`)}</div><h3>${safe(s.title||s.label)}</h3><p>${safe(s.text||s.description||s.value)}</p></div></div>`).join('')}</div></section>`;
 }
+
 function renderCheckpoint(b,cls){
   const choices=b.choices||[];
   return `<section class="${cls} checkpoint" id="${safe(b.id)}" data-checkpoint><span class="checkpoint-badge">CHECK POINT</span><h3>${safe(b.question)}</h3><div class="choices">${choices.map((x,i)=>`<button class="quiz-option" data-choice="${i}"><span class="choice-no">${i+1}</span><span>${safe(x)}</span></button>`).join('')}</div><div class="explanation">${safe(b.explanation)}</div></section>`;
@@ -157,9 +160,13 @@ function conceptNodeClass(n,i){
 }
 function renderConceptMap(b,cls){
   const nodes=b.nodes||[];
+  const center=nodes.find(n=>n.role==='center'||n.id==='self'||n.center);
+  const ordered=center?[center,...nodes.filter(n=>n!==center)]:nodes;
+  const outer=ordered.filter(n=>n!==center);
+  const spans=balancedSpans(outer.length,3);
   const edges=b.edges||[];
   const edgeText=edges.length?`<div class="concept-relations">${edges.map(e=>`<span>${safe(labelFor(nodes,e.from))} <b>${safe(e.relation||'→')}</b> ${safe(labelFor(nodes,e.to))}</span>`).join('')}</div>`:'';
-  return `<section class="${cls}" id="${safe(b.id)}">${blockHead(b)}<div class="concept-canvas">${nodes.map((n,i)=>`<div class="concept-node ${conceptNodeClass(n,i)}"><h3>${safe(n.label)}</h3><p>${safe(n.description)}</p></div>`).join('')}</div>${edgeText}</section>`;
+  return `<section class="${cls}" id="${safe(b.id)}">${blockHead(b)}<div class="concept-canvas">${ordered.map(n=>{const central=n===center;const i=outer.indexOf(n);return `<div class="concept-node ${conceptNodeClass(n,i)}" style="--tile-span:${central?12:spans[i]}"><h3>${safe(n.label)}</h3><p>${safe(n.description)}</p></div>`}).join('')}</div>${edgeText}</section>`;
 }
 function labelFor(nodes,id){return (nodes.find(n=>n.id===id)||{}).label||id||''}
 function renderSpectrum(b,cls){
@@ -178,9 +185,32 @@ function renderTimeline(b,cls){
   const items=b.items||[];
   return `<section class="${cls}" id="${safe(b.id)}">${blockHead(b)}<div class="timeline-list">${items.map((x,i)=>`<div class="timeline-item"><div class="timeline-date">${safe(x.date||x.kicker||`#${i+1}`)}</div><div><h3>${safe(x.title)}</h3><p>${safe(x.description||x.text)}</p></div></div>`).join('')}</div></section>`;
 }
+
+function balancedSpans(count,maxColumns=4,weights=[]){
+  if(!count)return [];
+  const rows=Math.ceil(count/maxColumns);
+  const base=Math.floor(count/rows), extra=count%rows;
+  const spans=[];
+  let index=0;
+  for(let r=0;r<rows;r++){
+    const n=base+(r<extra?1:0);
+    const rowWeights=Array.from({length:n},(_,i)=>Math.max(1,weights[index+i]||1));
+    const total=rowWeights.reduce((a,b)=>a+b,0);
+    const raw=rowWeights.map(w=>12*w/total);
+    const sizes=raw.map(v=>Math.floor(v));
+    let remain=12-sizes.reduce((a,b)=>a+b,0);
+    const order=raw.map((v,i)=>({i,f:v-Math.floor(v)})).sort((a,b)=>b.f-a.f);
+    for(let k=0;k<remain;k++)sizes[order[k].i]++;
+    spans.push(...sizes);
+    index+=n;
+  }
+  return spans;
+}
+
 function renderBento(b,cls){
   const items=b.items||b.cards||[];
-  return `<section class="${cls}" id="${safe(b.id)}">${blockHead(b)}<div class="bento-grid">${items.map((x,i)=>`<article class="bento-card bento-${(x.size||['wide','small','small','tall','wide'][i%5])}"><small>${safe(x.kicker||x.label||`POINT ${i+1}`)}</small><h3>${safe(x.title)}</h3><p>${safe(x.text||x.description||x.value)}</p></article>`).join('')}</div></section>`;
+  const spans=balancedSpans(items.length,3,items.map(x=>x.size==='wide'?2:1));
+  return `<section class="${cls}" id="${safe(b.id)}">${blockHead(b)}<div class="bento-grid">${items.map((x,i)=>`<article class="bento-card bento-${token(x.size||'small')}" style="--tile-span:${spans[i]}"><small>${safe(x.kicker||x.label||`POINT ${i+1}`)}</small><h3>${safe(x.title)}</h3><p>${safe(x.text||x.description||x.value)}</p></article>`).join('')}</div></section>`;
 }
 function renderBigIdea(b,cls){
   const evidence=b.evidence||b.items||[];
@@ -188,7 +218,8 @@ function renderBigIdea(b,cls){
 }
 function renderTermDeck(b,cls){
   const terms=b.terms||b.items||[];
-  return `<section class="${cls}" id="${safe(b.id)}">${blockHead(b)}<div class="term-grid">${terms.map(t=>`<article class="term-card"><h3>${safe(t.term||t.title||t.label)}</h3>${t.original?`<small>${safe(t.original)}</small>`:''}<p>${safe(t.definition||t.description||t.text)}</p></article>`).join('')}</div></section>`;
+  const spans=balancedSpans(terms.length,4);
+  return `<section class="${cls}" id="${safe(b.id)}">${blockHead(b)}<div class="term-grid">${terms.map((t,i)=>`<article class="term-card" style="--tile-span:${spans[i]}"><h3>${safe(t.term||t.title||t.label)}</h3>${t.original?`<small>${safe(t.original)}</small>`:''}<p>${safe(t.definition||t.description||t.text)}</p></article>`).join('')}</div></section>`;
 }
 function renderMisconception(b,cls){
   const items=b.items||[];
