@@ -1,5 +1,5 @@
 /* HLL mobile layout v6 */
-document.documentElement.dataset.hllVersion='7.0.0';
+document.documentElement.dataset.hllVersion='8.0.0';
 const state={index:null,lesson:null,mode:'overview',learnIndex:0,answers:{}};
 const $=s=>document.querySelector(s);const $$=s=>[...document.querySelectorAll(s)];
 const safe=s=>String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
@@ -359,7 +359,7 @@ function setExportStatus(msg){
 }
 
 function exportLibrariesReady(format){
-  if(!window.HLLExport || typeof window.HLLExport.exportLesson!=='function')
+  if(!window.HLLExport || typeof window.HLLExport.exportLesson!=='function' || typeof window.HLLDomCapture?.capture!=='function')
     return '저장 모듈을 불러오지 못했습니다. 페이지를 새로고침해 주세요.';
   if(typeof window.JSZip!=='function' && format!=='pdf')
     return 'ZIP 모듈을 불러오지 못했습니다. 페이지를 새로고침해 주세요.';
@@ -379,7 +379,7 @@ async function exportLearningCards(){
       week:$('#weekSelect').value
     };
     const lesson={...state.lesson,metadata:{...state.lesson.metadata,...selected}};
-    await window.HLLExport.exportLesson(lesson,format,setExportStatus);
+    await window.HLLExport.exportLesson(lesson,format,setExportStatus,undefined,{renderBlock:(block,i)=>renderBlock(block,false,i)});
     setExportStatus('다운로드를 시작했습니다.');
     btn.textContent='다운로드';
   }catch(err){

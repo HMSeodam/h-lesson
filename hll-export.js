@@ -1,152 +1,130 @@
-/* HLL export 7.0 — dependency-free Canvas/PDF renderer; local JSZip for ZIP/DOCX.
- * The live HTML layout is untouched. Documents use a predictable print layout.
- * All text comes from lesson.json; no external requests or AI processing.
- */
+/* HLL export 8.0 — capture the actual lesson DOM; use one landscape page
+   composition for PDF, DOCX, PNG and JPG. No remote conversion service. */
 (function(global){
 'use strict';
-const C={paper:'#fffdf8',bg:'#f7f4ed',ink:'#1e2a26',muted:'#65706c',line:'#ded9ce',deep:'#22352e',gold:'#b28a4e',sand:'#ece3d3',white:'#ffffff'};
-const W=1080,M=48,CW=W-M*2,FONT='"Noto Sans KR","Malgun Gothic",Arial,sans-serif';
+const PAGE_W=1600,PAGE_H=1131,CONTENT_X=56,CONTENT_Y=78,CONTENT_W=1488,CONTENT_H=968;
+const CAPTURE_W=1120,CAPTURE_SCALE=1.5;
+const FONT='"Noto Sans KR","Malgun Gothic",Arial,sans-serif';
 const txt=v=>String(v??'');
-const pick=(o,...keys)=>{for(const k of keys){if(o&&o[k]!==undefined&&o[k]!==null&&o[k]!=='')return o[k];}return '';};
 const arr=v=>Array.isArray(v)?v:[];
 const bytes=s=>new TextEncoder().encode(s);
 const xml=s=>txt(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
 const clean=s=>txt(s).trim().replace(/[\\/:*?"<>|\x00-\x1f]/g,'_').replace(/\s+/g,'_').slice(0,100)||'미입력';
-const fileBase=m=>['school','year','semester','course','week'].map(k=>clean(m[k])).join('_');
-function textNode(value,size=24,color=C.ink,weight=400,extra={}){return {kind:'text',value:txt(value),size,color,weight,...extra};}
-function stack(children=[],gap=14){return {kind:'stack',children:children.filter(Boolean),gap};}
-function panel(children=[],opt={}){return {kind:'panel',children:children.filter(Boolean),pad:opt.pad??24,gap:opt.gap??12,bg:opt.bg||C.bg,border:opt.border===false?null:(opt.border||C.line),radius:opt.radius??18};}
-function columns(children=[],weights=[]){return {kind:'columns',children:children.filter(Boolean),weights,gap:18};}
-function pair(label,value){return stack([textNode(label,19,C.gold,700),textNode(value,24)],6);}
-function item(title,desc,kicker){return panel([kicker?textNode(kicker,18,C.gold,700):null,textNode(title,29,C.ink,700),desc?textNode(desc,23,C.muted):null],{gap:10});}
-function list(items,numbered=true){return stack(arr(items).map((x,i)=>panel([textNode(numbered?String(i+1).padStart(2,'0'):'•',19,C.gold,700),textNode(typeof x==='string'?x:pick(x,'text','description','title','value'),24)],{gap:8,pad:18})),10);}
-function blockBody(b){
- const type=b.type;
- switch(type){
- case 'HERO':return stack([textNode(b.eyebrow||'HLL',19,C.gold,700),textNode(b.title,48,C.ink,800),textNode(b.subtitle,27,C.muted),b.coreQuestion?panel([textNode('핵심 질문',18,C.gold,700),textNode(b.coreQuestion,26,C.ink,600)],{bg:C.sand}):null],20);
- case 'BIG_IDEA':return stack([panel([textNode('BIG IDEA',18,C.gold,700),textNode(pick(b,'claim','main','title'),39,C.white,800),textNode(pick(b,'explain','description','message'),24,C.white)],{bg:C.deep,border:false,pad:30}),list(b.evidence||b.items)]);
- case 'COMPARE':{
-  const side=s=>panel([textNode(s?.title,32,C.ink,800),s?.tag?textNode(s.tag,20,C.gold,700):null,...arr(s?.items).map(x=>pair(x.label,x.value))],{gap:14});
-  return columns([side(b.left),side(b.right)],[1,1]);
- }
- case 'QUOTE':return stack([panel([textNode(b.quote,40,C.white,700),textNode(b.caption,24,C.white)],{bg:C.deep,border:false,pad:30})]);
- case 'FLOW':case 'STEP_PATH':return stack(arr(b.steps||b.items).map((x,i)=>item(pick(x,'title','label'),pick(x,'text','description','value'),pick(x,'kicker','step')||`STEP ${i+1}`)),12);
- case 'TIMELINE':return stack(arr(b.items).map((x,i)=>item(x.title,pick(x,'description','text'),pick(x,'date','kicker')||String(i+1))),12);
- case 'CONCEPT_MAP':{
-  const ns=arr(b.nodes),center=ns.find(n=>n.role==='center'||n.id==='self'||n.center);
-  const ordered=center?[center,...ns.filter(n=>n!==center)]:ns;
-  return stack([...ordered.map(n=>item(n.label,n.description,n===center?'중심 개념':null)),...arr(b.edges).map(e=>textNode(`${pick(ns.find(n=>n.id===e.from),'label')||e.from}  ${e.relation||'→'}  ${pick(ns.find(n=>n.id===e.to),'label')||e.to}`,22,C.muted))],12);
- }
- case 'SPECTRUM':return stack([textNode(`${b.leftLabel||''}  ↔  ${b.rightLabel||''}`,25,C.gold,700),...arr(b.items).map(x=>item(x.label,x.note,Number.isFinite(Number(x.position))?`${x.position}%`:null)),b.footer?textNode(b.footer,23,C.muted):null]);
- case 'CAUSE_EFFECT':return stack([textNode('원인',19,C.gold,700),...arr(b.causes).map(x=>item(x.title,pick(x,'text','description'))),textNode('↓',32,C.gold,700),item(b.bridge?.title||'과정',b.bridge?.text),textNode('↓',32,C.gold,700),panel([textNode(b.result?.title||'결과',32,C.white,700),textNode(b.result?.text,24,C.white)],{bg:C.deep,border:false})]);
- case 'BENTO':case 'BENTO_SUMMARY':case 'KEY_CONCEPTS':{
-  const items=arr(b.items||b.cards);
-  return stack(items.map((x,i)=>item(pick(x,'title','term','label'),pick(x,'text','description','value'),pick(x,'kicker','label')||`POINT ${i+1}`)),12);
- }
- case 'TERM_DECK':return stack(arr(b.terms||b.items).map(x=>item(pick(x,'term','title','label'),pick(x,'definition','description','text'),x.original)),12);
- case 'MISCONCEPTION':return stack(arr(b.items).map(x=>panel([pair('오해',pick(x,'misconception','before','myth')),pair('다시 보기',pick(x,'correction','after','reframe'))],{gap:16})),12);
- case 'QUESTION_LADDER':return stack(arr(b.items||b.questions).map((x,i)=>item(pick(x,'question','title'),pick(x,'answer','text','description'),`Q${i+1}`)),12);
- case 'CHECKPOINT':{
-  const choices=arr(b.choices);
-  return stack([textNode(b.question,31,C.ink,700),...choices.map((x,i)=>panel([textNode(`${i+1}. ${x}`,23)],{bg:i===b.answer?C.sand:C.bg,pad:17})),panel([textNode(`정답: ${Number(b.answer)+1}번`,23,C.ink,700),textNode(b.explanation,23,C.muted)],{bg:C.sand})],12);
- }
- case 'RECAP':return stack([list(b.mustRemember||b.items),b.keywords?.length?panel([textNode('핵심어',19,C.gold,700),textNode(b.keywords.join(' · '),24)],{gap:10}):null,b.coreRelation?panel([textNode('핵심 관계',19,C.gold,700),textNode(b.coreRelation,26,C.white,600)],{bg:C.deep,border:false}):null]);
- default:{
-  const items=arr(b.items||b.cards||b.points);
-  return stack(items.map((x,i)=>item(pick(x,'title','label','term')||`POINT ${i+1}`,pick(x,'text','description','value')||txt(x))),12);
- }
- }
-}
-function buildBlock(lesson,b,i){
- const m=lesson.metadata||{};
- const hero=b.type==='HERO';
- const heading=hero?[]:[textNode(b.title||'학습 확인',38,C.ink,800),b.message?textNode(b.message,23,C.muted):null];
- return stack([textNode(`${m.course||''}  ·  ${m.week||''}주차`,18,C.gold,700),...heading,blockBody(b),b.sourceRef?textNode(b.sourceRef,18,C.muted):null],20);
-}
-function font(ctx,n){ctx.font=`${n.weight||400} ${n.size||24}px ${FONT}`;}
-function wrap(ctx,value,maxW,size,weight){
- font(ctx,{size,weight});
- const lines=[];const source=txt(value).replace(/\r/g,'').split('\n');
- for(const paragraph of source){
-  if(!paragraph){lines.push('');continue;}
-  const tokens=paragraph.match(/\S+\s*|\s+/gu)||[paragraph];let line='';
-  const add=part=>{if(line)lines.push(line.trimEnd());line=part;};
-  for(let token of tokens){
-   if(ctx.measureText(line+token).width<=maxW){line+=token;continue;}
-   if(line)add('');
-   if(ctx.measureText(token).width<=maxW){line=token;continue;}
-   for(const ch of token){if(line&&ctx.measureText(line+ch).width>maxW)add('');line+=ch;}
-  }
-  lines.push(line.trimEnd());
- }
- return lines.length?lines:[''];
-}
-function measure(ctx,n,w){
- if(n.kind==='text'){
-  const lines=wrap(ctx,n.value,w,n.size,n.weight);return {height:lines.length*(n.lineHeight||n.size*1.47),lines};
- }
- if(n.kind==='panel'){
-  const inner=measure(ctx,stack(n.children,n.gap),w-n.pad*2);return {height:inner.height+n.pad*2,inner};
- }
- if(n.kind==='stack'){
-  const children=n.children.map(x=>measure(ctx,x,w));return {height:children.reduce((v,x)=>v+x.height,0)+Math.max(0,children.length-1)*n.gap,children};
- }
- if(n.kind==='columns'){
-  const gap=n.gap,widths=columnWidths(w,n.weights,n.children.length,gap);
-  const children=n.children.map((x,i)=>measure(ctx,x,widths[i]));return {height:Math.max(0,...children.map(x=>x.height)),children,widths};
- }
- return {height:0};
-}
-function columnWidths(w,weights,count,gap){const ws=weights.length===count?weights:Array(count).fill(1),total=ws.reduce((a,b)=>a+b,0);return ws.map(v=>(w-gap*(count-1))*v/total);}
-function round(ctx,x,y,w,h,r,fill,stroke){
- ctx.beginPath();ctx.roundRect(x,y,w,h,Math.min(r,w/2,h/2));if(fill){ctx.fillStyle=fill;ctx.fill();}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=1;ctx.stroke();}
-}
-function draw(ctx,n,x,y,w,m){
- if(n.kind==='text'){
-  font(ctx,n);ctx.fillStyle=n.color||C.ink;ctx.textBaseline='top';
-  const lh=n.lineHeight||n.size*1.47;m.lines.forEach((line,i)=>ctx.fillText(line,x,y+i*lh));return;
- }
- if(n.kind==='panel'){
-  round(ctx,x,y,w,m.height,n.radius,n.bg,n.border);
-  draw(ctx,stack(n.children,n.gap),x+n.pad,y+n.pad,w-n.pad*2,m.inner);return;
- }
- if(n.kind==='stack'){
-  n.children.forEach((child,i)=>{draw(ctx,child,x,y,w,m.children[i]);y+=m.children[i].height+n.gap;});return;
- }
- if(n.kind==='columns'){
-  n.children.forEach((child,i)=>{draw(ctx,child,x,y,m.widths[i],m.children[i]);x+=m.widths[i]+n.gap;});
- }
-}
-function renderBlock(lesson,block,index){
- const c=document.createElement('canvas'),ctx=c.getContext('2d',{alpha:false});
- if(!ctx)throw new Error('Canvas 2D를 사용할 수 없습니다.');
- const layout=buildBlock(lesson,block,index),m=measure(ctx,layout,CW);
- const height=Math.ceil(m.height+M*2+64);
- if(height>12000)throw new Error('학습카드가 너무 깁니다. 내용을 여러 블록으로 나누어 주세요.');
- c.width=W;c.height=height;
- ctx.fillStyle=C.paper;ctx.fillRect(0,0,W,height);
- draw(ctx,layout,M,M,CW,m);
- ctx.fillStyle=C.line;ctx.fillRect(M,height-45,CW,1);
- font(ctx,{size:16,weight:400});ctx.fillStyle=C.muted;ctx.textBaseline='top';
- ctx.fillText('HLL · Hmseodam Learning Lab',M,height-32);
- ctx.textAlign='right';ctx.fillText(`${String(index+1).padStart(2,'0')} / ${lesson.blocks.length}`,W-M,height-32);ctx.textAlign='left';
- return c;
-}
-function renderAll(lesson,progress){
- const blocks=arr(lesson.blocks);if(!blocks.length)throw new Error('저장할 학습카드가 없습니다.');
- const out=[];for(let i=0;i<blocks.length;i++){progress?.(`학습카드 구성 중 · ${i+1}/${blocks.length}`);out.push(renderBlock(lesson,blocks[i],i));}return out;
-}
+const fileBase=m=>['school','year','semester','course','week'].map(k=>clean(k==='week'&&m[k]&&!/주차$/.test(String(m[k]))?String(m[k])+'주차':m[k])).join('_');
+const nextFrame=()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
 function blob(canvas,type,quality){return new Promise((ok,fail)=>canvas.toBlob(b=>b?ok(b):fail(new Error('이미지 인코딩에 실패했습니다.')),type,quality));}
 function download(b,name){const url=URL.createObjectURL(b),a=document.createElement('a');a.href=url;a.download=name;a.style.display='none';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);}
 function concat(...parts){let len=0;for(const p of parts)len+=p.length;const result=new Uint8Array(len);let i=0;for(const p of parts){result.set(p,i);i+=p.length;}return result;}
+
+async function stylesheetText(){
+  const parts=[];
+  for(const node of document.querySelectorAll('style,link[rel="stylesheet"]')){
+    if(node.tagName==='STYLE')parts.push(node.textContent);
+    else{
+      const response=await fetch(node.href,{credentials:'same-origin'});
+      if(!response.ok)throw new Error('스타일시트를 불러올 수 없습니다: '+node.href);
+      parts.push(await response.text());
+    }
+  }
+  return parts.join('\n');
+}
+async function prepareStage(lesson,options){
+  if(typeof options.renderBlock!=='function')throw new Error('웹 카드 렌더러가 연결되지 않았습니다.');
+  const css=await stylesheetText();
+  const iframe=document.createElement('iframe');
+  iframe.setAttribute('aria-hidden','true');iframe.setAttribute('tabindex','-1');
+  iframe.style.cssText='position:fixed;left:-20000px;top:0;width:1120px;height:1000px;border:0;opacity:0;pointer-events:none;';
+  document.body.appendChild(iframe);
+  try{
+    const doc=iframe.contentDocument;
+    const base=document.baseURI.replace(/"/g,'&quot;');
+    doc.open();doc.write(`<!doctype html><html lang="ko"><head><meta charset="utf-8"><base href="${base}"><meta name="viewport" content="width=device-width,initial-scale=1"><style>${css.replace(/<\/style/gi,'<\\/style')}\nhtml{scroll-behavior:auto!important}body{margin:0!important;background:var(--bg)!important}.hll-export-stage{width:${CAPTURE_W}px!important;max-width:none!important}.hll-export-stage>.block,.hll-export-stage>.hero{margin:0!important;width:100%!important;max-width:none!important;height:auto!important;animation:none!important;transition:none!important}.hll-export-stage .block{overflow:visible!important}.hll-export-stage .hero{overflow:hidden!important}</style></head><body><main class="content-area"><div class="hll-export-stage" id="hll-stage">${arr(lesson.blocks).map((b,i)=>options.renderBlock(b,i)).join('')}</div></main></body></html>`);doc.close();
+    await doc.fonts.ready;
+    await Promise.all([...doc.images].map(img=>img.decode?.().catch(()=>{})||Promise.resolve()));
+    await nextFrame();
+    const nodes=[...doc.querySelectorAll('#hll-stage > .hero,#hll-stage > .block')];
+    if(nodes.length!==lesson.blocks.length)throw new Error('일부 학습카드를 렌더링하지 못했습니다.');
+    const maxOriginal=CONTENT_H/(CONTENT_W/CAPTURE_W);
+    const entries=nodes.map((node,i)=>({node,index:i,cuts:safeCuts(node,maxOriginal)}));
+    return {iframe,entries,count:entries.reduce((n,e)=>n+e.cuts.length-1,0)};
+  }catch(e){iframe.remove();throw e;}
+}
+function safeCuts(root,maxHeight){
+  const bounds=root.getBoundingClientRect(),height=Math.ceil(bounds.height);
+  if(height<=maxHeight)return [0,height];
+  const intervals=[];
+  const add=(r,pad=3)=>{
+    const a=Math.max(0,r.top-bounds.top-pad),b=Math.min(height,r.bottom-bounds.top+pad);
+    if(b>a)intervals.push([a,b]);
+  };
+  const walker=root.ownerDocument.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+  while(walker.nextNode()){
+    const node=walker.currentNode;if(!node.nodeValue.trim())continue;
+    const range=root.ownerDocument.createRange();range.selectNodeContents(node);
+    for(const r of range.getClientRects())add(r,3);
+  }
+  const atom='.flow-card,.timeline-item > div:last-child,.term-card,.bento-card,.concept-node,.compare-side,.mis-before,.mis-after,.quiz-option,.remember,.bigidea-claim,.bigidea-evidence > div,.keyconcept-card,.ladder-item,.block-head,img,svg,canvas';
+  for(const el of root.querySelectorAll(atom)){
+    const r=el.getBoundingClientRect();if(r.height<maxHeight*.92)add(r,4);
+  }
+  intervals.sort((a,b)=>a[0]-b[0]);
+  const merged=[];for(const [a,b] of intervals){if(merged.length&&a<=merged.at(-1)[1])merged.at(-1)[1]=Math.max(b,merged.at(-1)[1]);else merged.push([a,b]);}
+  const gaps=[];let prev=0;
+  for(const [a,b] of merged){if(a>prev)gaps.push([prev,a]);prev=Math.max(prev,b);}
+  if(prev<height)gaps.push([prev,height]);
+  const cuts=[0];let start=0;
+  const minimum=120;
+  while(start+maxHeight<height){
+    const remaining=height-start;
+    const pages=Math.ceil(remaining/maxHeight);
+    const ideal=start+remaining/pages;
+    const lower=Math.max(start+minimum,height-(pages-1)*maxHeight);
+    const upper=Math.min(start+maxHeight,height-minimum*(pages-1));
+    const candidates=[];
+    for(const [a,b] of gaps){
+      if(b<=start+minimum)continue;
+      for(const y of [a,b,(a+b)/2])if(y>start+minimum&&y<height)candidates.push(y);
+      if(a<=ideal&&ideal<=b)candidates.push(ideal);
+      if(a<=lower&&lower<=b)candidates.push(lower);
+      if(a<=upper&&upper<=b)candidates.push(upper);
+    }
+    const within=candidates.filter(y=>y>=lower&&y<=upper);
+    let cut;
+    if(within.length)cut=within.reduce((a,b)=>Math.abs(a-ideal)<Math.abs(b-ideal)?a:b);
+    else if(candidates.length)cut=candidates.reduce((a,b)=>Math.abs(a-ideal)<Math.abs(b-ideal)?a:b);
+    else cut=height;
+    cut=Math.min(height,Math.max(start+1,Math.floor(cut)));
+    if(cut>=height)break;
+    cuts.push(cut);start=cut;
+    if(cuts.length>100)throw new Error('학습카드의 페이지 분할 횟수가 너무 많습니다.');
+  }
+  cuts.push(height);return cuts;
+}
+function pageCanvas(source,start,end,lesson,blockIndex,part,totalParts,pageNumber,pageCount){
+  const canvas=document.createElement('canvas');canvas.width=PAGE_W;canvas.height=PAGE_H;
+  const ctx=canvas.getContext('2d',{alpha:false});if(!ctx)throw new Error('Canvas 2D를 사용할 수 없습니다.');
+  ctx.fillStyle='#fffdf8';ctx.fillRect(0,0,PAGE_W,PAGE_H);
+  const m=lesson.metadata||{};
+  ctx.fillStyle='#b28a4e';ctx.font=`700 22px ${FONT}`;ctx.textBaseline='top';
+  ctx.fillText(`${txt(m.course)} · ${txt(m.week)}주차`,CONTENT_X,32);
+  ctx.fillStyle='#65706c';ctx.font=`400 18px ${FONT}`;ctx.textAlign='right';
+  ctx.fillText(`${String(pageNumber).padStart(2,'0')} / ${String(pageCount).padStart(2,'0')}`,PAGE_W-CONTENT_X,34);ctx.textAlign='left';
+  const sy=Math.round(start*CAPTURE_SCALE),ey=Math.min(source.height,Math.round(end*CAPTURE_SCALE));
+  const sh=Math.max(1,ey-sy),scale=Math.min(CONTENT_W/source.width,CONTENT_H/sh);
+  const dw=source.width*scale,dh=sh*scale;
+  const dx=CONTENT_X+(CONTENT_W-dw)/2,dy=CONTENT_Y+(CONTENT_H-dh)/2;
+  ctx.drawImage(source,0,sy,source.width,sh,dx,dy,dw,dh);
+  ctx.fillStyle='#ded9ce';ctx.fillRect(CONTENT_X,PAGE_H-43,CONTENT_W,1);
+  ctx.fillStyle='#65706c';ctx.font=`400 16px ${FONT}`;ctx.fillText('HLL · Hmseodam Learning Lab',CONTENT_X,PAGE_H-32);
+  return canvas;
+}
 function pdfFromJpegs(images){
  const objects=[];const add=content=>{objects.push(content);return objects.length;};
  const catalog=add(''),pages=add(''),pageRefs=[];
  for(const im of images){
-  const w=im.width,h=im.height,landscape=w/h>1.18,pw=landscape?841.89:595.28,ph=landscape?595.28:841.89;
-  const scale=Math.min((pw-56)/w,(ph-56)/h),dw=w*scale,dh=h*scale,x=(pw-dw)/2,y=(ph-dh)/2;
+  const w=im.width,h=im.height,pw=841.89,ph=595.28;
   const imageRef=add({dict:`/Type /XObject /Subtype /Image /Width ${w} /Height ${h} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode`,data:im.data});
-  const commands=`q\n${dw.toFixed(4)} 0 0 ${dh.toFixed(4)} ${x.toFixed(4)} ${y.toFixed(4)} cm\n/Im1 Do\nQ\n`;
+  const commands=`q\n${pw} 0 0 ${ph} 0 0 cm\n/Im1 Do\nQ\n`;
   const contentRef=add({dict:'',data:bytes(commands)});
   pageRefs.push(add(`<< /Type /Page /Parent ${pages} 0 R /MediaBox [0 0 ${pw} ${ph}] /Resources << /XObject << /Im1 ${imageRef} 0 R >> >> /Contents ${contentRef} 0 R >>`));
  }
@@ -179,33 +157,37 @@ function docxFromImages(images,title){
  zip.file('docProps/core.xml',`<?xml version="1.0" encoding="UTF-8"?><cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:title>${xml(title)}</dc:title><dc:creator>Hmseodam Learning Lab</dc:creator></cp:coreProperties>`);
  return zip.generateAsync({type:'blob',mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document',compression:'DEFLATE'});
 }
-async function exportLesson(lesson,format,progress,save=download){
+async function exportLesson(lesson,format,progress,save=download,options={}){
  const base=fileBase(lesson.metadata||{}),blocks=arr(lesson.blocks);
  if(!blocks.length)throw new Error('저장할 학습카드가 없습니다.');
- const zip=(format==='png'||format==='jpg')?new global.JSZip():null;
- const images=[];
- for(let i=0;i<blocks.length;i++){
-  progress?.(`학습카드 생성 중 · ${i+1}/${blocks.length}`);
-  const canvas=renderBlock(lesson,blocks[i],i);
-  const mime=format==='png'?'image/png':'image/jpeg';
-  const b=await blob(canvas,mime,.92);
-  if(zip)zip.file(`${base}_${String(i+1).padStart(2,'0')}.${format}`,b);
-  else images.push({width:canvas.width,height:canvas.height,data:new Uint8Array(await b.arrayBuffer())});
-  canvas.width=0;canvas.height=0;
-  await new Promise(r=>requestAnimationFrame(r));
- }
- if(zip){
-  const result=await zip.generateAsync({type:'blob',compression:'DEFLATE'});
-  save(result,`${base}_${format.toUpperCase()}.zip`);return result;
- }
- if(format==='pdf'){
-  const result=pdfFromJpegs(images);save(result,`${base}.pdf`);return result;
- }
- if(format==='docx'){
-  const result=await docxFromImages(images,base);save(result,`${base}.docx`);return result;
- }
- throw new Error('지원하지 않는 파일 형식입니다.');
+ if(!['pdf','docx','png','jpg'].includes(format))throw new Error('지원하지 않는 파일 형식입니다.');
+ if(typeof global.HLLDomCapture?.capture!=='function')throw new Error('웹 카드 캡처 모듈을 불러오지 못했습니다.');
+ if(typeof global.JSZip!=='function'&&format!=='pdf')throw new Error('ZIP 모듈을 불러오지 못했습니다.');
+ const stage=await prepareStage(lesson,options);
+ const zip=(format==='png'||format==='jpg')?new global.JSZip():null,images=[];
+ let pageNumber=0;
+ try{
+  for(const entry of stage.entries){
+   progress?.(`웹 카드 캡처 중 · ${entry.index+1}/${stage.entries.length}`);
+   const source=await global.HLLDomCapture.capture(entry.node,{scale:CAPTURE_SCALE,background:'#fffdf8'});
+   try{
+    for(let part=0;part<entry.cuts.length-1;part++){
+     pageNumber++;
+     const canvas=pageCanvas(source,entry.cuts[part],entry.cuts[part+1],lesson,entry.index,part,entry.cuts.length-1,pageNumber,stage.count);
+     const mime=format==='png'?'image/png':'image/jpeg';
+     const b=await blob(canvas,mime,.94);
+     if(zip)zip.file(`${base}_${String(pageNumber).padStart(2,'0')}.${format}`,b);
+     else images.push({width:canvas.width,height:canvas.height,data:new Uint8Array(await b.arrayBuffer())});
+     canvas.width=0;canvas.height=0;
+     progress?.(`가로 페이지 생성 중 · ${pageNumber}/${stage.count}`);
+     await nextFrame();
+    }
+   }finally{source.width=0;source.height=0;}
+  }
+  if(zip){const result=await zip.generateAsync({type:'blob',compression:'DEFLATE'});await save(result,`${base}_${format.toUpperCase()}.zip`);return result;}
+  if(format==='pdf'){const result=pdfFromJpegs(images);await save(result,`${base}.pdf`);return result;}
+  const result=await docxFromImages(images,base);await save(result,`${base}.docx`);return result;
+ }finally{stage.iframe.remove();}
 }
-
-global.HLLExport={exportLesson,renderAll,fileBase,version:'7.0.0'};
+global.HLLExport={exportLesson,fileBase,version:'8.0.0'};
 })(window);
