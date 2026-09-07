@@ -1,0 +1,472 @@
+{
+  "schemaVersion": "2.0",
+  "metadata": {
+    "school": "동명대학교",
+    "year": "2026",
+    "semester": "2학기",
+    "course": "동양사상과 인성",
+    "week": "02",
+    "title": "선종의 문자 가르침과 실천",
+    "sourceSection": "PDF 7~11쪽: 머리말, 제1장 1절 들어가며",
+    "sourceTitle": "[확인 필요]",
+    "sourceAuthor": "요코타 난레이(머리말), 본문 저자 [확인 필요]"
+  },
+  "design": {
+    "tone": "calm",
+    "variationPolicy": "학습 흐름 안에서 같은 화면 형식이 반복되지 않도록 block type과 variant를 섞는다. COMPARE만 반복하지 않는다.",
+    "recommendedVariants": {
+      "HERO": ["calm", "poster", "editorial"],
+      "COMPARE": ["dual-lens", "debate", "stacked-contrast", "mirror"],
+      "CHECKPOINT": ["soft", "focus", "compact"],
+      "FLOW": ["path", "ladder", "ribbon"],
+      "CONCEPT_MAP": ["orbit", "constellation", "hub"],
+      "SPECTRUM": ["axis", "thermometer", "steps"],
+      "RECAP": ["magazine", "checklist", "bento"]
+    }
+  },
+  "lesson": {
+    "coreQuestion": "선은 문자를 부정하면서 왜 수많은 말을 남겼을까?",
+    "oneSentence": "선의 문자는 깨달음을 대신하지 않지만 배움과 실천, 전승을 잇는 방편이다.",
+    "estimatedMinutes": 15
+  },
+  "blocks": [
+    {
+      "id": "hero-01",
+      "type": "HERO",
+      "variant": "editorial",
+      "eyebrow": "WEEK 02",
+      "title": "문자를 넘어, 다시 문자로",
+      "subtitle": "선의 말과 실천이 맺는 역설적 관계를 따라갑니다.",
+      "coreQuestion": "선은 문자를 부정하면서 왜 수많은 말을 남겼을까?"
+    },
+    {
+      "id": "bigidea-01",
+      "type": "BIG_IDEA",
+      "variant": "poster",
+      "title": "문자는 길이지 목적이 아니다",
+      "message": "선은 배움과 부정, 실천과 재표현을 함께 요구한다.",
+      "sourceRef": "PDF 7~8쪽",
+      "claim": "문자를 배우되, 문자에 머물지 않고 본성을 직접 밝혀야 한다.",
+      "explain": "깨달음 뒤에는 다시 문자로 가르침을 전하고 문화를 펼친다.",
+      "evidence": [
+        "수행의 시작에는 경전과 조사의 말을 배운다.",
+        "이후 문자를 부정하고 좌선과 실참실구에 힘쓴다.",
+        "그 뒤 다시 문자와 문화예술로 가르침을 전한다."
+      ]
+    },
+    {
+      "id": "flow-01",
+      "type": "FLOW",
+      "variant": "ribbon",
+      "title": "선 수행의 세 움직임",
+      "message": "문자와 실천은 배척이 아니라 단계적으로 이어진다.",
+      "sourceRef": "PDF 7~8쪽",
+      "steps": [
+        {
+          "kicker": "STEP 1",
+          "title": "문자를 배우다",
+          "text": "경전과 조사의 말로 수행의 길을 분명히 한다."
+        },
+        {
+          "kicker": "STEP 2",
+          "title": "문자를 부정하다",
+          "text": "좌선과 실참실구로 자기 자신을 끝까지 밝힌다."
+        },
+        {
+          "kicker": "STEP 3",
+          "title": "문자를 구사하다",
+          "text": "깨달음의 가르침을 말과 문화예술로 다시 전한다."
+        }
+      ]
+    },
+    {
+      "id": "checkpoint-01",
+      "type": "CHECKPOINT",
+      "variant": "soft",
+      "question": "본문이 설명한 선 수행의 흐름으로 알맞은 것은?",
+      "choices": [
+        "문자 학습 → 문자 부정과 실참 → 문자로 전승",
+        "문자 부정 → 경전 폐기 → 침묵 유지",
+        "문화 창작 → 스승 탐색 → 경전 거부",
+        "어록 편찬 → 좌선 중단 → 문자 숭배"
+      ],
+      "answer": 0,
+      "explanation": "먼저 배우고, 실참한 뒤, 다시 자유롭게 문자를 활용한다."
+    },
+    {
+      "id": "bento-01",
+      "type": "BENTO_SUMMARY",
+      "variant": "bento",
+      "title": "시간과 말, 수행의 출발",
+      "message": "무상에 대한 자각은 스승을 찾고 수행하게 만든다.",
+      "sourceRef": "PDF 9쪽",
+      "items": [
+        {
+          "kicker": "경책",
+          "title": "시간은 기다리지 않는다",
+          "text": "생사와 무상을 자각하고 세월을 아껴야 한다.",
+          "size": "wide"
+        },
+        {
+          "kicker": "도구",
+          "title": "목판",
+          "text": "소리로 시간을 알리고 무상관을 일깨운다.",
+          "size": "small"
+        },
+        {
+          "kicker": "실천",
+          "title": "선지식을 찾다",
+          "text": "안락을 좇지 않고 좋은 스승에게 가르침을 청한다.",
+          "size": "small"
+        },
+        {
+          "kicker": "소통",
+          "title": "문답",
+          "text": "스승과 수행승은 말과 몸짓으로 경지를 닦는다.",
+          "size": "wide"
+        }
+      ]
+    },
+    {
+      "id": "timeline-01",
+      "type": "TIMELINE",
+      "variant": "rail",
+      "title": "조사의 말이 발전한 길",
+      "message": "생생한 문답은 기록과 문학, 화두 수행으로 변해 갔다.",
+      "sourceRef": "PDF 9~10쪽",
+      "items": [
+        {
+          "date": "당대",
+          "title": "독자적 선과 문답",
+          "description": "선승들의 현장 문답이 활발하게 이루어졌다."
+        },
+        {
+          "date": "어록 편찬 뒤",
+          "title": "고칙과 공안",
+          "description": "기록된 문답으로 조사의 깨달음을 추체험했다."
+        },
+        {
+          "date": "당말 이후",
+          "title": "송고의 성행",
+          "description": "공안의 뜻을 비유적 시로 표현했다."
+        },
+        {
+          "date": "송대",
+          "title": "선문학과 간화선",
+          "description": "문학이 발달하고 그 정형화를 비판한 간화선이 등장했다."
+        },
+        {
+          "date": "현재",
+          "title": "수행과 생활의 선어",
+          "description": "착어·족자·삶의 지침 등으로 널리 활용된다."
+        }
+      ]
+    },
+    {
+      "id": "checkpoint-02",
+      "type": "CHECKPOINT",
+      "variant": "focus",
+      "question": "기록된 문답을 본보기로 조사의 깨달음을 추체험한 까닭은?",
+      "choices": [
+        "당대의 생생한 문답이 점차 줄었기 때문에",
+        "좌선이 완전히 사라졌기 때문에",
+        "경전 인용이 금지되었기 때문에",
+        "다도에서 족자를 없앴기 때문에"
+      ],
+      "answer": 0,
+      "explanation": "어록 편찬 뒤 현장 문답이 줄며 기록된 문답이 본보기가 되었다."
+    },
+    {
+      "id": "term-01",
+      "type": "TERM_DECK",
+      "variant": "flash",
+      "title": "공안을 둘러싼 언어",
+      "message": "조사의 말을 배우고 표현하는 여러 형식을 구분한다.",
+      "sourceRef": "PDF 9~10쪽",
+      "terms": [
+        {
+          "term": "고칙",
+          "original": "古則",
+          "definition": "본받아야 할 옛사람의 행리라는 뜻의 뛰어난 문답."
+        },
+        {
+          "term": "공안",
+          "original": "公案",
+          "definition": "재판의 판례처럼 본보기로 삼는 기록된 문답."
+        },
+        {
+          "term": "대어",
+          "original": "代語",
+          "definition": "공안을 든 조사 자신이 대신 답하는 말."
+        },
+        {
+          "term": "별어",
+          "original": "別語",
+          "definition": "기존 문답에 다른 답을 붙이는 말."
+        },
+        {
+          "term": "착어",
+          "original": "著語",
+          "definition": "제삼자의 입장에서 비평하거나 얻은 경지를 언어화한 말."
+        }
+      ]
+    },
+    {
+      "id": "concept-01",
+      "type": "CONCEPT_MAP",
+      "variant": "hub",
+      "title": "선어가 이어지는 자리",
+      "message": "조사의 말은 수행 현장 밖으로도 넓게 수용된다.",
+      "sourceRef": "PDF 10쪽",
+      "nodes": [
+        {
+          "id": "center",
+          "role": "center",
+          "label": "조사의 말",
+          "description": "깨달음으로 이끌거나 깨달음의 경지에서 나온 말."
+        },
+        {
+          "id": "n1",
+          "role": "left",
+          "label": "참선",
+          "description": "공안의 견해와 얻은 경지를 착어로 표현한다."
+        },
+        {
+          "id": "n2",
+          "role": "right",
+          "label": "선문학",
+          "description": "선의 경지를 시문으로 표현하며 발전했다."
+        },
+        {
+          "id": "n3",
+          "role": "bottom",
+          "label": "다도",
+          "description": "묵적의 뜻과 필자의 덕을 완상한다."
+        },
+        {
+          "id": "n4",
+          "role": "bottom",
+          "label": "현대의 삶",
+          "description": "직장인도 삶의 지침으로 선어를 배운다."
+        }
+      ],
+      "edges": [
+        {
+          "from": "center",
+          "to": "n1",
+          "relation": "수행"
+        },
+        {
+          "from": "center",
+          "to": "n2",
+          "relation": "문학"
+        },
+        {
+          "from": "center",
+          "to": "n3",
+          "relation": "문화"
+        },
+        {
+          "from": "center",
+          "to": "n4",
+          "relation": "생활"
+        }
+      ]
+    },
+    {
+      "id": "misconception-01",
+      "type": "MISCONCEPTION",
+      "variant": "flip",
+      "title": "불립문자를 오해하지 않기",
+      "message": "문자를 쓰지 않는다는 표어만으로 선을 단순화할 수 없다.",
+      "sourceRef": "PDF 7~10쪽",
+      "items": [
+        {
+          "misconception": "불립문자는 경전과 말을 전혀 배우지 말라는 뜻이다.",
+          "correction": "수행의 시작에는 경전과 조사의 말을 착실히 배워야 한다."
+        },
+        {
+          "misconception": "문자를 부정하면 이후에도 침묵만 지켜야 한다.",
+          "correction": "실참 뒤에는 다시 문자와 문화로 가르침을 전한다."
+        },
+        {
+          "misconception": "선어는 세련된 문학 표현 자체가 목적이다.",
+          "correction": "선어에서 조사의 선의를 길어 올리는 일이 중요하다."
+        }
+      ]
+    },
+    {
+      "id": "checkpoint-03",
+      "type": "CHECKPOINT",
+      "variant": "compact",
+      "question": "대혜 종고의 간화선이 비판한 문제와 가장 가까운 것은?",
+      "choices": [
+        "조사 언어와 선의 문학화가 정형화되는 문제",
+        "수행 도량에서 목판을 사용하는 문제",
+        "다사에서 묵적을 존중하는 문제",
+        "재가자가 선 수행에 참여하는 문제"
+      ],
+      "answer": 0,
+      "explanation": "간화선은 문학화와 조사 언어의 정형화에 대한 비판에서 나타났다."
+    },
+    {
+      "id": "recap-01",
+      "type": "RECAP",
+      "variant": "checklist",
+      "title": "오늘의 정리",
+      "message": "문자와 실천의 긴장을 하나의 흐름으로 기억한다.",
+      "sourceRef": "PDF 7~11쪽",
+      "mustRemember": [
+        "선은 수행의 시작에 경전과 조사의 말을 배운다.",
+        "문자를 부정하는 시기에는 좌선과 실참실구에 힘쓴다.",
+        "조사의 말은 공안·문학·다도·삶의 지침으로 확장되었다."
+      ],
+      "keywords": [
+        "불립문자",
+        "실참실구",
+        "고칙",
+        "공안",
+        "착어",
+        "송고",
+        "간화선"
+      ],
+      "coreRelation": "문자 학습 → 실참을 위한 문자 부정 → 깨달음의 전승을 위한 문자 활용"
+    }
+  ],
+  "finalQuiz": {
+    "title": "종합 퀴즈",
+    "questions": [
+      {
+        "id": "q01",
+        "type": "multiple_choice",
+        "category": "concept",
+        "variant": "concept",
+        "question": "본문이 설명한 불립문자의 이해로 가장 알맞은 것은?",
+        "choices": [
+          "문자에 의존하지 않되 배움과 전승에 문자를 활용한다.",
+          "경전과 어록은 처음부터 모두 폐기한다.",
+          "깨달음은 문학 소양만으로 완성된다.",
+          "모든 선문답은 몸짓으로만 이루어진다."
+        ],
+        "answer": 0,
+        "explanation": "선은 문자를 배우고 부정한 뒤 다시 자유롭게 활용한다.",
+        "relatedBlockId": "bigidea-01"
+      },
+      {
+        "id": "q02",
+        "type": "multiple_choice",
+        "category": "flow",
+        "variant": "sequence",
+        "question": "선 수행의 세 움직임을 바르게 나열한 것은?",
+        "choices": [
+          "학습 → 문자 부정과 실참 → 문자로 전승",
+          "실참 → 학습 거부 → 문화 폐기",
+          "문학화 → 경전 금지 → 공안 소멸",
+          "문자 숭배 → 좌선 중단 → 침묵"
+        ],
+        "answer": 0,
+        "explanation": "배움, 실참, 전승이 단계적으로 이어진다.",
+        "relatedBlockId": "flow-01"
+      },
+      {
+        "id": "q03",
+        "type": "multiple_choice",
+        "category": "history",
+        "variant": "timeline",
+        "question": "당대의 생생한 선문답이 점차 줄어든 계기는?",
+        "choices": [
+          "제자들이 문답을 어록으로 편찬한 일",
+          "목판의 사용이 금지된 일",
+          "사대부가 관료가 된 일",
+          "다회용 족자가 사라진 일"
+        ],
+        "answer": 0,
+        "explanation": "어록 이후 기록된 문답이 현장 문답의 본보기가 되었다.",
+        "relatedBlockId": "timeline-01"
+      },
+      {
+        "id": "q04",
+        "type": "multiple_choice",
+        "category": "cause_effect",
+        "variant": "cause-effect",
+        "question": "선의 문학화에 대한 비판에서 나타난 수행법은?",
+        "choices": [
+          "간화선",
+          "다도의 삼매",
+          "목판 연타",
+          "묵적 완상"
+        ],
+        "answer": 0,
+        "explanation": "대혜 종고의 간화선은 짧은 화두에 의식을 집중했다.",
+        "relatedBlockId": "checkpoint-03"
+      },
+      {
+        "id": "q05",
+        "type": "multiple_choice",
+        "category": "relationship",
+        "variant": "map",
+        "question": "본문에 제시된 조사의 말의 활용이 아닌 것은?",
+        "choices": [
+          "참선에서의 착어",
+          "선문학의 시문",
+          "다도의 묵적",
+          "문답과 선어의 전면 폐기"
+        ],
+        "answer": 3,
+        "explanation": "조사의 말은 수행·문학·다도·생활로 널리 수용되었다.",
+        "relatedBlockId": "concept-01"
+      },
+      {
+        "id": "q06",
+        "type": "multiple_choice",
+        "category": "misconception",
+        "variant": "correction",
+        "question": "불립문자에 대한 오해를 바로잡은 설명은?",
+        "choices": [
+          "경전 학습은 수행의 출발에 도움이 된다.",
+          "문자를 쓰면 선 수행은 성립하지 않는다.",
+          "선어는 세련된 문장 자체가 목적이다.",
+          "깨달음 뒤에는 어떤 가르침도 전하지 않는다."
+        ],
+        "answer": 0,
+        "explanation": "본문은 수행의 시작에 경전과 조사의 말을 배우라고 한다.",
+        "relatedBlockId": "misconception-01"
+      },
+      {
+        "id": "q07",
+        "type": "short_answer",
+        "category": "keyword",
+        "variant": "short",
+        "question": "재판의 판례에 비유되어 붙은 기록 문답의 이름은?",
+        "acceptableAnswers": [
+          "공안",
+          "고칙 공안",
+          "고칙공안"
+        ],
+        "requiredKeywords": [
+          "공안"
+        ],
+        "answer_text": "공안",
+        "explanation": "뛰어난 기록 문답은 재판의 판례에 빗대 공안이라 불렸다.",
+        "relatedBlockId": "term-01"
+      },
+      {
+        "id": "q08",
+        "type": "short_answer",
+        "category": "author_claim",
+        "variant": "short",
+        "question": "현대에 선어를 배울 때 잊지 말아야 할 태도는?",
+        "acceptableAnswers": [
+          "선어에서 조사의 선의를 길어 올리는 것",
+          "조사의 말에서 선의를 찾는 것"
+        ],
+        "requiredKeywords": [
+          "선의"
+        ],
+        "answer_text": "조사가 남긴 선어에서 선의를 길어 올리는 태도",
+        "explanation": "선어는 깨달음으로 이끌거나 깨달음의 경지에서 나온 말이다.",
+        "relatedBlockId": "recap-01"
+      }
+    ]
+  }
+}
