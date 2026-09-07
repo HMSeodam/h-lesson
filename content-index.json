@@ -1,14 +1,24 @@
 {
   "generatedBy": "scripts/build_index.py",
+  "indexMode": "folder-path-display-safe",
   "entries": [
     {
       "school": "동명대학교",
       "year": "2026",
       "semester": "2학기",
-      "course": "선과 유식",
-      "week": "01",
-      "title": "선과 유식: 대립에서 상호보완으로",
-      "lessonPath": "content/동명대학교/2026/2학기/선과 유식/week01/lesson.json"
+      "course": "동양사상과 인성",
+      "week": "02",
+      "title": "선종의 문자 가르침과 실천",
+      "lessonPath": "content/동명대학교/2026/2학기/동양사상과 인성/week02/lesson.json"
+    },
+    {
+      "school": "동명대학교",
+      "year": "2026",
+      "semester": "2학기",
+      "course": "선수행의실제",
+      "week": "02",
+      "title": "대학·인문학·역사와 문헌학",
+      "lessonPath": "content/동명대학교/2026/2학기/선수행의실제/week02/lesson.json"
     }
   ]
 }

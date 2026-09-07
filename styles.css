@@ -1151,3 +1151,56 @@ h1,h2,h3,p,span,small,strong{
 @media(max-width:760px){
   .content-area .quiz-card::before{display:none}
 }
+
+/* =========================================================
+   HLL v9 — classroom readability, keyboard access and print
+   ========================================================= */
+:where(button,select,input):focus-visible{
+  outline:3px solid color-mix(in srgb,var(--gold) 72%,white);
+  outline-offset:3px;
+}
+@media(max-width:760px){
+  .ghost-btn,.mode-btn{min-height:44px}
+  .mode-btn{font-size:13px!important}
+  .content-area .hero p,
+  .content-area .block-message,
+  .content-area .compare-item span,
+  .content-area .quote-caption,
+  .content-area .flow-card p,
+  .content-area .concept-node p,
+  .content-area .spectrum-mobile-item p,
+  .content-area .spectrum-footer,
+  .content-area .cause-card p,
+  .content-area .bridge-card p,
+  .content-area .result-card p,
+  .content-area .remember p,
+  .content-area .relation-card,
+  .content-area .bento-card p,
+  .content-area .term-card p,
+  .content-area .mis-card p,
+  .content-area .ladder-item p,
+  .content-area .generic-grid p,
+  .content-area .quiz-intro p,
+  .content-area .explanation{
+    font-size:16px!important;
+    line-height:1.65;
+  }
+  .content-area .quiz-option{font-size:15px}
+}
+
+@page{size:A4 landscape;margin:10mm}
+@media print{
+  html,body{background:#fff!important;color:#1e2a26!important}
+  .site-header,.sidebar,.lesson-banner,.learn-controls,.toast,.export-modal{display:none!important}
+  .app-shell{display:block!important;max-width:none!important;margin:0!important;padding:0!important}
+  .content-area,#content{width:100%!important;max-width:none!important}
+  #content>.hero,#content>.block{
+    break-inside:avoid-page;
+    page-break-inside:avoid;
+    break-after:page;
+    page-break-after:always;
+    margin:0!important;
+    box-shadow:none!important;
+  }
+  #content>:last-child{break-after:auto;page-break-after:auto}
+}

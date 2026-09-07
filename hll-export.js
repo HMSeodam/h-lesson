@@ -1,9 +1,11 @@
-/* HLL export 8.0 — capture the actual lesson DOM; use one landscape page
-   composition for PDF, DOCX, PNG and JPG. No remote conversion service. */
+/* HLL export 9.0 — capture the actual lesson DOM in print-quality resolution.
+   A normal lesson block stays on one landscape page; only exceptionally long
+   blocks are split at safe content boundaries. No remote conversion service. */
 (function(global){
 'use strict';
-const PAGE_W=1600,PAGE_H=1131,CONTENT_X=56,CONTENT_Y=78,CONTENT_W=1488,CONTENT_H=968;
-const CAPTURE_W=1120,CAPTURE_SCALE=1.5;
+const PAGE_W=2400,PAGE_H=1697,CONTENT_X=84,CONTENT_Y=117,CONTENT_W=2232,CONTENT_H=1452;
+const CAPTURE_W=1120,CAPTURE_SCALE=2;
+const SINGLE_PAGE_HEIGHT_FACTOR=1.4;
 const FONT='"Noto Sans KR","Malgun Gothic",Arial,sans-serif';
 const txt=v=>String(v??'');
 const arr=v=>Array.isArray(v)?v:[];
@@ -51,7 +53,9 @@ async function prepareStage(lesson,options){
 }
 function safeCuts(root,maxHeight){
   const bounds=root.getBoundingClientRect(),height=Math.ceil(bounds.height);
-  if(height<=maxHeight)return [0,height];
+  // Slightly taller desktop cards are scaled down as a whole. This keeps the
+  // common "one lesson block = one page" promise without making text too small.
+  if(height<=maxHeight*SINGLE_PAGE_HEIGHT_FACTOR)return [0,height];
   const intervals=[];
   const add=(r,pad=3)=>{
     const a=Math.max(0,r.top-bounds.top-pad),b=Math.min(height,r.bottom-bounds.top+pad);
@@ -105,17 +109,17 @@ function pageCanvas(source,start,end,lesson,blockIndex,part,totalParts,pageNumbe
   const ctx=canvas.getContext('2d',{alpha:false});if(!ctx)throw new Error('Canvas 2D를 사용할 수 없습니다.');
   ctx.fillStyle='#fffdf8';ctx.fillRect(0,0,PAGE_W,PAGE_H);
   const m=lesson.metadata||{};
-  ctx.fillStyle='#b28a4e';ctx.font=`700 22px ${FONT}`;ctx.textBaseline='top';
-  ctx.fillText(`${txt(m.course)} · ${txt(m.week)}주차`,CONTENT_X,32);
-  ctx.fillStyle='#65706c';ctx.font=`400 18px ${FONT}`;ctx.textAlign='right';
-  ctx.fillText(`${String(pageNumber).padStart(2,'0')} / ${String(pageCount).padStart(2,'0')}`,PAGE_W-CONTENT_X,34);ctx.textAlign='left';
+  ctx.fillStyle='#b28a4e';ctx.font=`700 33px ${FONT}`;ctx.textBaseline='top';
+  ctx.fillText(`${txt(m.course)} · ${txt(m.week)}주차`,CONTENT_X,48);
+  ctx.fillStyle='#65706c';ctx.font=`400 27px ${FONT}`;ctx.textAlign='right';
+  ctx.fillText(`${String(pageNumber).padStart(2,'0')} / ${String(pageCount).padStart(2,'0')}`,PAGE_W-CONTENT_X,51);ctx.textAlign='left';
   const sy=Math.round(start*CAPTURE_SCALE),ey=Math.min(source.height,Math.round(end*CAPTURE_SCALE));
   const sh=Math.max(1,ey-sy),scale=Math.min(CONTENT_W/source.width,CONTENT_H/sh);
   const dw=source.width*scale,dh=sh*scale;
   const dx=CONTENT_X+(CONTENT_W-dw)/2,dy=CONTENT_Y+(CONTENT_H-dh)/2;
   ctx.drawImage(source,0,sy,source.width,sh,dx,dy,dw,dh);
-  ctx.fillStyle='#ded9ce';ctx.fillRect(CONTENT_X,PAGE_H-43,CONTENT_W,1);
-  ctx.fillStyle='#65706c';ctx.font=`400 16px ${FONT}`;ctx.fillText('HLL · Hmseodam Learning Lab',CONTENT_X,PAGE_H-32);
+  ctx.fillStyle='#ded9ce';ctx.fillRect(CONTENT_X,PAGE_H-65,CONTENT_W,2);
+  ctx.fillStyle='#65706c';ctx.font=`400 24px ${FONT}`;ctx.fillText('HLL · Hmseodam Learning Lab',CONTENT_X,PAGE_H-48);
   return canvas;
 }
 function pdfFromJpegs(images){
@@ -175,7 +179,7 @@ async function exportLesson(lesson,format,progress,save=download,options={}){
      pageNumber++;
      const canvas=pageCanvas(source,entry.cuts[part],entry.cuts[part+1],lesson,entry.index,part,entry.cuts.length-1,pageNumber,stage.count);
      const mime=format==='png'?'image/png':'image/jpeg';
-     const b=await blob(canvas,mime,.94);
+     const b=await blob(canvas,mime,.97);
      if(zip)zip.file(`${base}_${String(pageNumber).padStart(2,'0')}.${format}`,b);
      else images.push({width:canvas.width,height:canvas.height,data:new Uint8Array(await b.arrayBuffer())});
      canvas.width=0;canvas.height=0;
@@ -189,5 +193,5 @@ async function exportLesson(lesson,format,progress,save=download,options={}){
   const result=await docxFromImages(images,base);await save(result,`${base}.docx`);return result;
  }finally{stage.iframe.remove();}
 }
-global.HLLExport={exportLesson,fileBase,version:'8.0.0'};
+global.HLLExport={exportLesson,fileBase,version:'9.0.0'};
 })(window);
