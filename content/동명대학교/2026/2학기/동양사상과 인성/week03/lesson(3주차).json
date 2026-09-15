@@ -1,0 +1,511 @@
+{
+  "schemaVersion": "2.0",
+  "metadata": {
+    "school": "동명대학교",
+    "year": "2026",
+    "semester": "2학기",
+    "course": "동양사상과 인성",
+    "week": "03",
+    "title": "조사의 말에서 배우다",
+    "sourceSection": "제1장. 선종의 문자 가르침과 실천 > 1. 조사의 말에서 배우다",
+    "sourceTitle": "[확인 필요]",
+    "sourceAuthor": "[확인 필요]"
+  },
+  "design": {
+    "tone": "calm",
+    "variationPolicy": "학습 흐름 안에서 같은 화면 형식이 반복되지 않도록 block type과 variant를 섞는다. COMPARE만 반복하지 않는다.",
+    "recommendedVariants": {
+      "HERO": [
+        "calm",
+        "poster",
+        "editorial"
+      ],
+      "COMPARE": [
+        "dual-lens",
+        "debate",
+        "stacked-contrast",
+        "mirror"
+      ],
+      "CHECKPOINT": [
+        "soft",
+        "focus",
+        "compact"
+      ],
+      "FLOW": [
+        "path",
+        "ladder",
+        "ribbon"
+      ],
+      "CONCEPT_MAP": [
+        "orbit",
+        "constellation",
+        "hub"
+      ],
+      "SPECTRUM": [
+        "axis",
+        "thermometer",
+        "steps"
+      ],
+      "RECAP": [
+        "magazine",
+        "checklist",
+        "bento"
+      ]
+    }
+  },
+  "lesson": {
+    "coreQuestion": "불립문자를 내세운 선에서 왜 말과 문자가 계속 중요한 역할을 했을까?",
+    "oneSentence": "선종은 문자에 매이지 않으면서도 선문답과 공안·송고·선어를 깨달음의 방편으로 발전시켰다.",
+    "estimatedMinutes": 10
+  },
+  "blocks": [
+    {
+      "id": "hero-01",
+      "type": "HERO",
+      "variant": "calm",
+      "eyebrow": "WEEK 03",
+      "title": "불립문자, 왜 말을 남겼을까",
+      "subtitle": "조사의 말이 수행과 기록, 공안과 선어로 이어진 흐름을 살펴본다.",
+      "coreQuestion": "문자를 내세우지 않는 선에서 말은 어떤 역할을 했을까?"
+    },
+    {
+      "id": "bigidea-01",
+      "type": "BIG_IDEA",
+      "variant": "poster",
+      "title": "말을 버리지 않은 선",
+      "message": "불립문자와 실제 선의 언어 사용을 함께 본다.",
+      "sourceRef": "PDF 1~3쪽",
+      "claim": "선은 문자에 매이지 않으면서도 말을 깨달음의 방편으로 적극 사용했다.",
+      "explain": "선문답은 주로 말로 이루어졌고, 뒤에는 어록·공안·송고와 선문학으로 발전했다.",
+      "evidence": [
+        "스승과 제자는 문답으로 깨달음을 이끌고 경지를 연마했다.",
+        "선문답은 어록에 기록되고 고칙·공안으로 널리 사용되었다.",
+        "당 말 이후 송고가 성행하고 송대에는 선문학도 생겨났다."
+      ]
+    },
+    {
+      "id": "timeline-01",
+      "type": "TIMELINE",
+      "variant": "rail",
+      "title": "조사의 말이 바뀐 흐름",
+      "message": "살아 있는 문답이 기록과 공안, 문학으로 전개된 과정을 본다.",
+      "sourceRef": "PDF 1~2쪽",
+      "items": [
+        {
+          "date": "당대",
+          "title": "생생한 선문답",
+          "description": "각지의 선승이 상황에 맞는 문답으로 제자를 깨달음으로 이끌었다."
+        },
+        {
+          "date": "후대",
+          "title": "어록으로 기록",
+          "description": "제자들이 성립한 선문답을 어록으로 기록하면서 문답이 정착되었다."
+        },
+        {
+          "date": "이후",
+          "title": "고칙·공안",
+          "description": "뛰어난 문답이 본보기로 선별되어 깨달음과 제자 지도의 방편이 되었다."
+        },
+        {
+          "date": "당 말 이후",
+          "title": "송고의 성행",
+          "description": "고칙공안의 뜻을 비유적인 시로 풀며 문자 소양도 요구되기 시작했다."
+        },
+        {
+          "date": "송대",
+          "title": "선문학과 간화선",
+          "description": "사대부와 선의 교류로 선문학이 생기고, 짧은 화두에 집중하는 간화선도 나타났다."
+        }
+      ]
+    },
+    {
+      "id": "checkpoint-01",
+      "type": "CHECKPOINT",
+      "variant": "soft",
+      "question": "기록된 선문답 가운데 본보기로 널리 쓰인 것은 무엇인가?",
+      "choices": [
+        "고칙·공안",
+        "착어",
+        "작무",
+        "묵적"
+      ],
+      "answer": 0,
+      "explanation": "뛰어난 선문답은 고칙 또는 공안이라 불리며 깨달음과 지도에 활용되었다."
+    },
+    {
+      "id": "term-01",
+      "type": "TERM_DECK",
+      "variant": "flash",
+      "title": "공안을 둘러싼 핵심 용어",
+      "message": "공안을 다루는 여러 응답과 표현 방식을 구분한다.",
+      "sourceRef": "PDF 2쪽",
+      "terms": [
+        {
+          "term": "고칙",
+          "original": "古則",
+          "definition": "본받아야 할 옛사람의 행리라는 뜻으로 선별된 선문답."
+        },
+        {
+          "term": "공안",
+          "original": "公案",
+          "definition": "본받아야 할 재판 판례라는 뜻으로 다루어진 선문답."
+        },
+        {
+          "term": "대어",
+          "original": "代語",
+          "definition": "공안을 든 조사 자신이 제자를 대신해 대답하는 방식."
+        },
+        {
+          "term": "별어",
+          "original": "別語",
+          "definition": "공안에 대해 다른 답을 덧붙이는 방식."
+        },
+        {
+          "term": "송고",
+          "original": "頌古",
+          "definition": "고칙공안의 뜻을 비유적으로 시에 표현하는 방식."
+        }
+      ]
+    },
+    {
+      "id": "concept-01",
+      "type": "CONCEPT_MAP",
+      "variant": "constellation",
+      "title": "조사의 말이 연결되는 방식",
+      "message": "문답에서 기록과 공안, 표현으로 이어지는 관계를 본다.",
+      "sourceRef": "PDF 1~3쪽",
+      "nodes": [
+        {
+          "id": "center",
+          "role": "center",
+          "label": "조사의 말",
+          "description": "제자를 깨달음으로 이끌거나 깨달음의 경지에서 나온 말."
+        },
+        {
+          "id": "n1",
+          "role": "left",
+          "label": "선문답",
+          "description": "스승과 제자가 주고받으며 깨달음과 경지를 연마하는 문답."
+        },
+        {
+          "id": "n2",
+          "role": "right",
+          "label": "어록",
+          "description": "성립한 선문답을 제자들이 기록하여 확립한 자료."
+        },
+        {
+          "id": "n3",
+          "role": "bottom",
+          "label": "고칙·공안",
+          "description": "기록된 문답 중 본보기로 선별되어 수행과 지도에 쓰인 사례."
+        },
+        {
+          "id": "n4",
+          "role": "bottom",
+          "label": "송고·착어",
+          "description": "공안의 뜻과 수행에서 얻은 경지를 시와 언어로 나타내는 표현."
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "center",
+          "relation": "발화"
+        },
+        {
+          "from": "n1",
+          "to": "n2",
+          "relation": "기록"
+        },
+        {
+          "from": "n2",
+          "to": "n3",
+          "relation": "선별"
+        },
+        {
+          "from": "n3",
+          "to": "n4",
+          "relation": "해석·표현"
+        }
+      ]
+    },
+    {
+      "id": "checkpoint-02",
+      "type": "CHECKPOINT",
+      "variant": "focus",
+      "question": "송고에 대한 설명으로 가장 알맞은 것은?",
+      "choices": [
+        "고칙공안의 뜻을 비유적인 시로 표현한다.",
+        "수행도량에서 시간을 알리는 목판을 뜻한다.",
+        "공안을 든 조사 대신 제자가 대답한다.",
+        "노동을 금하고 좌선만을 강조한다."
+      ],
+      "answer": 0,
+      "explanation": "송고는 고칙공안에 담긴 뜻을 비유적으로 시에 표현한 것이다."
+    },
+    {
+      "id": "bento-01",
+      "type": "BENTO_SUMMARY",
+      "variant": "bento",
+      "title": "대표 선어 다섯 가지",
+      "message": "교안에 나온 선어와 핵심 뜻을 짧게 연결한다.",
+      "sourceRef": "PDF 4~5쪽",
+      "items": [
+        {
+          "kicker": "공안",
+          "title": "무",
+          "text": "간화선에서는 상대적 견해를 초월한 한 글자에 의식을 집중한다.",
+          "size": "wide"
+        },
+        {
+          "kicker": "집착",
+          "title": "내려놓아라",
+          "text": "아무것도 가져오지 않았다는 생각 자체가 집착이 될 수 있음을 비판한다.",
+          "size": "small"
+        },
+        {
+          "kicker": "공덕",
+          "title": "공덕이 없다",
+          "text": "보시의 대가로 공덕을 기대하는 집착을 경계하는 말이다.",
+          "size": "small"
+        },
+        {
+          "kicker": "자유",
+          "title": "지위 없는 참사람",
+          "text": "모든 틀에서 벗어나 어떤 것에도 얽매이지 않는 참된 자유인을 뜻한다.",
+          "size": "small"
+        },
+        {
+          "kicker": "일상",
+          "title": "날마다 좋은 날",
+          "text": "매일매일이 새롭고 훌륭한 길일이라는 뜻으로 풀이된다.",
+          "size": "small"
+        }
+      ]
+    },
+    {
+      "id": "compare-01",
+      "type": "COMPARE",
+      "variant": "mirror",
+      "title": "불립문자와 실제 언어 사용",
+      "message": "문자에 매이지 않는 원칙과 말의 활용을 함께 비교한다.",
+      "sourceRef": "PDF 1~3쪽",
+      "left": {
+        "title": "불립문자의 원칙",
+        "tag": "문자에 매이지 않음",
+        "items": [
+          {
+            "label": "종지",
+            "value": "불립문자·교외별전을 내세운다."
+          },
+          {
+            "label": "수행",
+            "value": "좌선을 중심으로 한 실천 수행을 중시한다."
+          },
+          {
+            "label": "목표",
+            "value": "자기 본성을 보아 깨달음에 이르는 것을 지향한다."
+          }
+        ]
+      },
+      "right": {
+        "title": "실제 선의 언어",
+        "tag": "말을 방편으로 활용",
+        "items": [
+          {
+            "label": "문답",
+            "value": "스승과 제자는 말로 선문답을 주고받았다."
+          },
+          {
+            "label": "기록",
+            "value": "문답은 어록·고칙·공안으로 기록되고 선별되었다."
+          },
+          {
+            "label": "확장",
+            "value": "송고·선문학·착어 등 다양한 문자 표현으로 발전했다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "misconception-01",
+      "type": "MISCONCEPTION",
+      "variant": "flip",
+      "title": "선어를 오해하지 않기",
+      "message": "교안이 직접 짚어 주는 오해와 맥락을 확인한다.",
+      "sourceRef": "PDF 1쪽, 4쪽",
+      "items": [
+        {
+          "misconception": "불립문자는 말을 전혀 쓰지 않는다는 뜻이다.",
+          "correction": "실제 선문답은 말이 중심이었고, 뒤에는 어록·공안·송고로 발전했다."
+        },
+        {
+          "misconception": "방하는 무엇인가를 내던지라는 뜻이다.",
+          "correction": "방하는 내려놓다·놓아 두다의 뜻이며, 생각에 대한 집착까지 비판한다."
+        },
+        {
+          "misconception": "무는 단순히 불성이 없다는 뜻으로만 쓰인다.",
+          "correction": "간화선에서는 상대적 견해를 초월한 한 글자에 의식을 집중하는 공안이 된다."
+        }
+      ]
+    },
+    {
+      "id": "checkpoint-03",
+      "type": "CHECKPOINT",
+      "variant": "compact",
+      "question": "교안에서 ‘방하(放下)’의 뜻으로 옳은 것은?",
+      "choices": [
+        "내려놓는다",
+        "강제로 버린다",
+        "말을 금한다",
+        "공덕을 쌓는다"
+      ],
+      "answer": 0,
+      "explanation": "교안은 방하를 ‘내려놓는다’, ‘놓아 둔다’는 뜻으로 설명한다."
+    },
+    {
+      "id": "recap-01",
+      "type": "RECAP",
+      "variant": "checklist",
+      "title": "오늘의 정리",
+      "message": "조사의 말이 수행의 방편에서 문화적 표현으로 확장된 흐름을 기억한다.",
+      "sourceRef": "PDF 1~7쪽",
+      "mustRemember": [
+        "생사와 무상에 대한 자각은 수행의 긴박함을 일깨운다.",
+        "불립문자를 내세워도 선문답은 주로 말로 이루어졌다.",
+        "선문답은 어록·공안·송고·선문학 등으로 전개되었다.",
+        "선어는 깨달음을 이끌거나 깨달음의 경지에서 나온 말이다."
+      ],
+      "keywords": [
+        "무상",
+        "불립문자",
+        "선문답",
+        "어록",
+        "공안",
+        "선어"
+      ],
+      "coreRelation": "실천 수행 → 선문답 → 기록·공안화 → 시·화두·선어로 확장"
+    }
+  ],
+  "finalQuiz": {
+    "title": "3주차 종합 퀴즈",
+    "questions": [
+      {
+        "id": "q01",
+        "type": "multiple_choice",
+        "category": "concept",
+        "variant": "concept",
+        "question": "불립문자를 내세운 선의 실제 모습으로 옳은 것은?",
+        "choices": [
+          "선문답은 주로 말로 이루어졌다.",
+          "모든 문답과 기록을 금지했다.",
+          "좌선보다 문학 창작만 중시했다.",
+          "공안은 송대 이후 사라졌다."
+        ],
+        "answer": 0,
+        "explanation": "교안은 불립문자를 표방한 선에서도 선문답은 말이 중심이었다고 설명한다.",
+        "relatedBlockId": "bigidea-01"
+      },
+      {
+        "id": "q02",
+        "type": "multiple_choice",
+        "category": "flow",
+        "variant": "sequence",
+        "question": "교안의 전개 흐름으로 가장 알맞은 것은?",
+        "choices": [
+          "선문답 → 어록 → 고칙·공안 → 송고",
+          "송고 → 선문답 → 어록 → 공안",
+          "공안 → 목판 → 선문답 → 어록",
+          "어록 → 작무 → 송고 → 선문답"
+        ],
+        "answer": 0,
+        "explanation": "살아 있는 선문답이 기록되고, 본보기 공안과 송고로 발전했다.",
+        "relatedBlockId": "timeline-01"
+      },
+      {
+        "id": "q03",
+        "type": "multiple_choice",
+        "category": "compare",
+        "variant": "compare",
+        "question": "불립문자와 실제 언어 사용의 관계를 가장 잘 설명한 것은?",
+        "choices": [
+          "문자에 매이지 않되 말을 깨달음의 방편으로 활용했다.",
+          "문자를 부정했으므로 말도 완전히 배제했다.",
+          "문학을 위해 좌선과 수행을 포기했다.",
+          "선어는 오직 다도에서만 사용되었다."
+        ],
+        "answer": 0,
+        "explanation": "원칙은 문자에 매이지 않는 것이지만 실제로는 문답과 기록을 적극 활용했다.",
+        "relatedBlockId": "compare-01"
+      },
+      {
+        "id": "q04",
+        "type": "multiple_choice",
+        "category": "cause_effect",
+        "variant": "cause",
+        "question": "어록 편찬 뒤 생생한 선문답이 줄어든 이유는?",
+        "choices": [
+          "기록된 문답을 본보기로 깨달음을 추체험했기 때문이다.",
+          "선승들이 말을 사용할 수 없게 되었기 때문이다.",
+          "사대부가 선 수행에서 완전히 떠났기 때문이다.",
+          "공안과 송고가 모두 금지되었기 때문이다."
+        ],
+        "answer": 0,
+        "explanation": "기록된 선문답을 본보기로 삼아 조사들의 깨달음을 추체험하게 되었다.",
+        "relatedBlockId": "timeline-01"
+      },
+      {
+        "id": "q05",
+        "type": "multiple_choice",
+        "category": "author_claim",
+        "variant": "claim",
+        "question": "교안이 선어를 대하는 태도로 강조한 것은?",
+        "choices": [
+          "조사의 말에서 선의 뜻을 길어 올려야 한다.",
+          "선어는 현대적 격언으로만 이해해야 한다.",
+          "선어의 해석은 언제나 하나로 고정된다.",
+          "선어는 수행의 장에서만 사용해야 한다."
+        ],
+        "answer": 0,
+        "explanation": "교안은 선어의 본래 맥락을 기억하고 그 안의 선의 뜻을 읽어야 한다고 말한다.",
+        "relatedBlockId": "recap-01"
+      },
+      {
+        "id": "q06",
+        "type": "multiple_choice",
+        "category": "misconception",
+        "variant": "correction",
+        "question": "‘내려놓아라(放下著)’에 대한 설명으로 옳은 것은?",
+        "choices": [
+          "아무것도 없다는 생각 자체의 집착도 내려놓게 한다.",
+          "물건을 힘껏 던지라는 뜻이다.",
+          "공덕을 더 많이 쌓으라는 뜻이다.",
+          "말과 문자를 모두 금지하라는 뜻이다."
+        ],
+        "answer": 0,
+        "explanation": "교안은 방하를 ‘내려놓다’로 풀이하며 생각 자체의 집착을 비판한다고 설명한다.",
+        "relatedBlockId": "misconception-01"
+      },
+      {
+        "id": "q07",
+        "type": "short_answer",
+        "category": "keyword",
+        "variant": "short",
+        "question": "선문답이 후대에 본보기로 정착되는 과정의 핵심 용어를 세 가지 쓰시오.",
+        "acceptableAnswers": [
+          "어록, 고칙, 공안",
+          "어록·고칙·공안",
+          "어록 고칙 공안"
+        ],
+        "requiredKeywords": [
+          "어록",
+          "고칙",
+          "공안"
+        ],
+        "answer_text": "어록, 고칙, 공안",
+        "explanation": "선문답은 어록으로 기록되고, 뛰어난 사례가 고칙·공안으로 선별되었다.",
+        "relatedBlockId": "concept-01"
+      }
+    ]
+  }
+}
