@@ -1,0 +1,476 @@
+{
+  "schemaVersion": "2.0",
+  "metadata": {
+    "school": "동명대학교",
+    "year": "2026",
+    "semester": "2학기",
+    "course": "선수행의실제",
+    "week": "[확인 필요]",
+    "title": "인문학, 역사, 문헌학",
+    "sourceSection": "PDF 1쪽 「인문학?」~4쪽 「미래의 인문학」 직전",
+    "sourceTitle": "동명대학교 2026-2 선수행의실제(교재)",
+    "sourceAuthor": "한민수(서담)"
+  },
+  "design": {
+    "tone": "calm",
+    "variationPolicy": "학습 흐름 안에서 같은 화면 형식이 반복되지 않도록 block type과 variant를 섞는다. COMPARE만 반복하지 않는다.",
+    "recommendedVariants": {
+      "HERO": [
+        "calm",
+        "poster",
+        "editorial"
+      ],
+      "COMPARE": [
+        "dual-lens",
+        "debate",
+        "stacked-contrast",
+        "mirror"
+      ],
+      "CHECKPOINT": [
+        "soft",
+        "focus",
+        "compact"
+      ],
+      "FLOW": [
+        "path",
+        "ladder",
+        "ribbon"
+      ],
+      "CONCEPT_MAP": [
+        "orbit",
+        "constellation",
+        "hub"
+      ],
+      "SPECTRUM": [
+        "axis",
+        "thermometer",
+        "steps"
+      ],
+      "RECAP": [
+        "magazine",
+        "checklist",
+        "bento"
+      ]
+    }
+  },
+  "lesson": {
+    "coreQuestion": "인문학적 질문은 역사·사상·문화와 문헌을 통해 어떻게 자신의 답으로 이어지는가?",
+    "oneSentence": "인문학은 근원적 의문을 따라 과거의 답을 살피고, 역사·사상·문화와 문헌을 통해 자신의 해답을 논리적으로 찾아가는 공부다.",
+    "estimatedMinutes": 10
+  },
+  "blocks": [
+    {
+      "id": "hero-01",
+      "type": "HERO",
+      "variant": "editorial",
+      "eyebrow": "HUMANITIES",
+      "title": "질문에서 시작하는 인문학",
+      "subtitle": "근원적 의문에서 출발해 과거의 답을 살피고 자신의 답을 찾아간다.",
+      "coreQuestion": "인문학적 질문은 어떻게 역사와 문헌을 통해 더 깊어지는가?"
+    },
+    {
+      "id": "bigidea-01",
+      "type": "BIG_IDEA",
+      "variant": "poster",
+      "title": "인문학은 질문에서 시작한다",
+      "message": "학문의 경계보다 질문하고 해명하는 태도에 주목한다.",
+      "sourceRef": "PDF 1~2쪽",
+      "claim": "이전 사람들의 이해를 살피고 자신만의 해답을 논리적으로 해명하는 것이 인문학적 탐구로 제시된다.",
+      "explain": "수학·공학도 인문학이라고 단정할 수는 없지만, 근원적 질문에서 학문이 발전한 사례가 제시된다.",
+      "evidence": [
+        "피타고라스는 수의 질서로 우주와 음계를 이해했다.",
+        "뉴턴은 달이 왜 떨어지지 않는지 질문했다.",
+        "다윈은 핀치의 차이에서 공통 조상과 자연 선택을 생각했다."
+      ]
+    },
+    {
+      "id": "bento-01",
+      "type": "BENTO_SUMMARY",
+      "variant": "bento",
+      "title": "질문이 학문을 움직인 사례",
+      "message": "서로 다른 분야에서도 근원적 물음이 새로운 설명으로 이어진다.",
+      "items": [
+        {
+          "kicker": "수와 질서",
+          "title": "피타고라스",
+          "text": "만물과 음악의 질서를 수적 비례로 설명했다.",
+          "size": "wide"
+        },
+        {
+          "kicker": "없음과 자리",
+          "title": "숫자 0",
+          "text": "무와 빈자리라는 두 의미가 공존하는 수로 설명된다.",
+          "size": "small"
+        },
+        {
+          "kicker": "하늘의 운동",
+          "title": "뉴턴",
+          "text": "달이 왜 떨어지지 않는지 묻고 운동을 설명했다.",
+          "size": "small"
+        },
+        {
+          "kicker": "생명의 변화",
+          "title": "다윈",
+          "text": "핀치의 차이에서 공통 조상과 자연 선택을 제시했다.",
+          "size": "wide"
+        }
+      ]
+    },
+    {
+      "id": "checkpoint-01",
+      "type": "CHECKPOINT",
+      "variant": "soft",
+      "question": "교재가 인문학의 태도로 가장 강조하는 것은 무엇인가?",
+      "choices": [
+        "모든 학문을 인문학으로 분류하는 것",
+        "과거의 설명을 그대로 받아들이는 것",
+        "의문을 따라 이전 답을 살피고 자신의 답을 해명하는 것",
+        "자연과학과 인문학을 완전히 분리하는 것"
+      ],
+      "answer": 2,
+      "explanation": "교재는 이전의 이해를 살피고 자신의 해답을 논리적으로 찾는 과정을 인문학적 태도로 제시한다."
+    },
+    {
+      "id": "term-01",
+      "type": "TERM_DECK",
+      "variant": "flash",
+      "title": "역사·사상·문화·문헌학",
+      "message": "인문학적 탐구를 이어 주는 네 핵심 개념을 확인한다.",
+      "terms": [
+        {
+          "term": "역사",
+          "original": "歷史, History",
+          "definition": "살아가며 남긴 지적·예술적·사회적 산물과 그 기록."
+        },
+        {
+          "term": "사상",
+          "original": "思想, Thought",
+          "definition": "세상과 자신에 대한 생각과 그것을 논리적으로 표현하는 방식."
+        },
+        {
+          "term": "문화",
+          "original": "文化, Culture",
+          "definition": "개인·사회가 쓰고 변화시켜 만든 방식과 그 결과물."
+        },
+        {
+          "term": "문헌학",
+          "original": "文獻學, philology",
+          "definition": "문자 자료를 언어학·역사적 측면에서 비판하고 해석하는 학문."
+        }
+      ]
+    },
+    {
+      "id": "concept-01",
+      "type": "CONCEPT_MAP",
+      "variant": "hub",
+      "title": "사상과 문화는 역사에서 만난다",
+      "message": "사상과 문화의 공통점과 문헌학의 역할을 관계로 본다.",
+      "nodes": [
+        {
+          "id": "center",
+          "role": "center",
+          "label": "역사적 인간 경험",
+          "description": "사상과 문화가 남긴 인간의 생각과 산물을 살핀다."
+        },
+        {
+          "id": "n1",
+          "role": "left",
+          "label": "사상",
+          "description": "세상과 자신에 대한 인간의 생각."
+        },
+        {
+          "id": "n2",
+          "role": "right",
+          "label": "문화",
+          "description": "삶 속에서 만들고 변화시킨 방식과 결과."
+        },
+        {
+          "id": "n3",
+          "role": "bottom",
+          "label": "문헌학",
+          "description": "기록을 비판·해석해 이전 사람들의 답을 읽는다."
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "center",
+          "relation": "인간의 사유"
+        },
+        {
+          "from": "n2",
+          "to": "center",
+          "relation": "역사적 배경"
+        },
+        {
+          "from": "center",
+          "to": "n3",
+          "relation": "기록을 통해 해석"
+        }
+      ]
+    },
+    {
+      "id": "checkpoint-02",
+      "type": "CHECKPOINT",
+      "variant": "focus",
+      "question": "교재에서 사상과 문화가 만나는 공통 접점은 무엇인가?",
+      "choices": [
+        "인간의 사유와 역사적 배경",
+        "자연법칙과 실험 장비",
+        "경제 성장과 기술 경쟁",
+        "종교 의례와 정치 제도만"
+      ],
+      "answer": 0,
+      "explanation": "교재는 사상과 문화 사이에 인간의 사유와 역사적 배경이라는 접점이 있다고 설명한다."
+    },
+    {
+      "id": "flow-01",
+      "type": "FLOW",
+      "variant": "ladder",
+      "title": "균정의 출신지를 다시 묻다",
+      "message": "문헌과 출토 자료가 기존 판단을 어떻게 바꾸는지 따라간다.",
+      "steps": [
+        {
+          "kicker": "STEP 1",
+          "title": "기존 기록",
+          "text": "일부 기록의 ‘당 균정’은 중국 출신 가능성을 낳는다."
+        },
+        {
+          "kicker": "STEP 2",
+          "title": "문헌 단서",
+          "text": "‘금시차간 보희연사’는 당시의 장소를 가리키는 단서다."
+        },
+        {
+          "kicker": "STEP 3",
+          "title": "출토 자료",
+          "text": "부여 능산리사지 목간에서 ‘보희사’ 글자가 발견되었다."
+        },
+        {
+          "kicker": "STEP 4",
+          "title": "재해석",
+          "text": "보희사를 백제와 연결하면 저자도 백제 인물일 가능성이 생긴다."
+        }
+      ]
+    },
+    {
+      "id": "compare-01",
+      "type": "COMPARE",
+      "variant": "dual-lens",
+      "title": "백제 금동대향로를 두 시선으로",
+      "message": "익숙한 미술사적 설명과 문헌학적 재해석을 나란히 본다.",
+      "sourceRef": "PDF 3~4쪽",
+      "left": {
+        "title": "통념적 설명",
+        "tag": "도불습합의 상징",
+        "items": [
+          {
+            "label": "형상",
+            "value": "봉황·용·봉래산·연꽃이 함께 묘사된다."
+          },
+          {
+            "label": "해석",
+            "value": "도교와 불교가 혼용된 형태로 흔히 알려져 있다."
+          },
+          {
+            "label": "의의",
+            "value": "백제 미술의 정수로 설명된다."
+          }
+        ]
+      },
+      "right": {
+        "title": "문헌학적 재해석",
+        "tag": "불교 도상 가능성",
+        "items": [
+          {
+            "label": "문헌",
+            "value": "불교 주석은 금시조 목 아래의 여의주를 말한다."
+          },
+          {
+            "label": "설화",
+            "value": "금시조가 금강산 정상에서 죽는 이야기가 전한다."
+          },
+          {
+            "label": "맥락",
+            "value": "성왕 추모 사찰이라면 죽음 상징 도상 가능성이 제기된다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "checkpoint-03",
+      "type": "CHECKPOINT",
+      "variant": "compact",
+      "question": "백제 금동대향로 사례에서 문헌학이 하는 일로 가장 알맞은 것은?",
+      "choices": [
+        "기존 설명을 근거 없이 부정한다.",
+        "문헌과 역사적 맥락으로 기존 해석을 다시 검토한다.",
+        "유물의 외형만 보고 의미를 확정한다.",
+        "현대의 가치 판단만으로 상징을 정한다."
+      ],
+      "answer": 1,
+      "explanation": "교재는 불교 문헌과 역사적 맥락을 근거로 기존 미술사적 해석을 재검토한다."
+    },
+    {
+      "id": "misconception-01",
+      "type": "MISCONCEPTION",
+      "variant": "flip",
+      "title": "문헌학에 대한 세 가지 오해",
+      "message": "문헌학의 범위와 역할을 교재의 설명으로 바로잡는다.",
+      "items": [
+        {
+          "misconception": "문헌학은 오래된 책만 읽는 학문이다.",
+          "correction": "전적·도서뿐 아니라 금석문 등의 문자 자료도 다룬다."
+        },
+        {
+          "misconception": "기존 역사·미술사 통념은 그대로 받아들여야 한다.",
+          "correction": "문헌 근거를 통해 익숙한 지식을 재검토할 필요가 있다."
+        },
+        {
+          "misconception": "문헌은 과거 사실 확인에만 쓰인다.",
+          "correction": "현대의 중요한 가치를 문헌으로 설명해 타당성을 높일 수 있다."
+        }
+      ]
+    },
+    {
+      "id": "recap-01",
+      "type": "RECAP",
+      "variant": "checklist",
+      "title": "오늘의 정리",
+      "message": "질문에서 문헌학적 재검토까지의 흐름을 다시 확인한다.",
+      "mustRemember": [
+        "인문학은 근원적 질문과 자신의 해답을 찾는 과정으로 제시된다.",
+        "사상과 문화는 인간의 사유와 역사적 배경에서 만난다.",
+        "문헌학은 문자 자료를 비판·해석해 이전 사람들의 답을 읽는다.",
+        "문헌 근거는 익숙한 역사·미술사 지식을 다시 보게 할 수 있다."
+      ],
+      "keywords": [
+        "인문학",
+        "역사",
+        "사상",
+        "문화",
+        "문헌학",
+        "불교문헌학"
+      ],
+      "coreRelation": "근원적 질문 → 역사·사상·문화의 이해 → 문헌 비판·해석 → 통념의 재검토"
+    }
+  ],
+  "finalQuiz": {
+    "title": "종합 퀴즈",
+    "questions": [
+      {
+        "id": "q01",
+        "type": "multiple_choice",
+        "category": "concept",
+        "variant": "concept",
+        "question": "교재가 제시하는 인문학적 탐구에 가장 가까운 설명은?",
+        "choices": [
+          "분야 이름을 외우는 공부",
+          "이전의 답을 살피고 자신의 해답을 논리적으로 해명하는 공부",
+          "자연과학을 인문학에서 배제하는 공부",
+          "과거의 기록을 그대로 받아들이는 공부"
+        ],
+        "answer": 1,
+        "explanation": "교재는 의문을 따라 이전의 이해를 살피고 자신의 해답을 논리적으로 찾는 과정을 강조한다.",
+        "relatedBlockId": "bigidea-01"
+      },
+      {
+        "id": "q02",
+        "type": "multiple_choice",
+        "category": "flow",
+        "variant": "flow",
+        "question": "다윈의 사례 전개로 알맞은 것은?",
+        "choices": [
+          "핀치 조사 → 종의 다양성에 대한 의문 → 공통 조상·자연 선택",
+          "자연 선택 → 비글호 승선 → 핀치 발견",
+          "창조설 → 핀치 조사 → 자연 선택 포기",
+          "핀치 발견 → 수의 질서 → 종의 기원"
+        ],
+        "answer": 0,
+        "explanation": "다윈은 조사와 핀치 자료에서 의문을 발전시켜 진화론과 자연 선택설을 제시했다.",
+        "relatedBlockId": "bento-01"
+      },
+      {
+        "id": "q03",
+        "type": "multiple_choice",
+        "category": "concept",
+        "variant": "relation",
+        "question": "교재에서 사상과 문화가 공유하는 접점은?",
+        "choices": [
+          "인간의 사유와 역사적 배경",
+          "수학적 비율과 자연 선택",
+          "정치 제도와 경제 성장",
+          "문자 모양과 발음 변화만"
+        ],
+        "answer": 0,
+        "explanation": "사상과 문화는 모두 인간의 생각과 관련되며 역사적 배경 속에서 연결된다.",
+        "relatedBlockId": "concept-01"
+      },
+      {
+        "id": "q04",
+        "type": "multiple_choice",
+        "category": "flow",
+        "variant": "evidence",
+        "question": "균정의 출신지 재검토에서 백제와의 연결을 강화한 자료는?",
+        "choices": [
+          "볼로냐 대학 기록",
+          "부여 능산리사지의 ‘보희사’ 목간",
+          "비글호 항해 기록",
+          "판차시단티카의 0 표기"
+        ],
+        "answer": 1,
+        "explanation": "능산리사지 목간의 ‘보희사’가 문헌 속 ‘보희연사’와 연결될 가능성을 제공한다.",
+        "relatedBlockId": "flow-01"
+      },
+      {
+        "id": "q05",
+        "type": "multiple_choice",
+        "category": "compare",
+        "variant": "compare",
+        "question": "백제 금동대향로의 문헌학적 재해석에 포함되는 근거는?",
+        "choices": [
+          "금시조와 여의주에 관한 불교 문헌",
+          "피타고라스의 수적 비례",
+          "뉴턴의 대포알 사고실험",
+          "다윈의 핀치 분류"
+        ],
+        "answer": 0,
+        "explanation": "불교 주석의 금시조·여의주 기록과 관련 설화가 재해석의 근거로 제시된다.",
+        "relatedBlockId": "compare-01"
+      },
+      {
+        "id": "q06",
+        "type": "multiple_choice",
+        "category": "misconception",
+        "variant": "correction",
+        "question": "문헌학에 대한 설명으로 옳지 않은 것은?",
+        "choices": [
+          "문자 자료를 언어학·역사적 측면에서 비판·해석한다.",
+          "전적·도서뿐 아니라 금석문의 문자도 다룰 수 있다.",
+          "통념으로 굳은 역사·미술사 지식은 재검토 대상이 될 수 있다.",
+          "문헌학은 기록을 비판하지 않고 그대로 수용하는 방법이다."
+        ],
+        "answer": 3,
+        "explanation": "교재는 문헌학을 자료를 비판하고 해석하는 학문으로 설명한다.",
+        "relatedBlockId": "misconception-01"
+      },
+      {
+        "id": "q07",
+        "type": "short_answer",
+        "category": "keyword",
+        "variant": "short",
+        "question": "교재에서 사상과 문화가 만나는 두 접점을 쓰시오.",
+        "acceptableAnswers": [
+          "인간의 사유와 역사적 배경",
+          "인간의 사유, 역사적 배경"
+        ],
+        "requiredKeywords": [
+          "인간의 사유",
+          "역사적 배경"
+        ],
+        "answer_text": "인간의 사유와 역사적 배경",
+        "explanation": "교재는 사상과 문화의 상호 관련성을 인간의 사유와 역사적 배경에서 찾는다.",
+        "relatedBlockId": "concept-01"
+      }
+    ]
+  }
+}
