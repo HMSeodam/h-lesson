@@ -1,1 +1,503 @@
-
+{
+  "schemaVersion": "2.0",
+  "metadata": {
+    "school": "동명대학교",
+    "year": "2026",
+    "semester": "2학기",
+    "course": "동양사상과 인성",
+    "week": "[확인 필요]",
+    "title": "차를 마시고 가라에서 견성성불까지",
+    "sourceSection": "제1장. 선종의 문자 가르침과 실천 > 1. 조사의 말에서 배우다 > 2) 선어는 선사가 내놓은 ‘생사의 말’ (교재 11쪽 ‘차를 마시고 가라’~14쪽 ‘2. 선종의 책에서 배우다’ 앞)",
+    "sourceTitle": "문자에서 시작하는 선(文字からはじめる禅)",
+    "sourceAuthor": "공익재단법인 선문화연구소 편집・발행"
+  },
+  "design": {
+    "tone": "calm",
+    "variationPolicy": "학습 흐름 안에서 같은 화면 형식이 반복되지 않도록 block type과 variant를 섞는다. COMPARE만 반복하지 않는다.",
+    "recommendedVariants": {
+      "HERO": [
+        "calm",
+        "poster",
+        "editorial"
+      ],
+      "COMPARE": [
+        "dual-lens",
+        "debate",
+        "stacked-contrast",
+        "mirror"
+      ],
+      "CHECKPOINT": [
+        "soft",
+        "focus",
+        "compact"
+      ],
+      "FLOW": [
+        "path",
+        "ladder",
+        "ribbon"
+      ],
+      "CONCEPT_MAP": [
+        "orbit",
+        "constellation",
+        "hub"
+      ],
+      "SPECTRUM": [
+        "axis",
+        "thermometer",
+        "steps"
+      ],
+      "RECAP": [
+        "magazine",
+        "checklist",
+        "bento"
+      ]
+    }
+  },
+  "lesson": {
+    "coreQuestion": "짧은 선어는 일상과 수행, 깨달음의 뜻을 어떻게 드러내는가?",
+    "oneSentence": "차·날·마음·노동 같은 일상적 표현부터 불성과 깨달음의 종의까지, 선어는 짧은 말에 다양한 수행의 뜻을 담는다.",
+    "estimatedMinutes": 12
+  },
+  "blocks": [
+    {
+      "id": "hero-01",
+      "type": "HERO",
+      "variant": "editorial",
+      "eyebrow": "교재 11~14쪽",
+      "title": "짧은 선어, 깊은 뜻",
+      "subtitle": "‘차를 마시고 가라’에서 ‘견성성불’까지 대표 선어의 뜻을 연결해 본다.",
+      "coreQuestion": "일상적인 말 한마디가 어떻게 선의 수행과 깨달음을 가리킬까?"
+    },
+    {
+      "id": "bigidea-01",
+      "type": "BIG_IDEA",
+      "variant": "poster",
+      "title": "일상어가 선의 말이 되다",
+      "message": "짧은 선어가 가리키는 여러 수행의 방향을 먼저 잡는다.",
+      "sourceRef": "PDF 11~14쪽",
+      "claim": "이 범위의 선어는 평범한 말과 짧은 구절로 자유·분별·불성·수행의 뜻을 드러낸다.",
+      "explain": "차, 좋은 날, 평상심, 노동, 나무 같은 표현이 깨달음과 수행의 문제로 이어진다.",
+      "evidence": [
+        "‘차를 마시고 가라’는 서로 다른 두 해석이 함께 제시된다.",
+        "‘지위 없는 참사람’은 어떤 틀에도 얽매이지 않는 자유인을 뜻한다.",
+        "‘천 강의 달’과 네 구절은 불성과 깨달음의 뜻을 직접 설명한다."
+      ]
+    },
+    {
+      "id": "term-01",
+      "type": "TERM_DECK",
+      "variant": "flash",
+      "title": "선어 읽기 ① 일상과 자유",
+      "message": "11~12쪽의 다섯 선어를 뜻과 함께 확인한다.",
+      "sourceRef": "PDF 11~12쪽",
+      "terms": [
+        {
+          "term": "차를 마시고 가라",
+          "original": "喫茶去",
+          "definition": "무심히 차를 마신다는 풀이와 ‘차를 마시고 다시 와라’라는 해석이 함께 제시된다."
+        },
+        {
+          "term": "지위 없는 참사람",
+          "original": "無位真人",
+          "definition": "모든 틀에서 벗어나 어떤 것에도 얽매이지 않는 참된 자유인을 뜻한다."
+        },
+        {
+          "term": "툭 트여 성스러움도 없다·모르겠다",
+          "original": "廓然無聖・不識",
+          "definition": "절대적 가치와 분별 작용을 넘어선 깨달음의 세계를 나타내기도 한다."
+        },
+        {
+          "term": "날마다 좋은 날",
+          "original": "日日是好日",
+          "definition": "매일매일이 새롭고 훌륭한 길일이라는 뜻이다."
+        },
+        {
+          "term": "평상심이 곧 도이다",
+          "original": "平常心是道",
+          "definition": "평범하고 있는 그대로의 마음이 그대로 도라는 뜻이다."
+        }
+      ]
+    },
+    {
+      "id": "checkpoint-01",
+      "type": "CHECKPOINT",
+      "variant": "soft",
+      "question": "교재가 ‘차를 마시고 가라(喫茶去)’에 대해 제시한 설명은?",
+      "choices": [
+        "오직 차를 끊으라는 뜻이다.",
+        "무심히 마신다는 풀이만 가능하다.",
+        "두 가지 해석이 함께 제시된다.",
+        "노동의 중요성을 뜻하는 말이다."
+      ],
+      "answer": 2,
+      "explanation": "무심히 차를 마신다는 풀이와 ‘차를 마시고 다시 와라’라는 해석이 함께 나온다."
+    },
+    {
+      "id": "bento-01",
+      "type": "BENTO_SUMMARY",
+      "variant": "bento",
+      "title": "선어 읽기 ② 수행의 태도",
+      "message": "12~14쪽의 다섯 구절을 핵심 의미로 묶어 본다.",
+      "sourceRef": "PDF 12~14쪽",
+      "items": [
+        {
+          "kicker": "혜능",
+          "title": "본래 한 물건도 없다",
+          "text": "혜능의 게송 한 구절로, 본래 아무것도 없는데 티끌이 붙을 수 있느냐고 묻는다.",
+          "size": "wide"
+        },
+        {
+          "kicker": "조주",
+          "title": "뜰 앞의 잣나무",
+          "text": "‘조사서래의’에 대한 답으로, 자기가 곧 부처임을 자각하도록 재촉하는 말로도 본다.",
+          "size": "small"
+        },
+        {
+          "kicker": "백장",
+          "title": "일하지 않으면 먹지 않는다",
+          "text": "작무의 중요성을 말하며 자급자족하는 선종으로의 변화를 상징한다.",
+          "size": "small"
+        },
+        {
+          "kicker": "승찬",
+          "title": "가려 선택함을 꺼린다",
+          "text": "취사선택하지 않는 것을 도의 실천으로 보고 분별심을 없애야 함을 노래한다.",
+          "size": "small"
+        },
+        {
+          "kicker": "임제",
+          "title": "가는 곳마다 주인이 되라",
+          "text": "어디에서든 그 자리의 주인공이 되면 서 있는 곳이 모두 진실이라는 뜻이다.",
+          "size": "small"
+        }
+      ]
+    },
+    {
+      "id": "checkpoint-02",
+      "type": "CHECKPOINT",
+      "variant": "focus",
+      "question": "‘하루 일하지 않으면 하루 먹지 않는다’가 상징하는 변화는?",
+      "choices": [
+        "노동을 금지한 선종으로의 변화",
+        "문답을 없앤 선종으로의 변화",
+        "자급자족하는 선종으로의 변화",
+        "경전만 읽는 선종으로의 변화"
+      ],
+      "answer": 2,
+      "explanation": "교재는 이 말을 자급자족하는 선종으로 변화한 것을 상징하는 말이라고 설명한다."
+    },
+    {
+      "id": "term-02",
+      "type": "TERM_DECK",
+      "variant": "flash",
+      "title": "선어 읽기 ③ 불성과 종의",
+      "message": "14쪽의 두 긴 구절에서 불성과 선의 종의를 확인한다.",
+      "sourceRef": "PDF 14쪽",
+      "terms": [
+        {
+          "term": "천 강에 물이 있으니 천 강에 달이 비친다",
+          "original": "千江有水千江月 万里無雲万里天",
+          "definition": "모든 중생에게 불성이 갖추어져 있고 번뇌 없는 깨달음이 드러남을 나타낸다."
+        },
+        {
+          "term": "교외별전·불립문자·직지인심·견성성불",
+          "original": "教外別伝 不立文字 直指人心 見性成仏",
+          "definition": "문자에 머물지 않고 마음과 본성을 바로 보아 깨달음에 이르는 선의 종의를 정리한다."
+        }
+      ]
+    },
+    {
+      "id": "concept-01",
+      "type": "CONCEPT_MAP",
+      "variant": "constellation",
+      "title": "선어가 가리키는 방향",
+      "message": "여러 선어를 일상·분별·자유·불성의 관계로 연결한다.",
+      "sourceRef": "PDF 11~14쪽",
+      "nodes": [
+        {
+          "id": "center",
+          "role": "center",
+          "label": "선어",
+          "description": "짧은 말과 구절로 수행과 깨달음의 뜻을 드러낸다."
+        },
+        {
+          "id": "n1",
+          "role": "left",
+          "label": "일상",
+          "description": "차를 마시고 가라·날마다 좋은 날·평상심이 곧 도이다."
+        },
+        {
+          "id": "n2",
+          "role": "right",
+          "label": "분별을 넘음",
+          "description": "확연무성·불식과 지도무난·유혐간택이 분별의 초월을 보여 준다."
+        },
+        {
+          "id": "n3",
+          "role": "bottom",
+          "label": "주체와 자유",
+          "description": "무위진인과 수처작주·입처개진이 자유로운 주체를 나타낸다."
+        },
+        {
+          "id": "n4",
+          "role": "bottom",
+          "label": "불성과 깨달음",
+          "description": "천 강의 달과 직지인심·견성성불이 불성과 깨달음을 가리킨다."
+        }
+      ],
+      "edges": [
+        {
+          "from": "center",
+          "to": "n1",
+          "relation": "일상에서"
+        },
+        {
+          "from": "center",
+          "to": "n2",
+          "relation": "분별을 넘어"
+        },
+        {
+          "from": "center",
+          "to": "n3",
+          "relation": "주체로 서며"
+        },
+        {
+          "from": "center",
+          "to": "n4",
+          "relation": "깨달음을 가리킴"
+        }
+      ]
+    },
+    {
+      "id": "compare-01",
+      "type": "COMPARE",
+      "variant": "dual-lens",
+      "title": "일상의 말과 종의의 말",
+      "message": "표현 방식은 달라도 모두 선의 뜻을 가리키는 선어들이다.",
+      "sourceRef": "PDF 11~14쪽",
+      "left": {
+        "title": "일상 가까운 표현",
+        "tag": "차·날·마음·노동",
+        "items": [
+          {
+            "label": "차",
+            "value": "차를 마시고 가라"
+          },
+          {
+            "label": "날",
+            "value": "날마다 좋은 날"
+          },
+          {
+            "label": "마음",
+            "value": "평상심이 곧 도이다"
+          },
+          {
+            "label": "노동",
+            "value": "하루 일하지 않으면 하루 먹지 않는다"
+          }
+        ]
+      },
+      "right": {
+        "title": "깨달음을 밝히는 표현",
+        "tag": "분별·불성·본성",
+        "items": [
+          {
+            "label": "분별",
+            "value": "툭 트여 성스러움도 없다·모르겠다"
+          },
+          {
+            "label": "비움",
+            "value": "본래 한 물건도 없다"
+          },
+          {
+            "label": "불성",
+            "value": "천 강에 물이 있으니 천 강에 달이 비친다"
+          },
+          {
+            "label": "종의",
+            "value": "교외별전·불립문자·직지인심·견성성불"
+          }
+        ]
+      }
+    },
+    {
+      "id": "misconception-01",
+      "type": "MISCONCEPTION",
+      "variant": "flip",
+      "title": "선어를 한뜻으로 고정하지 않기",
+      "message": "교재가 직접 제시한 해석의 여지와 역사적 주의를 확인한다.",
+      "sourceRef": "PDF 11~14쪽",
+      "items": [
+        {
+          "misconception": "‘차를 마시고 가라’는 뜻이 하나로 확정되어 있다.",
+          "correction": "교재는 무심히 차를 마신다는 풀이와 ‘다시 와라’라는 해석을 함께 제시한다."
+        },
+        {
+          "misconception": "‘지위 없는 참사람’은 단순히 사회적 지위가 없다는 뜻이다.",
+          "correction": "임제는 모든 틀에서 벗어나 어떤 것에도 얽매이지 않는 참된 자유인의 뜻으로 사용했다."
+        },
+        {
+          "misconception": "교외별전 등 네 구절은 늘 한 세트였고 달마의 직접 표현이다.",
+          "correction": "네 구절이 한 세트인 경우는 많지 않으며, 선이 확립된 뒤 생긴 표현으로 본다."
+        }
+      ]
+    },
+    {
+      "id": "checkpoint-03",
+      "type": "CHECKPOINT",
+      "variant": "compact",
+      "question": "교외별전·불립문자·직지인심·견성성불에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "항상 네 구절이 한 세트로 쓰였다.",
+        "예로부터 달마의 말로만 확정된다.",
+        "네 구절 세트의 용례가 가장 흔하다.",
+        "선이 확립된 뒤 생긴 표현으로 본다."
+      ],
+      "answer": 3,
+      "explanation": "교재는 네 구절이 한 세트로 쓰이는 경우가 많지 않고 후대에 생긴 표현으로 본다."
+    },
+    {
+      "id": "recap-01",
+      "type": "RECAP",
+      "variant": "magazine",
+      "title": "오늘의 정리",
+      "message": "대표 선어의 뜻과 서로 다른 표현 방식을 마지막으로 묶어 본다.",
+      "sourceRef": "PDF 11~14쪽",
+      "mustRemember": [
+        "‘차를 마시고 가라’처럼 하나의 선어에도 여러 해석이 제시될 수 있다.",
+        "무위진인과 수처작주는 틀에 얽매이지 않는 자유와 주체성을 보여 준다.",
+        "일일부작·일일불식은 작무와 자급자족하는 선종의 변화를 상징한다.",
+        "교외별전 등 네 구절은 선의 종의를 요약하지만 한 세트의 용례는 많지 않다."
+      ],
+      "keywords": [
+        "喫茶去",
+        "無位真人",
+        "日日是好日",
+        "平常心是道",
+        "一日不作 一日不食",
+        "教外別伝・不立文字"
+      ],
+      "coreRelation": "일상어와 짧은 구절 → 분별을 넘어서는 태도 → 자유·불성·깨달음의 뜻"
+    }
+  ],
+  "finalQuiz": {
+    "title": "선어 종합 퀴즈",
+    "questions": [
+      {
+        "id": "q01",
+        "type": "multiple_choice",
+        "category": "concept",
+        "variant": "concept",
+        "question": "‘차를 마시고 가라(喫茶去)’에 대해 교재가 함께 제시한 해석은?",
+        "choices": [
+          "차를 마시면 깨달음이 완성된다.",
+          "차를 마시면 공덕이 쌓인다.",
+          "무심히 마심과 ‘다시 와라’라는 해석",
+          "차를 끊고 좌선만 해야 한다."
+        ],
+        "answer": 2,
+        "explanation": "교재는 두 가지 풀이를 함께 소개하며 하나로 단정하지 않는다.",
+        "relatedBlockId": "term-01"
+      },
+      {
+        "id": "q02",
+        "type": "multiple_choice",
+        "category": "concept",
+        "variant": "meaning",
+        "question": "임제의 ‘지위 없는 참사람(無位真人)’의 뜻으로 가장 알맞은 것은?",
+        "choices": [
+          "공식 직책이 없는 수행승",
+          "모든 틀과 얽매임에서 벗어난 자유인",
+          "하루 종일 노동하는 사람",
+          "경전을 전혀 읽지 않는 사람"
+        ],
+        "answer": 1,
+        "explanation": "임제는 모든 틀에서 벗어나 어떤 것에도 얽매이지 않는 존재를 뜻했다.",
+        "relatedBlockId": "term-01"
+      },
+      {
+        "id": "q03",
+        "type": "multiple_choice",
+        "category": "compare",
+        "variant": "compare",
+        "question": "선어와 뜻의 연결이 바른 것은?",
+        "choices": [
+          "평상심시도 — 평범한 마음 그대로가 도",
+          "일일시호일 — 하루 일해야 하루 먹음",
+          "무위진인 — 취사선택을 멈춤",
+          "지도무난 — 사회적 지위에서 벗어남"
+        ],
+        "answer": 0,
+        "explanation": "평상심시도는 평범하고 있는 그대로의 마음이 그대로 도라는 뜻이다.",
+        "relatedBlockId": "compare-01"
+      },
+      {
+        "id": "q04",
+        "type": "multiple_choice",
+        "category": "cause_effect",
+        "variant": "cause",
+        "question": "‘일일부작 일일불식’이 단순한 개인 발언을 넘어 상징하는 것은?",
+        "choices": [
+          "선종의 문학화",
+          "공안의 소멸",
+          "다도의 성립",
+          "자급자족하는 선종으로의 변화"
+        ],
+        "answer": 3,
+        "explanation": "교재는 노동을 금했던 인도식 불교에서 자급자족하는 선종으로의 변화를 상징한다고 설명한다.",
+        "relatedBlockId": "bento-01"
+      },
+      {
+        "id": "q05",
+        "type": "multiple_choice",
+        "category": "concept",
+        "variant": "image",
+        "question": "‘천 강에 물이 있으니 천 강에 달이 비친다’가 나타내는 뜻은?",
+        "choices": [
+          "모든 중생에게 불성이 갖추어져 있음",
+          "모든 사람의 깨달음은 서로 다름",
+          "깨달음은 특정 수행자에게만 가능함",
+          "구름이 많을수록 불성이 드러남"
+        ],
+        "answer": 0,
+        "explanation": "각각의 강에 달이 비치듯 모든 중생에게 불성이 갖추어져 있음을 나타낸다.",
+        "relatedBlockId": "term-02"
+      },
+      {
+        "id": "q06",
+        "type": "multiple_choice",
+        "category": "misconception",
+        "variant": "correction",
+        "question": "교외별전·불립문자·직지인심·견성성불에 관한 설명으로 옳은 것은?",
+        "choices": [
+          "네 구절은 언제나 한 세트로 쓰였다.",
+          "달마의 친필 문구로 확인되어 있다.",
+          "네 구절 세트는 흔하지 않고 후대 표현으로 본다.",
+          "선록에서는 앞의 두 구절만 사용되었다."
+        ],
+        "answer": 2,
+        "explanation": "교재는 네 구절의 한 세트 용례가 많지 않고 선이 확립된 뒤 생긴 표현으로 본다.",
+        "relatedBlockId": "misconception-01"
+      },
+      {
+        "id": "q07",
+        "type": "short_answer",
+        "category": "keyword",
+        "variant": "short",
+        "question": "네 구절 가운데 뒤의 두 구절을 순서대로 쓰시오.",
+        "acceptableAnswers": [
+          "직지인심, 견성성불",
+          "직지인심·견성성불",
+          "直指人心 見性成仏"
+        ],
+        "requiredKeywords": [
+          "직지인심",
+          "견성성불"
+        ],
+        "answer_text": "직지인심, 견성성불",
+        "explanation": "네 구절은 교외별전·불립문자·직지인심·견성성불의 순서로 제시된다.",
+        "relatedBlockId": "term-02"
+      }
+    ]
+  }
+}
