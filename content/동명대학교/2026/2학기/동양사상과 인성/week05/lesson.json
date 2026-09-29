@@ -1,1 +1,489 @@
-
+{
+  "schemaVersion": "2.0",
+  "metadata": {
+    "school": "동명대학교",
+    "year": "2026",
+    "semester": "2학기",
+    "course": "동양사상과 인성",
+    "week": "[확인 필요]",
+    "title": "선종의 책에서 배우다",
+    "sourceSection": "제1장. 선종의 문자 가르침과 실천 > 2. 선종의 책에서 배우다",
+    "sourceTitle": "임제종・황벽종 종학개론, 문자에서 시작하는 선(文字からはじめる禅)",
+    "sourceAuthor": "공익재단법인 선문화연구소 편집・발행"
+  },
+  "design": {
+    "tone": "calm",
+    "variationPolicy": "학습 흐름 안에서 같은 화면 형식이 반복되지 않도록 block type과 variant를 섞는다. COMPARE만 반복하지 않는다.",
+    "recommendedVariants": {
+      "HERO": [
+        "calm",
+        "poster",
+        "editorial"
+      ],
+      "COMPARE": [
+        "dual-lens",
+        "debate",
+        "stacked-contrast",
+        "mirror"
+      ],
+      "CHECKPOINT": [
+        "soft",
+        "focus",
+        "compact"
+      ],
+      "FLOW": [
+        "path",
+        "ladder",
+        "ribbon"
+      ],
+      "CONCEPT_MAP": [
+        "orbit",
+        "constellation",
+        "hub"
+      ],
+      "SPECTRUM": [
+        "axis",
+        "thermometer",
+        "steps"
+      ],
+      "RECAP": [
+        "magazine",
+        "checklist",
+        "bento"
+      ]
+    }
+  },
+  "lesson": {
+    "coreQuestion": "말에 의존하지 말라는 선은 왜 수많은 어록과 선적을 남겼을까?",
+    "oneSentence": "선은 말에 집착하는 것을 경계하면서도 조사들의 살아 있는 가르침을 기록하고 지침으로 삼아 어록과 다양한 선적을 발전시켰다.",
+    "estimatedMinutes": 10
+  },
+  "blocks": [
+    {
+      "id": "hero-01",
+      "type": "HERO",
+      "variant": "editorial",
+      "eyebrow": "제1장 · 선종의 문자 가르침과 실천",
+      "title": "말을 버리면서, 왜 기록했을까",
+      "subtitle": "어록의 의미와 선종의 책이 생겨난 이유를 살펴본다.",
+      "coreQuestion": "불립문자와 어록은 서로 모순되는가?"
+    },
+    {
+      "id": "bigidea-01",
+      "type": "BIG_IDEA",
+      "variant": "poster",
+      "title": "어록은 조사의 말을 잇는 기록",
+      "message": "어록의 기본 성격과 선에서의 역할을 먼저 잡는다.",
+      "sourceRef": "PDF 14~15쪽",
+      "claim": "어록은 조사들의 설법과 제자들과의 문답을 기록한 것으로, 조사의 진수를 전하는 중요한 자료로 여겨졌다.",
+      "explain": "무자쿠 도추는 조사의 평이한 일상어를 시자인 제자가 따라 적은 것을 어록이라 설명했다.",
+      "evidence": [
+        "어록은 조사들의 설법과 제자들과의 문답을 기록한다.",
+        "조사의 육성에 가까이 다가갈 수 있는 기록으로 여겨졌다.",
+        "전등을 중시하는 선에서는 조사의 진수를 전하는 자료로 소중히 다루었다."
+      ]
+    },
+    {
+      "id": "compare-01",
+      "type": "COMPARE",
+      "variant": "debate",
+      "title": "말을 경계하지만 어록은 남긴다",
+      "message": "선의 두 태도를 대립이 아니라 긴장 관계로 이해한다.",
+      "sourceRef": "PDF 15쪽",
+      "left": {
+        "title": "말에 대한 경계",
+        "tag": "말과 이름에 머물지 않기",
+        "items": [
+          {
+            "label": "원칙",
+            "value": "선의 진수는 문자와 말에만 의존해 얻을 수 없다."
+          },
+          {
+            "label": "문제",
+            "value": "말과 이름을 이해하는 것으로 그치면 수행이 막힌다."
+          },
+          {
+            "label": "임제",
+            "value": "조사의 말을 베껴 소중히 간직하는 태도를 큰 잘못이라 비판했다."
+          }
+        ]
+      },
+      "right": {
+        "title": "어록에 대한 존중",
+        "tag": "조사의 진수를 전하는 기록",
+        "items": [
+          {
+            "label": "기록",
+            "value": "수행자들은 스승의 말을 계속 기록했다."
+          },
+          {
+            "label": "전승",
+            "value": "어록은 조사들의 생동하는 선기를 읽는 자료가 되었다."
+          },
+          {
+            "label": "의미",
+            "value": "말에 집착하지 않으려는 태도와 어록의 생성은 표리일체로 설명된다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "checkpoint-01",
+      "type": "CHECKPOINT",
+      "variant": "soft",
+      "question": "교재에서 어록을 가장 잘 설명한 것은?",
+      "choices": [
+        "조사의 설법과 문답을 기록한 것",
+        "선림의 건축 규정을 모은 것",
+        "오직 게송만 모은 시집",
+        "경전을 번역한 주석서"
+      ],
+      "answer": 0,
+      "explanation": "어록은 조사들의 설법과 제자들과의 문답을 기록한 것이다."
+    },
+    {
+      "id": "flow-01",
+      "type": "FLOW",
+      "variant": "path",
+      "title": "『운문록』이 남게 된 역설",
+      "message": "말을 기록하지 말라는 태도가 오히려 어록으로 이어진 사례다.",
+      "sourceRef": "PDF 15쪽",
+      "steps": [
+        {
+          "kicker": "STEP 1",
+          "title": "기록을 거부하다",
+          "text": "운문은 자기 말을 기록하는 사람을 싫어하고 허락하지 않았다."
+        },
+        {
+          "kicker": "STEP 2",
+          "title": "제자가 몰래 적다",
+          "text": "향림과 명교는 종이로 옷을 만들어 들은 가르침을 곧바로 적었다."
+        },
+        {
+          "kicker": "STEP 3",
+          "title": "기록이 남다",
+          "text": "그 기록이 뒤에 『운문록』으로 전해졌다고 설명된다."
+        },
+        {
+          "kicker": "STEP 4",
+          "title": "구도심을 드러내다",
+          "text": "어록의 존재에는 진리를 추구한 수행자들의 구도심도 작용했다."
+        }
+      ]
+    },
+    {
+      "id": "concept-01",
+      "type": "CONCEPT_MAP",
+      "variant": "orbit",
+      "title": "말에 집착하지 않는 선의 논리",
+      "message": "스승의 말, 자기 견해, 어록의 관계를 연결한다.",
+      "sourceRef": "PDF 16쪽",
+      "nodes": [
+        {
+          "id": "center",
+          "role": "center",
+          "label": "자기에게서 발한 견해",
+          "description": "스승 앞에 드러내는 경계는 빌린 말이 아니라 자기에게서 나와야 한다."
+        },
+        {
+          "id": "n1",
+          "role": "left",
+          "label": "즉심시불",
+          "description": "마조가 ‘이 마음이 바로 부처’라고 설한 표현."
+        },
+        {
+          "id": "n2",
+          "role": "right",
+          "label": "비심비불",
+          "description": "즉심시불 자체를 붙잡자 다시 뒤집어 제시한 새로운 말."
+        },
+        {
+          "id": "n3",
+          "role": "bottom",
+          "label": "부시심불물",
+          "description": "마음도 아니고 부처도 아니며 사물도 아니라는 또 다른 표현."
+        },
+        {
+          "id": "n4",
+          "role": "bottom",
+          "label": "어록의 갱신",
+          "description": "새로운 사제의 말이 계속 생기며 구도의 기록도 이어졌다."
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2",
+          "relation": "집착을 뒤집음"
+        },
+        {
+          "from": "n2",
+          "to": "n3",
+          "relation": "새 표현"
+        },
+        {
+          "from": "n3",
+          "to": "center",
+          "relation": "독자적 견해 요구"
+        },
+        {
+          "from": "center",
+          "to": "n4",
+          "relation": "새 기록 생성"
+        }
+      ]
+    },
+    {
+      "id": "misconception-01",
+      "type": "MISCONCEPTION",
+      "variant": "flip",
+      "title": "손가락과 달을 함께 보라",
+      "message": "어록을 버리거나 절대시하는 두 극단을 피한다.",
+      "sourceRef": "PDF 16쪽",
+      "items": [
+        {
+          "misconception": "경전과 어록만 연구하면 깨달음을 얻을 수 있다.",
+          "correction": "손가락만 보듯 기록만 붙잡아서는 안 되며 실제 몸으로 깨달음에 다가가야 한다."
+        },
+        {
+          "misconception": "불립문자라면 조사들의 말을 배울 필요가 없다.",
+          "correction": "손가락이 방향을 가리키듯 경전과 어록은 목적지로 가는 지침이 될 수 있다."
+        },
+        {
+          "misconception": "어록은 절대적인 정답으로 따라야 한다.",
+          "correction": "어록은 존중하고 지침으로 삼되 절대시하지 말아야 한다."
+        }
+      ]
+    },
+    {
+      "id": "bento-01",
+      "type": "BENTO_SUMMARY",
+      "variant": "bento",
+      "title": "선적의 종류 ①",
+      "message": "17쪽에 제시된 선종 서적의 기본 분류를 묶어 본다.",
+      "sourceRef": "PDF 17쪽",
+      "items": [
+        {
+          "kicker": "①",
+          "title": "어록",
+          "text": "조사의 상당·시중·문답 등으로 이루어진 조사 언행록.",
+          "size": "wide"
+        },
+        {
+          "kicker": "②",
+          "title": "공안집",
+          "text": "기연과 문답에서 사례를 뽑고 수시·송·평창 등을 덧붙인 책.",
+          "size": "small"
+        },
+        {
+          "kicker": "③",
+          "title": "사전·등사",
+          "text": "선의 역사와 인물 전기, 전등의 역사를 전하는 책.",
+          "size": "small"
+        },
+        {
+          "kicker": "④",
+          "title": "청규",
+          "text": "선림의 일상생활·의식·직책과 규정을 담은 승려 규범서.",
+          "size": "small"
+        }
+      ]
+    },
+    {
+      "id": "term-01",
+      "type": "TERM_DECK",
+      "variant": "flash",
+      "title": "선적의 종류 ②",
+      "message": "나머지 분류의 성격을 짧게 구분한다.",
+      "sourceRef": "PDF 17쪽",
+      "terms": [
+        {
+          "term": "종론·종의",
+          "original": "宗論・宗義",
+          "definition": "선종의 교의와 해석을 체계적으로 논한 책."
+        },
+        {
+          "term": "가송·명",
+          "original": "歌頌・銘",
+          "definition": "선의 진수를 운문으로 나타낸 글과 마음에 새길 중요한 구절."
+        },
+        {
+          "term": "기타",
+          "original": "其他",
+          "definition": "총서와 사전류 등을 포함하는 분류."
+        }
+      ]
+    },
+    {
+      "id": "bigidea-02",
+      "type": "BIG_IDEA",
+      "variant": "editorial",
+      "title": "『육조단경』, 경이라 불린 어록",
+      "message": "17쪽에 소개된 첫 번째 중국 어록을 정리한다.",
+      "sourceRef": "PDF 17쪽",
+      "claim": "『육조단경』은 혜능의 반생과 선의 근본을 제자 법해가 받아 적었다고 전하는 책이다.",
+      "explain": "돈오를 설하는 남종선의 근본 종지를 밝히며, ‘경’이라는 이름에는 석존의 경설과 같은 무게를 지닌다는 뜻이 담긴 것으로 설명된다.",
+      "evidence": [
+        "육조 혜능이 대범사에서 자신의 반생과 선의 근본을 설한 내용을 담는다.",
+        "제자 법해가 받아 적었다고 전한다.",
+        "성립 초기부터 개변과 증보가 이루어져 여러 이본이 생겼다."
+      ]
+    },
+    {
+      "id": "checkpoint-03",
+      "type": "CHECKPOINT",
+      "variant": "compact",
+      "question": "『육조단경』에 대한 설명으로 옳은 것은?",
+      "choices": [
+        "혜능의 설법을 법해가 받아 적었다고 전한다.",
+        "선림 생활 규정만을 기록한 청규이다.",
+        "마조도일이 직접 편찬한 공안집이다.",
+        "운문이 기록을 허락해 만든 책이다."
+      ],
+      "answer": 0,
+      "explanation": "교재는 혜능의 설법 내용을 제자 법해가 받아 적었다고 전한다고 설명한다."
+    },
+    {
+      "id": "recap-01",
+      "type": "RECAP",
+      "variant": "checklist",
+      "title": "오늘의 정리",
+      "message": "말과 기록을 대하는 선의 균형을 마지막으로 정리한다.",
+      "sourceRef": "PDF 14~17쪽",
+      "mustRemember": [
+        "어록은 조사들의 설법과 문답을 기록한 자료이다.",
+        "선은 말에 집착하는 것을 경계하지만 어록 자체를 버리지는 않았다.",
+        "어록은 지침으로 삼되 절대시하지 않는 태도가 강조된다.",
+        "선적은 어록·공안집·사전·등사·청규 등 여러 종류로 나뉜다."
+      ],
+      "keywords": [
+        "어록",
+        "불립문자",
+        "운문록",
+        "즉심시불",
+        "지월",
+        "육조단경"
+      ],
+      "coreRelation": "말에 대한 경계 → 독자적 체험과 견해 → 기록의 전승 → 어록과 선적의 발전"
+    }
+  ],
+  "finalQuiz": {
+    "title": "선종의 책에서 배우다 · 종합 퀴즈",
+    "questions": [
+      {
+        "id": "q01",
+        "type": "multiple_choice",
+        "category": "concept",
+        "variant": "concept",
+        "question": "교재에서 말하는 ‘어록’의 기본 뜻은?",
+        "choices": [
+          "조사의 설법과 문답을 기록한 것",
+          "선림의 건축 규정을 모은 것",
+          "경전의 한자음을 정리한 것",
+          "오직 게송만 모은 시집"
+        ],
+        "answer": 0,
+        "explanation": "어록은 조사들의 설법과 제자들과의 문답을 기록한 것이다.",
+        "relatedBlockId": "bigidea-01"
+      },
+      {
+        "id": "q02",
+        "type": "multiple_choice",
+        "category": "compare",
+        "variant": "compare",
+        "question": "불립문자와 어록의 관계를 가장 잘 설명한 것은?",
+        "choices": [
+          "말에 집착하지 않되 기록은 지침으로 활용한다.",
+          "문자를 경계하므로 모든 기록을 없앤다.",
+          "어록을 절대적 정답으로 삼는다.",
+          "실천보다 기록 연구만을 중시한다."
+        ],
+        "answer": 0,
+        "explanation": "교재는 말에 집착하지 않으면서도 어록을 존중하고 지침으로 삼는 태도를 설명한다.",
+        "relatedBlockId": "compare-01"
+      },
+      {
+        "id": "q03",
+        "type": "multiple_choice",
+        "category": "flow",
+        "variant": "sequence",
+        "question": "『운문록』의 성립 이야기 순서로 옳은 것은?",
+        "choices": [
+          "기록 거부 → 제자들의 몰래 기록 → 어록으로 전승",
+          "어록 편찬 → 기록 금지 → 제자들의 폐기",
+          "경전 번역 → 청규 제정 → 운문록 성립",
+          "공안 선별 → 송 작성 → 운문록 소실"
+        ],
+        "answer": 0,
+        "explanation": "운문은 기록을 싫어했지만 제자들이 몰래 적은 내용이 뒤에 『운문록』이 되었다고 한다.",
+        "relatedBlockId": "flow-01"
+      },
+      {
+        "id": "q04",
+        "type": "multiple_choice",
+        "category": "cause_effect",
+        "variant": "cause",
+        "question": "마조가 ‘즉심시불’을 다시 뒤집어 말한 이유는?",
+        "choices": [
+          "수행자들이 그 말 자체를 의지처로 삼았기 때문",
+          "어록을 금지하기 위해서",
+          "선적의 종류를 분류하기 위해서",
+          "『육조단경』을 편찬하기 위해서"
+        ],
+        "answer": 0,
+        "explanation": "말 자체가 새로운 집착이 되자 스승은 다시 새로운 표현으로 그것을 깨뜨렸다.",
+        "relatedBlockId": "concept-01"
+      },
+      {
+        "id": "q05",
+        "type": "multiple_choice",
+        "category": "misconception",
+        "variant": "correction",
+        "question": "‘손가락과 달’의 비유에 맞는 이해는?",
+        "choices": [
+          "기록은 방향을 가리키지만 실제 깨달음을 대신하지 못한다.",
+          "경전만 연구하면 수행 없이 깨달을 수 있다.",
+          "기록은 모두 버려야 한다.",
+          "손가락 자체가 진리이다."
+        ],
+        "answer": 0,
+        "explanation": "경전과 어록은 방향을 알려 주지만 실제 체험을 대신할 수 없다는 뜻이다.",
+        "relatedBlockId": "misconception-01"
+      },
+      {
+        "id": "q06",
+        "type": "multiple_choice",
+        "category": "classification",
+        "variant": "category",
+        "question": "선림의 일상생활·의식·직책과 규정을 기록한 선적은?",
+        "choices": [
+          "청규",
+          "공안집",
+          "가송·명",
+          "어록"
+        ],
+        "answer": 0,
+        "explanation": "청규는 선림 승려의 규범서로 선림생활 전반의 규정을 기록한다.",
+        "relatedBlockId": "bento-01"
+      },
+      {
+        "id": "q07",
+        "type": "short_answer",
+        "category": "keyword",
+        "variant": "short",
+        "question": "『육조단경』이 밝히는 선의 흐름과 관련된 핵심 표현을 쓰시오.",
+        "acceptableAnswers": [
+          "돈오",
+          "돈오를 설하는 남종선",
+          "남종선의 돈오"
+        ],
+        "requiredKeywords": [
+          "돈오"
+        ],
+        "answer_text": "돈오",
+        "explanation": "교재는 『육조단경』이 돈오를 설하는 남종선의 근본 종지를 밝힌다고 설명한다.",
+        "relatedBlockId": "bigidea-02"
+      }
+    ]
+  }
+}
