@@ -1,1 +1,514 @@
-
+{
+  "schemaVersion": "2.0",
+  "metadata": {
+    "school": "동명대학교",
+    "year": "2026",
+    "semester": "2학기",
+    "course": "동양사상과 인성",
+    "week": "06",
+    "title": "어록·공안집·선종사서에서 배우다",
+    "sourceSection": "제1장. 선종의 문자 가르침과 실천 > 2. 선종의 책에서 배우다 / 교재 18~21쪽(『조당집』 직전) + 6주차 보조 교안",
+    "sourceTitle": "임제종・황벽종 종학개론, 문자에서 시작하는 선(文字からはじめる禅)",
+    "sourceAuthor": "공익재단법인 선문화연구소 편집・발행"
+  },
+  "design": {
+    "tone": "calm",
+    "variationPolicy": "학습 흐름 안에서 같은 화면 형식이 반복되지 않도록 block type과 variant를 섞는다. COMPARE만 반복하지 않는다.",
+    "recommendedVariants": {
+      "HERO": [
+        "calm",
+        "poster",
+        "editorial"
+      ],
+      "COMPARE": [
+        "dual-lens",
+        "debate",
+        "stacked-contrast",
+        "mirror"
+      ],
+      "CHECKPOINT": [
+        "soft",
+        "focus",
+        "compact"
+      ],
+      "FLOW": [
+        "path",
+        "ladder",
+        "ribbon"
+      ],
+      "CONCEPT_MAP": [
+        "orbit",
+        "constellation",
+        "hub"
+      ],
+      "SPECTRUM": [
+        "axis",
+        "thermometer",
+        "steps"
+      ],
+      "RECAP": [
+        "magazine",
+        "checklist",
+        "bento"
+      ]
+    }
+  },
+  "lesson": {
+    "coreQuestion": "선의 가르침은 어록·공안집·역사서를 통해 어떻게 전승되고, 오늘의 수행에는 어떤 의미를 줄까?",
+    "oneSentence": "사가의 어록에서 공안집과 초기 선종사서까지 이어지는 기록은 선의 가르침과 계보를 전승하며, 보조교안은 이러한 역사·철학이 현대 명상을 깊고 안전하게 이해하는 지도가 될 수 있다고 설명한다.",
+    "estimatedMinutes": 12
+  },
+  "blocks": [
+    {
+      "id": "hero-01",
+      "type": "HERO",
+      "variant": "editorial",
+      "eyebrow": "WEEK 06",
+      "title": "선의 기록은 무엇을 전하는가",
+      "subtitle": "사가의 어록에서 공안집과 초기 선종사서까지, 기록의 역할을 따라간다.",
+      "coreQuestion": "기록된 말과 역사는 선 수행을 어떻게 돕는가?"
+    },
+    {
+      "id": "timeline-01",
+      "type": "TIMELINE",
+      "variant": "rail",
+      "title": "사가의 계보와 여섯 권",
+      "message": "『사가어록』은 마조에서 임제로 이어지는 네 대의 가르침을 여섯 권에 묶는다.",
+      "sourceRef": "교재 PDF 18쪽",
+      "items": [
+        {
+          "date": "권1",
+          "title": "마조도일",
+          "description": "『강서마조도일선사어록』. 중국 선사상과 어록 형성의 중요한 출발점으로 제시된다."
+        },
+        {
+          "date": "권2~3",
+          "title": "백장회해",
+          "description": "『백장회해선사어록』과 『백장광록』. 기연·상당·문답과 시중 설법을 전한다."
+        },
+        {
+          "date": "권4~5",
+          "title": "황벽희운",
+          "description": "『전심법요』와 『완릉록』. 여러 기록을 통해 일관되게 ‘일심’을 설한다."
+        },
+        {
+          "date": "권6",
+          "title": "임제의현",
+          "description": "『임제록』. 사가의 흐름이 임제에 이르러 결정된다고 설명된다."
+        }
+      ]
+    },
+    {
+      "id": "bento-01",
+      "type": "BENTO_SUMMARY",
+      "variant": "bento",
+      "title": "사가와 핵심 어록",
+      "message": "각 어록의 성격을 한 화면에서 비교해 본다.",
+      "sourceRef": "교재 PDF 18~19쪽",
+      "items": [
+        {
+          "kicker": "사가",
+          "title": "『사가어록』",
+          "text": "마조·백장·황벽·임제 네 대의 어록을 여섯 권에 묶은 어록집.",
+          "size": "wide"
+        },
+        {
+          "kicker": "마조",
+          "title": "『마조어록』",
+          "text": "마조와 그 문하에서 어록이 충분한 형태로 형성되기 시작했다고 설명한다.",
+          "size": "small"
+        },
+        {
+          "kicker": "백장",
+          "title": "백장 두 어록",
+          "text": "한 책은 약력·기연·상당·문답, 다른 책은 시중 설법을 중심으로 전한다.",
+          "size": "small"
+        },
+        {
+          "kicker": "황벽",
+          "title": "『전심법요』",
+          "text": "배휴의 기록을 중심으로 복수 제자의 기록이 함께 수록되며 ‘일심’을 설한다.",
+          "size": "small"
+        },
+        {
+          "kicker": "임제",
+          "title": "『임제록』",
+          "text": "상당·시중·감변·행록·비문으로 구성되며 ‘어록의 왕’이라 불린다.",
+          "size": "small"
+        }
+      ]
+    },
+    {
+      "id": "checkpoint-01",
+      "type": "CHECKPOINT",
+      "variant": "soft",
+      "question": "『사가어록』의 네 조사에 포함되지 않는 인물은?",
+      "choices": [
+        "마조도일",
+        "백장회해",
+        "황벽희운",
+        "조주종심"
+      ],
+      "answer": 3,
+      "explanation": "『사가어록』의 네 대는 마조·백장·황벽·임제이다."
+    },
+    {
+      "id": "term-01",
+      "type": "TERM_DECK",
+      "variant": "flash",
+      "title": "그 밖의 주요 어록",
+      "message": "교재 19~20쪽에 이어지는 세 어록의 특징을 구분한다.",
+      "sourceRef": "교재 PDF 19~20쪽",
+      "terms": [
+        {
+          "term": "방거사어록",
+          "original": "龐居士語録",
+          "definition": "상권은 약전과 선승들과의 문답, 중·하권은 방거사의 시게집으로 구성된다."
+        },
+        {
+          "term": "조주록",
+          "original": "趙州録",
+          "definition": "상·중·하권에 상당·시중·문답을 싣고, 하권 말미에 대기·감변·게송을 수록한다."
+        },
+        {
+          "term": "돈오요문",
+          "original": "頓悟要門",
+          "definition": "상권은 비교적 이론적인 설법, 하권은 약전·상당·문답을 담은 2권본이다."
+        }
+      ]
+    },
+    {
+      "id": "compare-01",
+      "type": "COMPARE",
+      "variant": "dual-lens",
+      "title": "『벽암록』과 『무문관』",
+      "message": "대표적인 두 공안집의 편찬 방식과 전승을 비교한다.",
+      "sourceRef": "교재 PDF 20쪽",
+      "left": {
+        "title": "『벽암록』",
+        "tag": "100칙과 다층 해설",
+        "items": [
+          {
+            "label": "바탕",
+            "value": "설두중현이 옛 선적에서 공안 100칙을 고르고 송을 붙인 『설두송고』."
+          },
+          {
+            "label": "편찬",
+            "value": "원오극근이 수시·착어·평어를 덧붙였다."
+          },
+          {
+            "label": "위상",
+            "value": "‘종문 제일의 책’이라 불리며 『무문관』과 함께 존중된다."
+          }
+        ]
+      },
+      "right": {
+        "title": "『무문관』",
+        "tag": "48칙과 송·평창",
+        "items": [
+          {
+            "label": "편찬",
+            "value": "무문혜개가 여러 선록에서 48칙의 공안을 골랐다."
+          },
+          {
+            "label": "구성",
+            "value": "선별한 공안에 송과 평창을 붙였다."
+          },
+          {
+            "label": "전승",
+            "value": "중국에서는 전승이 끊겼으나 일본에서 에도 시대 이후 널리 퍼졌다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "flow-01",
+      "type": "FLOW",
+      "variant": "ribbon",
+      "title": "『벽암록』은 어떻게 만들어졌나",
+      "message": "한 공안집이 형성되고 논쟁의 대상이 되는 과정을 본다.",
+      "sourceRef": "교재 PDF 20쪽",
+      "steps": [
+        {
+          "kicker": "STEP 1",
+          "title": "100칙을 고르다",
+          "text": "설두중현이 옛 선적에서 공안 100칙을 골랐다."
+        },
+        {
+          "kicker": "STEP 2",
+          "title": "송을 붙이다",
+          "text": "설두는 조사들의 경계에 송을 붙여 『설두송고』를 만들었다."
+        },
+        {
+          "kicker": "STEP 3",
+          "title": "해설을 더하다",
+          "text": "원오극근이 수시·착어·평어를 보태 『벽암록』을 이루었다."
+        },
+        {
+          "kicker": "STEP 4",
+          "title": "집착을 경계하다",
+          "text": "대혜종고가 수행자를 미혹시킨다며 판목을 불태웠다는 전설이 전한다."
+        }
+      ]
+    },
+    {
+      "id": "checkpoint-02",
+      "type": "CHECKPOINT",
+      "variant": "focus",
+      "question": "『무문관』에 수록된 공안의 수는?",
+      "choices": [
+        "100칙",
+        "48칙",
+        "30칙",
+        "6칙"
+      ],
+      "answer": 1,
+      "explanation": "『무문관』은 여러 선록에서 48칙을 골라 송과 평창을 붙인 공안집이다."
+    },
+    {
+      "id": "compare-02",
+      "type": "COMPARE",
+      "variant": "mirror",
+      "title": "초기 선종사서의 두 방향",
+      "message": "『능가사자기』와 『보림전』이 어떤 전승을 강조했는지 비교한다.",
+      "sourceRef": "교재 PDF 21쪽, 『조당집』 시작 직전까지",
+      "left": {
+        "title": "『능가사자기』",
+        "tag": "능가경 전통과 북종",
+        "items": [
+          {
+            "label": "성립",
+            "value": "태행산 정각이 지었으며 716년 무렵 성립한 것으로 설명된다."
+          },
+          {
+            "label": "계보",
+            "value": "구나발타라를 제1조로 삼고 신수·현색·혜안과 그 제자들을 세운다."
+          },
+          {
+            "label": "특징",
+            "value": "『능가경』의 전통을 강조한 북종계 초기 선종사서이며 돈황 출토 문헌이다."
+          }
+        ]
+      },
+      "right": {
+        "title": "『보림전』",
+        "tag": "남종의 전등과 전법게",
+        "items": [
+          {
+            "label": "성립",
+            "value": "지거가 지었으며 정원 17년(801)에 성립한 초기 선종사서이다."
+          },
+          {
+            "label": "계보",
+            "value": "혜능의 남종선 기원을 설명하며 ‘서천 이십팔조·동토 육조’를 주장한다."
+          },
+          {
+            "label": "특징",
+            "value": "처음으로 불조의 ‘전법게’가 나타나며 뒤의 등사에 영향을 주었다."
+          }
+        ]
+      }
+    },
+    {
+      "id": "bento-02",
+      "type": "BENTO_SUMMARY",
+      "variant": "bento",
+      "title": "현대 명상에 전통이 필요한 이유",
+      "message": "6주차 보조교안은 선의 역사와 철학이 현대 명상을 보완한다고 설명한다.",
+      "sourceRef": "6주차 보조 교안 PDF 1~2쪽",
+      "items": [
+        {
+          "kicker": "뿌리",
+          "title": "전통과 연결",
+          "text": "현대 명상은 세속화·임상화되었지만 정념·무심·무소득과 연결되어 있다.",
+          "size": "wide"
+        },
+        {
+          "kicker": "방법",
+          "title": "묵조선과 간화선",
+          "text": "묵조선은 비목표적 깨어 있음, 간화선은 화두·공안으로 분별을 돌파한다.",
+          "size": "small"
+        },
+        {
+          "kicker": "윤리",
+          "title": "자기관리 너머",
+          "text": "윤리·연기·자비·보살행은 명상을 공동체적 책임과 연대로 확장할 수 있다.",
+          "size": "small"
+        },
+        {
+          "kicker": "안전",
+          "title": "역사적 안전망",
+          "text": "선병과 대응 전통은 깊은 명상에서 생길 수 있는 불편한 경험을 이해하는 참고가 된다.",
+          "size": "small"
+        }
+      ]
+    },
+    {
+      "id": "misconception-01",
+      "type": "MISCONCEPTION",
+      "variant": "flip",
+      "title": "현대 명상을 둘러싼 세 오해",
+      "message": "보조교안의 결론을 학습자의 관점에서 다시 정리한다.",
+      "sourceRef": "6주차 보조 교안 PDF 1~2쪽",
+      "items": [
+        {
+          "misconception": "명상을 시작하려면 선의 역사를 먼저 모두 알아야 한다.",
+          "correction": "단순한 수면 개선이나 스트레스 완화에는 기본 명상 기법만으로도 충분할 수 있다."
+        },
+        {
+          "misconception": "명상은 개인의 안정과 생산성을 높이는 기술이면 충분하다.",
+          "correction": "보조교안은 그렇게만 소비될 때 사회적·구조적 스트레스의 원인을 외면할 수 있다고 지적한다."
+        },
+        {
+          "misconception": "수행이 깊어져도 역사와 철학은 필요하지 않다.",
+          "correction": "깊은 치유와 실존적 탐구로 갈수록 공안 전통·선병·역사와 철학의 체계적 이해가 중요해진다."
+        }
+      ]
+    },
+    {
+      "id": "recap-01",
+      "type": "RECAP",
+      "variant": "checklist",
+      "title": "오늘의 정리",
+      "message": "선의 기록은 과거를 보존하는 자료이면서 오늘의 수행을 비추는 지도가 될 수 있다.",
+      "sourceRef": "교재 PDF 18~21쪽(『조당집』 직전) + 6주차 보조 교안 PDF 1~2쪽",
+      "mustRemember": [
+        "『사가어록』은 마조·백장·황벽·임제 네 대의 가르침을 여섯 권에 묶는다.",
+        "『벽암록』과 『무문관』은 대표적인 공안집이지만 편찬 방식과 전승 과정이 다르다.",
+        "『능가사자기』와 『보림전』은 서로 다른 계보와 전통을 강조한 초기 선종사서이다.",
+        "보조교안은 선의 역사와 철학이 현대 명상의 깊이·윤리·안전성을 보완할 수 있다고 본다."
+      ],
+      "keywords": [
+        "사가어록",
+        "임제록",
+        "벽암록",
+        "무문관",
+        "능가사자기",
+        "보림전"
+      ],
+      "coreRelation": "조사의 말 → 어록 → 공안집 → 선종사서 → 현대 수행을 이해하는 역사적·철학적 지도"
+    }
+  ],
+  "finalQuiz": {
+    "title": "6주차 종합 퀴즈",
+    "questions": [
+      {
+        "id": "q01",
+        "type": "multiple_choice",
+        "category": "concept",
+        "variant": "concept",
+        "question": "『사가어록』의 ‘사가’에 포함되는 네 조사로 옳은 것은?",
+        "choices": [
+          "마조·백장·황벽·임제",
+          "마조·조주·운문·임제",
+          "혜능·마조·조주·무문",
+          "백장·황벽·조주·대혜"
+        ],
+        "answer": 0,
+        "explanation": "교재는 마조도일·백장회해·황벽희운·임제의현 네 대를 ‘사가’라 부른다.",
+        "relatedBlockId": "timeline-01"
+      },
+      {
+        "id": "q02",
+        "type": "multiple_choice",
+        "category": "compare",
+        "variant": "compare",
+        "question": "『벽암록』과 『무문관』의 차이로 옳은 것은?",
+        "choices": [
+          "둘 다 정확히 100칙을 수록한다.",
+          "『무문관』은 48칙, 『벽암록』은 100칙을 바탕으로 한다.",
+          "『벽암록』은 일본에서만 전승되었다.",
+          "『무문관』에는 송과 평창이 없다."
+        ],
+        "answer": 1,
+        "explanation": "『벽암록』은 100칙을 바탕으로 하고, 『무문관』은 48칙을 골라 송과 평창을 붙였다.",
+        "relatedBlockId": "compare-01"
+      },
+      {
+        "id": "q03",
+        "type": "multiple_choice",
+        "category": "flow",
+        "variant": "sequence",
+        "question": "『벽암록』 형성의 흐름으로 가장 알맞은 것은?",
+        "choices": [
+          "원오의 48칙 선별 → 설두의 송 → 무문의 평창",
+          "설두의 100칙 선별·송 → 원오의 수시·착어·평어",
+          "대혜의 편찬 → 원오의 소각 → 설두의 복원",
+          "조주의 문답 → 무문의 편찬 → 원오의 평창"
+        ],
+        "answer": 1,
+        "explanation": "설두중현의 『설두송고』를 바탕으로 원오극근이 여러 해설을 덧붙였다.",
+        "relatedBlockId": "flow-01"
+      },
+      {
+        "id": "q04",
+        "type": "multiple_choice",
+        "category": "classification",
+        "variant": "source",
+        "question": "『능가경』 전통과 북종계 계보를 강조한 초기 선종사서는?",
+        "choices": [
+          "『보림전』",
+          "『능가사자기』",
+          "『조주록』",
+          "『방거사어록』"
+        ],
+        "answer": 1,
+        "explanation": "『능가사자기』는 『능가경』 전통을 강조한 북종계 초기 선종사서이다.",
+        "relatedBlockId": "compare-02"
+      },
+      {
+        "id": "q05",
+        "type": "multiple_choice",
+        "category": "cause_effect",
+        "variant": "cause",
+        "question": "보조교안이 선의 역사·철학 이해를 안전망이라 보는 이유는?",
+        "choices": [
+          "명상의 모든 부작용을 완전히 없애기 때문에",
+          "전통의 수행 문제와 대응 경험이 위험을 이해하는 참고가 되기 때문에",
+          "선의 계보를 외우면 명상 시간이 줄어들기 때문에",
+          "역사를 알면 별도의 수행이 필요 없기 때문에"
+        ],
+        "answer": 1,
+        "explanation": "보조교안은 선병과 대응 전통이 명상 중 불편한 경험을 이해하고 대응하는 참고가 될 수 있다고 설명한다.",
+        "relatedBlockId": "bento-02"
+      },
+      {
+        "id": "q06",
+        "type": "multiple_choice",
+        "category": "misconception",
+        "variant": "correction",
+        "question": "보조교안의 결론에 가장 가까운 설명은?",
+        "choices": [
+          "명상은 반드시 선의 역사 공부부터 시작해야 한다.",
+          "스트레스 완화에도 복잡한 선종사가 필수이다.",
+          "수행 목적이 깊어질수록 역사와 철학의 중요성이 커진다.",
+          "현대 명상과 전통 선은 아무 관련이 없다."
+        ],
+        "answer": 2,
+        "explanation": "단순한 스트레스 완화는 기본 기법으로도 가능하지만, 깊은 수행일수록 전통 이해가 중요하다고 정리한다.",
+        "relatedBlockId": "misconception-01"
+      },
+      {
+        "id": "q07",
+        "type": "short_answer",
+        "category": "keyword",
+        "variant": "short",
+        "question": "『보림전』이 주장한 전등 계보를 나타내는 핵심 표현을 쓰시오.",
+        "acceptableAnswers": [
+          "서천 이십팔조·동토 육조",
+          "서천 이십팔조 동토 육조",
+          "서천28조·동토6조"
+        ],
+        "requiredKeywords": [
+          "서천",
+          "이십팔조",
+          "동토",
+          "육조"
+        ],
+        "answer_text": "서천 이십팔조·동토 육조",
+        "explanation": "교재는 『보림전』이 혜능의 남종선 기원을 설명하며 이 전등을 주장한다고 설명한다.",
+        "relatedBlockId": "compare-02"
+      }
+    ]
+  }
+}
