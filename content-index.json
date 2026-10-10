@@ -15,10 +15,82 @@
       "school": "동명대학교",
       "year": "2026",
       "semester": "2학기",
+      "course": "동양사상과 인성",
+      "week": "03",
+      "title": "조사의 말에서 배우다",
+      "lessonPath": "content/동명대학교/2026/2학기/동양사상과 인성/week03/lesson.json"
+    },
+    {
+      "school": "동명대학교",
+      "year": "2026",
+      "semester": "2학기",
+      "course": "동양사상과 인성",
+      "week": "04",
+      "title": "차를 마시고 가라에서 견성성불까지",
+      "lessonPath": "content/동명대학교/2026/2학기/동양사상과 인성/week04/lesson.json"
+    },
+    {
+      "school": "동명대학교",
+      "year": "2026",
+      "semester": "2학기",
+      "course": "동양사상과 인성",
+      "week": "05",
+      "title": "선종의 책에서 배우다",
+      "lessonPath": "content/동명대학교/2026/2학기/동양사상과 인성/week05/lesson.json"
+    },
+    {
+      "school": "동명대학교",
+      "year": "2026",
+      "semester": "2학기",
+      "course": "동양사상과 인성",
+      "week": "06",
+      "title": "어록·공안집·선종사서에서 배우다",
+      "lessonPath": "content/동명대학교/2026/2학기/동양사상과 인성/week06/lesson.json"
+    },
+    {
+      "school": "동명대학교",
+      "year": "2026",
+      "semester": "2학기",
       "course": "선수행의실제",
       "week": "02",
       "title": "대학·인문학·역사와 문헌학",
       "lessonPath": "content/동명대학교/2026/2학기/선수행의실제/week02/lesson.json"
+    },
+    {
+      "school": "동명대학교",
+      "year": "2026",
+      "semester": "2학기",
+      "course": "선수행의실제",
+      "week": "03",
+      "title": "인문학, 역사, 문헌학",
+      "lessonPath": "content/동명대학교/2026/2학기/선수행의실제/week03/lesson.json"
+    },
+    {
+      "school": "동명대학교",
+      "year": "2026",
+      "semester": "2학기",
+      "course": "선수행의실제",
+      "week": "04",
+      "title": "공휴일 휴강 안내 · 추석 연휴",
+      "lessonPath": "content/동명대학교/2026/2학기/선수행의실제/week04/lesson.json"
+    },
+    {
+      "school": "동명대학교",
+      "year": "2026",
+      "semester": "2학기",
+      "course": "선수행의실제",
+      "week": "05",
+      "title": "공휴일 휴강 안내 · 개천절",
+      "lessonPath": "content/동명대학교/2026/2학기/선수행의실제/week05/lesson.json"
+    },
+    {
+      "school": "동명대학교",
+      "year": "2026",
+      "semester": "2학기",
+      "course": "선수행의실제",
+      "week": "06",
+      "title": "미래의 인문학과 지관 수행",
+      "lessonPath": "content/동명대학교/2026/2학기/선수행의실제/week06/lesson.json"
     }
   ]
 }

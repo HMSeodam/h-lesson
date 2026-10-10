@@ -1,5 +1,5 @@
 /* HLL mobile layout v6 */
-document.documentElement.dataset.hllVersion='8.0.0';
+document.documentElement.dataset.hllVersion='8.0.1';
 const state={index:null,lesson:null,mode:'overview',learnIndex:0,answers:{}};
 const $=s=>document.querySelector(s);const $$=s=>[...document.querySelectorAll(s)];
 const safe=s=>String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
@@ -26,7 +26,12 @@ function fill(el,vals){el.innerHTML=vals.map(v=>`<option>${safe(v)}</option>`).j
 async function loadSelected(){
   const e=filtered({school:$('#schoolSelect').value,year:$('#yearSelect').value,semester:$('#semesterSelect').value,course:$('#courseSelect').value,week:$('#weekSelect').value})[0]||state.index.entries[0];
   if(!e)return; $('#loading').style.display='block';
-  const r=await fetch(e.lessonPath);state.lesson=await r.json();state.learnIndex=0;state.answers={};$('#loading').style.display='none';render();updateProgress();updateMobileFilterSummary();
+  const r=await fetch(e.lessonPath);state.lesson=await r.json();state.learnIndex=0;state.answers={};
+  const quizBtn=document.querySelector('.mode-btn[data-mode="quiz"]');
+  if(quizBtn){quizBtn.hidden=!hasQuiz();quizBtn.disabled=!hasQuiz();}
+  if(!hasQuiz()&&state.mode==='quiz')state.mode='overview';
+  $$('.mode-btn').forEach(x=>x.classList.toggle('active',x.dataset.mode===state.mode));
+  $('#loading').style.display='none';render();updateProgress();updateMobileFilterSummary();
 }
 function bindGlobal(){
   $$('.mode-btn').forEach(b=>b.onclick=()=>{state.mode=b.dataset.mode;$$('.mode-btn').forEach(x=>x.classList.toggle('active',x===b));render()});
@@ -52,9 +57,10 @@ function getProgress(){return Number(localStorage.getItem(progressKey())||0)}
 function updateProgress(){if(!state.lesson)return;const p=Math.max(getProgress(),Math.round(((state.learnIndex+1)/(state.lesson.blocks.length))*100));$('#progressText').textContent=`${Math.min(100,p)}%`;$('#progressBar').style.width=`${Math.min(100,p)}%`;}
 function render(){
   if(!state.lesson)return;
-  if(state.mode==='quiz') renderQuiz();
+  if(state.mode==='quiz'&&hasQuiz()) renderQuiz();
   else renderLesson(state.mode==='learn');
 }
+function hasQuiz(){return (state.lesson?.finalQuiz?.questions||[]).length>0}
 function banner(){
   const m=state.lesson.metadata;
   return `<div class="lesson-banner"><div class="week">WEEK ${safe(m.week)}</div><div><div class="title">${safe(m.course)} · ${safe(m.title)}</div><div class="desc">${safe(m.school)} · ${safe(m.year)} · ${safe(m.semester)} · 출처 ${safe(m.sourceSection)}</div></div></div>`;
@@ -65,13 +71,14 @@ function renderLesson(learn=false){
   blocks.forEach((b,i)=>{if(learn && i>state.learnIndex)return;html+=renderBlock(b,learn&&i===state.learnIndex,i)});
   html+='</div>';
   if(learn){
-    html+=`<div class="learn-controls"><button class="next-btn secondary" id="prevLearn" ${state.learnIndex===0?'disabled':''}>← 이전</button><button class="next-btn" id="nextLearn">${state.learnIndex>=blocks.length-1?'학습 완료':'다음 내용 →'}</button></div>`;
+    const finalLabel=hasQuiz()?'학습 완료':'안내 확인';
+    html+=`<div class="learn-controls"><button class="next-btn secondary" id="prevLearn" ${state.learnIndex===0?'disabled':''}>← 이전</button><button class="next-btn" id="nextLearn">${state.learnIndex>=blocks.length-1?finalLabel:'다음 내용 →'}</button></div>`;
   }
   $('#content').innerHTML=html;
   bindInteractiveBlocks();
   if(learn){
     $('#prevLearn').onclick=()=>{state.learnIndex=Math.max(0,state.learnIndex-1);render();scrollActive()};
-    $('#nextLearn').onclick=()=>{if(state.learnIndex<blocks.length-1){state.learnIndex++;setProgress(Math.round(((state.learnIndex+1)/blocks.length)*100));render();scrollActive()}else{setProgress(100);state.mode='quiz';$$('.mode-btn').forEach(x=>x.classList.toggle('active',x.dataset.mode==='quiz'));render();}};
+    $('#nextLearn').onclick=()=>{if(state.learnIndex<blocks.length-1){state.learnIndex++;setProgress(Math.round(((state.learnIndex+1)/blocks.length)*100));render();scrollActive()}else{setProgress(100);state.mode=hasQuiz()?'quiz':'overview';$$('.mode-btn').forEach(x=>x.classList.toggle('active',x.dataset.mode===state.mode));render();}};
   }
 }
 function scrollActive(){setTimeout(()=>document.querySelector('.active-learn')?.scrollIntoView({behavior:'smooth',block:'center'}),50)}
@@ -135,7 +142,7 @@ function renderBlock(b,active=false,i=0){
 }
 function renderHero(b,active=false,i=0){
   const v=token(b.variant||autoVariant('HERO',i));
-  return `<section class="hero variant-${v} ${active?'active-learn':''}" id="${safe(b.id)}"><div class="eyebrow">${safe(b.eyebrow)}</div><h1>${safe(b.title)}</h1><p>${safe(b.subtitle)}</p><div class="core-question"><b>핵심 질문</b> ${safe(b.coreQuestion)}</div></section>`;
+  return `<section class="hero variant-${v} ${active?'active-learn':''}" id="${safe(b.id)}"><div class="eyebrow">${safe(b.eyebrow)}</div><h1>${safe(b.title)}</h1><p>${safe(b.subtitle)}</p><div class="core-question"><b>${safe(b.detailLabel||'핵심 질문')}</b> ${safe(b.coreQuestion)}</div></section>`;
 }
 function compareSide(s={}){
   const items=s.items||[];

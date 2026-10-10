@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "2.0",
+  "metadata": {
+    "school": "동명대학교",
+    "year": "2026",
+    "semester": "2학기",
+    "course": "선수행의실제",
+    "week": "04",
+    "title": "공휴일 휴강 안내 · 추석 연휴",
+    "sourceSection": "추석 연휴",
+    "sourceTitle": "수업 운영 안내",
+    "sourceAuthor": "한민수(서담)",
+    "lessonType": "holiday"
+  },
+  "design": {
+    "tone": "calm",
+    "variationPolicy": "휴강 안내를 한 장의 카드로 간결하게 표시한다.",
+    "recommendedVariants": {
+      "HERO": ["calm", "poster", "editorial"]
+    }
+  },
+  "lesson": {
+    "coreQuestion": "4주차 수업은 왜 진행되지 않았나요?",
+    "oneSentence": "추석 연휴로 인해 4주차 수업은 휴강입니다.",
+    "estimatedMinutes": 1
+  },
+  "blocks": [
+    {
+      "id": "hero-01",
+      "type": "HERO",
+      "variant": "calm",
+      "eyebrow": "WEEK 04 · HOLIDAY",
+      "title": "공휴일 휴강",
+      "subtitle": "추석 연휴로 인해 이번 주 수업은 진행하지 않았습니다. 별도의 학습 자료는 없습니다.",
+      "detailLabel": "휴강 사유",
+      "coreQuestion": "추석 연휴"
+    }
+  ],
+  "finalQuiz": {
+    "title": "퀴즈 없음",
+    "questions": []
+  }
+}
