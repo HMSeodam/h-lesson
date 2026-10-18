@@ -1,5 +1,5 @@
-/* HLL v10: weekly sharing and responsive classroom UI */
-document.documentElement.dataset.hllVersion='10.0.0';
+/* HLL v10.1: compact weekly sharing */
+document.documentElement.dataset.hllVersion='10.1.0';
 const state={index:null,entry:null,lesson:null,mode:'overview',learnIndex:0,answers:{},loading:false};
 const $=s=>document.querySelector(s);const $$=s=>[...document.querySelectorAll(s)];
 const safe=s=>String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
@@ -118,9 +118,9 @@ function bindGlobal(){
   $('#resetProgress').onclick=()=>{if(!state.lesson)return;storageSet(progressKey(),'0');state.learnIndex=0;render();updateProgress()};
   const filterToggle=$('#mobileFilterToggle');
   if(filterToggle){filterToggle.onclick=()=>{const sidebar=document.querySelector('.sidebar');const open=sidebar.classList.toggle('filters-open');filterToggle.setAttribute('aria-expanded',String(open));};}
-  bindExportControls();bindShareControls();bindDialogKeyboard();
+  bindExportControls();bindDialogKeyboard();
   window.addEventListener('popstate',()=>{
-    closeDialog($('#shareModal'));closeExportModal();
+    closeExportModal();
     state.mode='overview';restoreSelectionFromUrl();loadSelected({historyMode:'replace'});
   });
 }
@@ -149,9 +149,15 @@ function render(){
   $('#shareLessonBtn')?.addEventListener('click',shareLesson);
 }
 function hasQuiz(){return (state.lesson?.finalQuiz?.questions||[]).length>0}
+const shareIcons={
+  share:'<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4M8.6 13.5l6.8 4"/></svg>',
+  copied:'<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg>',
+  failed:'<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m7 7 10 10M7 17 17 7"/></svg>'
+};
 function banner(){
   const m=state.lesson.metadata;
-  return `<div class="lesson-banner"><div class="lesson-heading"><div class="week">WEEK ${safe(m.week)}</div><div class="lesson-heading-copy"><div class="title">${safe(m.course)} · ${safe(m.title)}</div><div class="desc">${safe(m.school)} · ${safe(m.year)} · ${safe(m.semester)}${m.sourceSection?` · 출처 ${safe(m.sourceSection)}`:''}</div></div></div><button id="shareLessonBtn" class="share-lesson-btn" type="button" aria-label="${safe(m.course)} ${safe(m.week)}주차 학습자료 공유"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4M8.6 13.5l6.8 4"/></svg><span>학습자료 공유</span></button></div>`;
+  const label=`${m.course} ${m.week}주차 학습자료 공유`;
+  return `<div class="lesson-banner"><div class="lesson-heading"><div class="week">WEEK ${safe(m.week)}</div><div class="lesson-heading-copy"><div class="title">${safe(m.course)} · ${safe(m.title)}</div><div class="desc">${safe(m.school)} · ${safe(m.year)} · ${safe(m.semester)}${m.sourceSection?` · 출처 ${safe(m.sourceSection)}`:''}</div></div></div><button id="shareLessonBtn" class="share-lesson-btn" type="button" title="학습자료 공유" data-share-label="${safe(label)}" aria-label="${safe(label)}">${shareIcons.share}</button></div>`;
 }
 function renderLesson(learn=false){
   const blocks=state.lesson.blocks||[];
@@ -388,8 +394,8 @@ function updateScore(){
   if(answered===q.length){setProgress(100);const wrong=q.filter(x=>!state.answers[x.id]?.correct);$('#retryLinks').innerHTML=wrong.map(x=>`<button onclick="jumpBlock('${safeJs(x.relatedBlockId)}')">${safe(x.relatedBlockId)} 복습</button>`).join('')}
 }
 
-/* Weekly sharing: stable URLs, native device share sheet, clipboard fallback. */
-let sharePending=false,toastTimer;
+/* Weekly sharing: native share sheet or silent link copy, without an app dialog. */
+let sharePending=false,toastTimer,shareFeedbackTimer;
 function showToast(message){
   const toast=$('#toast');if(!toast)return;
   clearTimeout(toastTimer);toast.textContent=message;toast.hidden=false;
@@ -398,54 +404,56 @@ function showToast(message){
 async function shareLesson(){
   if(!state.entry||state.loading||sharePending)return;
   const entry=state.entry;
-  const data={title:`${entry.course} · ${entry.week}주차`,text:`${entry.title}\n주차별 학습자료를 확인하세요.`,url:lessonUrl(entry).href};
+  const data={title:`${entry.course} · ${entry.week}주차`,text:entry.title,url:lessonUrl(entry).href};
   const btn=$('#shareLessonBtn');
   sharePending=true;if(btn)btn.disabled=true;
   try{
     // Invoke from the click itself; do not await other work before navigator.share.
-    if(window.isSecureContext&&typeof navigator.share==='function'&&(!navigator.canShare||navigator.canShare(data))){
+    let nativeSupported=false;
+    try{nativeSupported=window.isSecureContext&&typeof navigator.share==='function'&&(!navigator.canShare||navigator.canShare(data))}catch{}
+    if(nativeSupported){
       try{await navigator.share(data);return}
       catch(err){if(err.name==='AbortError')return;}
-      openShareModal(entry,data.url);
-      $('#shareStatus').textContent='기본 공유창을 열 수 없습니다. 링크를 복사해 공유하세요.';
-    }else{
-      openShareModal(entry,data.url);
-      await copyShareLink();
     }
+    shareButtonFeedback(btn,await copyLessonLink(data.url));
   }catch(err){
     console.error('[HLL share]',err);
-    openShareModal(entry,data.url);
-    $('#shareStatus').textContent='아래 링크를 선택해 직접 복사해 주세요.';
+    shareButtonFeedback(btn,false);
   }finally{
-    sharePending=false;if(btn)btn.disabled=false;
+    sharePending=false;
+    if(btn){btn.disabled=false;if(document.activeElement===document.body)btn.focus({preventScroll:true})}
   }
 }
-function openShareModal(entry,url){
-  $('#shareWeek').textContent=`WEEK ${entry.week}`;
-  $('#shareLessonTitle').textContent=`${entry.course} · ${entry.title}`;
-  $('#shareLessonContext').textContent=`${entry.school} · ${entry.year} · ${entry.semester}`;
-  $('#shareUrl').value=url;$('#shareStatus').textContent='';
-  $('#shareCopyBtn').textContent='링크 복사';
-  openDialog($('#shareModal'),$('#shareCopyBtn'));
-}
-async function copyShareLink(){
-  const input=$('#shareUrl'),status=$('#shareStatus');
-  let copied=false;
+async function copyLessonLink(url){
   try{
-    if(window.isSecureContext&&navigator.clipboard?.writeText){await navigator.clipboard.writeText(input.value);copied=true;}
-  }catch{/* Permission denial falls through to the selected, visible input. */}
-  if(!copied){
-    input.focus();input.select();input.setSelectionRange(0,input.value.length);
-    try{copied=document.execCommand('copy')}catch{}
+    if(window.isSecureContext&&navigator.clipboard?.writeText){await navigator.clipboard.writeText(url);return true;}
+  }catch{/* Use a temporary field for browsers with limited clipboard permissions. */}
+  const previous=document.activeElement,input=document.createElement('textarea');
+  input.value=url;input.readOnly=true;input.tabIndex=-1;
+  input.setAttribute('aria-hidden','true');
+  input.style.cssText='position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;font-size:16px;pointer-events:none';
+  document.body.appendChild(input);
+  try{
+    input.focus({preventScroll:true});input.select();input.setSelectionRange(0,input.value.length);
+    return document.execCommand('copy');
+  }catch{return false}
+  finally{
+    input.remove();
+    if(previous?.isConnected)previous.focus({preventScroll:true});
   }
-  if($('#shareModal').hidden)return;
-  status.textContent=copied?'링크를 복사했습니다. 원하는 앱에 붙여 넣으세요.':'자동 복사가 제한되어 있습니다. 선택된 링크를 길게 누르거나 Ctrl+C / ⌘C로 복사하세요.';
-  $('#shareCopyBtn').textContent=copied?'다시 복사':'링크 복사';
 }
-function bindShareControls(){
-  $('#shareCopyBtn').onclick=copyShareLink;
-  $('#shareUrl').onclick=e=>{e.target.select();e.target.setSelectionRange(0,e.target.value.length)};
-  $$('[data-share-close]').forEach(el=>el.onclick=()=>closeDialog($('#shareModal')));
+function shareButtonFeedback(btn,copied){
+  if(!btn?.isConnected)return;
+  clearTimeout(shareFeedbackTimer);
+  const message=copied?'링크 복사 완료':'복사 실패. 주소창의 링크를 직접 복사해 주세요.';
+  btn.innerHTML=shareIcons[copied?'copied':'failed'];
+  btn.dataset.shareStatus=copied?'copied':'failed';
+  btn.title=message;btn.setAttribute('aria-label',message);
+  $('#shareFeedback').textContent=message;
+  shareFeedbackTimer=setTimeout(()=>{
+    if(btn.isConnected){btn.innerHTML=shareIcons.share;delete btn.dataset.shareStatus;btn.title='학습자료 공유';btn.setAttribute('aria-label',btn.dataset.shareLabel||'학습자료 공유')}
+    $('#shareFeedback').textContent='';
+  },2200);
 }
 
 // Shared modal behavior keeps keyboard and screen-reader focus inside a dialog.
