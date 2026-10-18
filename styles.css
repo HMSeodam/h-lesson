@@ -1259,6 +1259,71 @@ body.dark{color-scheme:dark}
   *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
 }
 
+/* HLL v10.2 — equal card widths, content-driven rows, local width breakpoints.
+   Keep the source order and full text, including when captured for downloads. */
+.balanced-bento{container-name:hll-bento;container-type:inline-size}
+.content-area .balanced-bento .bento-grid,
+.export-stage .balanced-bento .bento-grid{
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  grid-auto-rows:auto;
+  align-content:start;
+  align-items:stretch;
+}
+.content-area .balanced-bento .bento-card,
+.content-area .balanced-bento .bento-card:last-child:nth-child(odd),
+.export-stage .balanced-bento .bento-card{
+  grid-column:span var(--tile-span,12);
+  grid-row:auto;
+  min-width:0;
+  min-height:0;
+  height:auto;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  align-items:stretch;
+  padding:20px;
+  padding:clamp(16px,2.2cqi,22px);
+}
+.content-area .balanced-bento .bento-card small,
+.export-stage .balanced-bento .bento-card small{line-height:1.5;letter-spacing:.04em}
+.content-area .balanced-bento .bento-card h3,
+.export-stage .balanced-bento .bento-card h3{
+  font-size:24px;
+  font-size:clamp(20px,2.8cqi,26px);
+  line-height:1.35;
+  margin:8px 0;
+  text-wrap:pretty;
+  line-break:strict;
+  word-break:keep-all;
+  overflow-wrap:anywhere;
+}
+.content-area .balanced-bento .bento-card p,
+.export-stage .balanced-bento .bento-card p{line-height:1.65}
+/* Browsers without container queries retain a safe viewport-based fallback. */
+@supports not (container-type:inline-size){
+  @media(max-width:1100px){
+    .content-area .balanced-bento .bento-card{grid-column:span 6}
+    .content-area .balanced-bento .bento-card:last-child:nth-child(odd){grid-column:1/-1}
+  }
+  @media(max-width:760px){
+    .content-area .balanced-bento .bento-card,
+    .content-area .balanced-bento .bento-card:last-child:nth-child(odd){grid-column:1/-1}
+  }
+}
+/* The available text width, rather than the screen width, determines the columns. */
+@container hll-bento (max-width:739px){
+  .content-area .balanced-bento .bento-card,
+  .export-stage .balanced-bento .bento-card{grid-column:span 6}
+  .content-area .balanced-bento .bento-card:last-child:nth-child(odd),
+  .export-stage .balanced-bento .bento-card:last-child:nth-child(odd){grid-column:1/-1}
+}
+@container hll-bento (max-width:499px){
+  .content-area .balanced-bento .bento-card,
+  .content-area .balanced-bento .bento-card:last-child:nth-child(odd),
+  .export-stage .balanced-bento .bento-card,
+  .export-stage .balanced-bento .bento-card:last-child:nth-child(odd){grid-column:1/-1}
+}
+
 @page{size:A4 landscape;margin:10mm}
 @media print{
   html,body{background:#fff!important;color:#1e2a26!important}

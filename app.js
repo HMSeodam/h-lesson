@@ -1,5 +1,5 @@
-/* HLL v10.1: compact weekly sharing */
-document.documentElement.dataset.hllVersion='10.1.0';
+/* HLL v10.2: balanced learning cards and compact weekly sharing */
+document.documentElement.dataset.hllVersion='10.2.0';
 const state={index:null,entry:null,lesson:null,mode:'overview',learnIndex:0,answers:{},loading:false};
 const $=s=>document.querySelector(s);const $$=s=>[...document.querySelectorAll(s)];
 const safe=s=>String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
@@ -310,8 +310,9 @@ function balancedSpans(count,maxColumns=4,weights=[]){
 
 function renderBento(b,cls){
   const items=b.items||b.cards||[];
-  const spans=balancedSpans(items.length,3,items.map(x=>x.size==='wide'?2:1));
-  return `<section class="${cls}" id="${safe(b.id)}">${blockHead(b)}<div class="bento-grid">${items.map((x,i)=>`<article class="bento-card bento-${token(x.size||'small')}" style="--tile-span:${spans[i]}"><small>${safe(x.kicker||x.label||`POINT ${i+1}`)}</small><h3>${safe(x.title)}</h3><p>${safe(x.text||x.description||x.value)}</p></article>`).join('')}</div></section>`;
+  // Equal widths within each row keep a legacy "wide" item from squeezing its neighbor.
+  const spans=balancedSpans(items.length,3);
+  return `<section class="${cls} balanced-bento" id="${safe(b.id)}">${blockHead(b)}<div class="bento-grid">${items.map((x,i)=>`<article class="bento-card bento-${token(x.size||'small')}" style="--tile-span:${spans[i]}"><small>${safe(x.kicker||x.label||`POINT ${i+1}`)}</small><h3>${safe(x.title)}</h3><p>${safe(x.text||x.description||x.value)}</p></article>`).join('')}</div></section>`;
 }
 function renderBigIdea(b,cls){
   const evidence=b.evidence||b.items||[];
