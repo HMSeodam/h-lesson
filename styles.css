@@ -1188,10 +1188,85 @@ h1,h2,h3,p,span,small,strong{
   .content-area .quiz-option{font-size:15px}
 }
 
+/* HLL v10 — sharing and device ergonomics */
+[hidden]{display:none!important}
+html{scroll-padding-top:120px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+button,a,input,select{touch-action:manipulation}
+button:disabled{cursor:default;opacity:.55}
+body.dark{color-scheme:dark}
+.skip-link{position:fixed;left:16px;top:8px;z-index:1100;transform:translateY(-160%);padding:12px 16px;border-radius:12px;background:var(--deep);color:var(--bg)}
+.skip-link:focus{transform:none}
+.site-header{padding-left:max(clamp(18px,4vw,52px),env(safe-area-inset-left));padding-right:max(clamp(18px,4vw,52px),env(safe-area-inset-right))}
+.lesson-banner{display:flex;justify-content:space-between;gap:18px}
+.lesson-heading{display:flex;align-items:center;gap:14px;min-width:0}
+.lesson-heading-copy{min-width:0}
+.share-lesson-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:11px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font-weight:750;font-size:13px;white-space:nowrap;flex-shrink:0;cursor:pointer}
+.share-lesson-btn svg{flex-shrink:0}
+@media(hover:hover){
+  .share-lesson-btn:hover{border-color:var(--sage);background:var(--sand)}
+  .mode-btn:not(.active):hover{background:var(--sand);color:var(--ink)}
+}
+.mode-nav.has-no-quiz{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+@media(min-width:1101px){.mode-nav.has-no-quiz{grid-template-columns:1fr!important}}
+.field select{min-width:0;min-height:44px;text-overflow:ellipsis}
+.mode-btn,.ghost-btn,.export-close{min-height:44px}
+.export-close{width:44px;height:44px}
+.text-btn{min-height:44px;display:inline-flex;align-items:center}
+.export-dialog{overscroll-behavior:contain;max-height:calc(100dvh - 36px);scrollbar-gutter:stable}
+.export-modal{padding: max(18px,env(safe-area-inset-top)) max(18px,env(safe-area-inset-right)) max(18px,env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left))}
+.export-field select,.share-url,.short-input{font-size:16px}
+.export-note-detail{white-space:normal}
+.share-preview{display:grid;gap:8px;padding:18px;border:1px solid var(--line);border-radius:16px;background:var(--bg)}
+.share-week{color:var(--gold);font-size:11px;font-weight:900;letter-spacing:.1em}
+.share-preview strong{font-size:18px;line-height:1.5}
+.share-preview small{font-size:12px;color:var(--muted);line-height:1.6}
+.share-url{width:100%;min-width:0;min-height:48px;margin-top:8px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);direction:ltr;user-select:all;-webkit-user-select:all}
+.share-copy-btn{width:100%;min-height:48px}
+.share-hint{font-size:12px;line-height:1.6;color:var(--muted);margin:14px 0 0;text-align:center}
+.share-dialog .export-status{margin-bottom:14px;min-height:42px}
+.toast{max-width:min(440px,calc(100vw - 32px));bottom:calc(20px + env(safe-area-inset-bottom));line-height:1.6}
+.loading .next-btn{display:block;margin:16px auto 0}
+@media(min-width:1101px){
+  .sidebar{top:112px;max-height:calc(100dvh - 130px);overflow-y:auto;scrollbar-width:thin;padding:2px 5px 6px 2px}
+}
+@media(min-width:761px) and (max-width:1100px){
+  .app-shell{grid-template-columns:minmax(0,1fr);gap:22px;padding-top:22px}
+  .sidebar{position:static;display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:14px}
+  .sidebar-card{grid-column:1/-1;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;padding:18px}
+  .sidebar-card .field{margin:0;min-width:0;grid-column:span 2}
+  .sidebar-card .field:nth-child(2),.sidebar-card .field:nth-child(3){grid-column:span 1}
+  .sidebar-card .field:last-child{grid-column:1/-1}
+  .mode-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;align-content:center}
+  .mode-btn{text-align:center}
+  .progress-card{display:none}
+  .export-open-btn{min-height:64px;box-shadow:none}
+}
+@media(max-width:760px){
+  .site-header{padding:10px max(12px,env(safe-area-inset-right)) 10px max(12px,env(safe-area-inset-left))}
+  .app-shell{padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right));padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+  .field select{font-size:16px}
+  .lesson-banner{display:flex!important;flex-wrap:wrap;align-items:center;gap:12px;padding:16px}
+  .lesson-heading{display:block;flex:1 1 220px}
+  .lesson-banner .title{font-size:15px;line-height:1.5}
+  .lesson-banner .desc{font-size:12px;line-height:1.6}
+  .share-lesson-btn{flex:1 0 auto;min-height:46px;font-size:14px}
+  .export-open-btn small{font-size:11px}
+  .export-modal{padding:max(10px,env(safe-area-inset-top)) max(10px,env(safe-area-inset-right)) max(10px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left));align-items:end}
+  .export-dialog{padding:24px 20px 20px;max-height:calc(100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom));border-radius:24px 24px 16px 16px}
+  .export-dialog-head p{font-size:14px}
+  .export-close{right:12px;top:12px}
+  .share-preview strong{font-size:17px}
+  .toast{right:16px;left:16px;margin:auto;text-align:center}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+}
+
 @page{size:A4 landscape;margin:10mm}
 @media print{
   html,body{background:#fff!important;color:#1e2a26!important}
-  .site-header,.sidebar,.lesson-banner,.learn-controls,.toast,.export-modal{display:none!important}
+  .site-header,.sidebar,.lesson-banner,.learn-controls,.toast,.export-modal,.skip-link{display:none!important}
   .app-shell{display:block!important;max-width:none!important;margin:0!important;padding:0!important}
   .content-area,#content{width:100%!important;max-width:none!important}
   #content>.hero,#content>.block{

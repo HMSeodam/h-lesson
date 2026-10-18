@@ -1,45 +1,128 @@
-/* HLL mobile layout v6 */
-document.documentElement.dataset.hllVersion='8.0.1';
-const state={index:null,lesson:null,mode:'overview',learnIndex:0,answers:{}};
+/* HLL v10: weekly sharing and responsive classroom UI */
+document.documentElement.dataset.hllVersion='10.0.0';
+const state={index:null,entry:null,lesson:null,mode:'overview',learnIndex:0,answers:{},loading:false};
 const $=s=>document.querySelector(s);const $$=s=>[...document.querySelectorAll(s)];
 const safe=s=>String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
 
 async function init(){
   const params=new URLSearchParams(location.search);
   if(params.get('view')==='infographic') document.body.classList.add('infographic-only');
-  const indexResp=await fetch('content-index.json');state.index=await indexResp.json();
-  setupSelectors(); bindGlobal(); await loadSelected();
+  const indexResp=await fetch('content-index.json');
+  if(!indexResp.ok)throw new Error('강의 목록을 불러오지 못했습니다.');
+  state.index=await indexResp.json();
+  if(!state.index.entries?.length)throw new Error('등록된 학습자료가 없습니다.');
+  setupSelectors();bindGlobal();await loadSelected({historyMode:'replace'});
 }
 
 function setupSelectors(){
-  const s=$('#schoolSelect'),y=$('#yearSelect'),m=$('#semesterSelect'),c=$('#courseSelect'),w=$('#weekSelect');
-  fill(s,[...new Set(state.index.entries.map(x=>x.school))]);
-  const refreshYears=()=>{fill(y,[...new Set(filtered({school:s.value}).map(x=>x.year))]);refreshSem();};
-  const refreshSem=()=>{fill(m,[...new Set(filtered({school:s.value,year:y.value}).map(x=>x.semester))]);refreshCourse();};
-  const refreshCourse=()=>{fill(c,[...new Set(filtered({school:s.value,year:y.value,semester:m.value}).map(x=>x.course))]);refreshWeek();};
-  const refreshWeek=()=>{const items=filtered({school:s.value,year:y.value,semester:m.value,course:c.value});w.innerHTML=items.map(x=>`<option value="${safe(x.week)}">${safe(x.week)}주차 · ${safe(x.title)}</option>`).join('');updateMobileFilterSummary();};
-  s.onchange=async()=>{refreshYears();await loadSelected()};y.onchange=async()=>{refreshSem();await loadSelected()};m.onchange=async()=>{refreshCourse();await loadSelected()};c.onchange=async()=>{refreshWeek();await loadSelected()};w.onchange=loadSelected;
-  refreshYears();updateMobileFilterSummary();
+  selectionKeys.forEach((key,i)=>{
+    $(`#${key}Select`).onchange=()=>{
+      populateSelectors(i+1);updateMobileFilterSummary();
+      loadSelected();
+    };
+  });
+  restoreSelectionFromUrl();
+}
+const selectionKeys=['school','year','semester','course','week'];
+function populateSelectors(start=0,preferred={}){
+  const filters={};
+  selectionKeys.forEach((key,i)=>{
+    const el=$(`#${key}Select`);
+    if(i>=start){
+      const items=filtered(filters);
+      if(key==='week')el.innerHTML=items.map(x=>`<option value="${safe(x.week)}">${safe(x.week)}주차 · ${safe(x.title)}</option>`).join('');
+      else fill(el,[...new Set(items.map(x=>String(x[key])))]);
+      const value=preferred[key];
+      if(value!=null&&[...el.options].some(x=>x.value===value))el.value=value;
+    }
+    filters[key]=el.value;
+  });
+}
+function restoreSelectionFromUrl(){
+  const params=new URLSearchParams(location.search);
+  const preferred=Object.fromEntries(selectionKeys.filter(k=>params.has(k)).map(k=>[k,params.get(k)]));
+  if(/^\d+$/.test(preferred.week||''))preferred.week=preferred.week.padStart(2,'0');
+  const match=state.index.entries.find(e=>Object.entries(preferred).every(([k,v])=>String(e[k])===v));
+  populateSelectors(0,match||{});
+  if(!match&&Object.keys(preferred).length)showToast('요청한 주차를 찾을 수 없어 첫 학습자료를 열었습니다.');
+  updateMobileFilterSummary();
 }
 function filtered(obj){return state.index.entries.filter(x=>Object.entries(obj).every(([k,v])=>x[k]===v));}
 function fill(el,vals){el.innerHTML=vals.map(v=>`<option>${safe(v)}</option>`).join('');}
-async function loadSelected(){
+let lessonRequest=0,lessonController;
+async function loadSelected({historyMode='push'}={}){
   const e=filtered({school:$('#schoolSelect').value,year:$('#yearSelect').value,semester:$('#semesterSelect').value,course:$('#courseSelect').value,week:$('#weekSelect').value})[0]||state.index.entries[0];
-  if(!e)return; $('#loading').style.display='block';
-  const r=await fetch(e.lessonPath);state.lesson=await r.json();state.learnIndex=0;state.answers={};
-  const quizBtn=document.querySelector('.mode-btn[data-mode="quiz"]');
-  if(quizBtn){quizBtn.hidden=!hasQuiz();quizBtn.disabled=!hasQuiz();}
-  if(!hasQuiz()&&state.mode==='quiz')state.mode='overview';
-  $$('.mode-btn').forEach(x=>x.classList.toggle('active',x.dataset.mode===state.mode));
-  $('#loading').style.display='none';render();updateProgress();updateMobileFilterSummary();
+  if(!e)return;
+  const request=++lessonRequest;
+  lessonController?.abort();lessonController=new AbortController();
+  state.loading=true;state.lesson=null;state.entry=null;
+  $('#loading').textContent='자료를 불러오는 중…';$('#loading').style.display='block';
+  $('#content').replaceChildren();$('#content').setAttribute('aria-busy','true');
+  $('#exportOpenBtn').disabled=true;
+  $('#progressText').textContent='0%';$('#progressBar').style.width='0%';
+  try{
+    const r=await fetch(e.lessonPath,{signal:lessonController.signal});
+    if(!r.ok)throw new Error(`학습자료 응답: ${r.status}`);
+    const lesson=await r.json();
+    if(request!==lessonRequest)return;
+    if(!lesson.metadata||!Array.isArray(lesson.blocks)||!lesson.blocks.length)throw new Error('자료 형식 오류');
+    // Folder/index selection is authoritative, including placeholder metadata.
+    state.lesson={...lesson,metadata:{...lesson.metadata,...Object.fromEntries(selectionKeys.map(k=>[k,e[k]]))}};
+    state.entry=e;state.learnIndex=0;state.answers={};state.loading=false;
+    const quizBtn=$('.mode-btn[data-mode="quiz"]');
+    quizBtn.hidden=!hasQuiz();quizBtn.disabled=!hasQuiz();
+    if(!hasQuiz()&&state.mode==='quiz')state.mode='overview';
+    syncModeButtons();
+    $('#loading').style.display='none';$('#exportOpenBtn').disabled=false;
+    render();updateProgress();updateMobileFilterSummary();
+    document.title=`${e.course} · ${e.week}주차 | HLL`;
+    updateLessonUrl(e,historyMode);
+  }catch(err){
+    if(request!==lessonRequest||err.name==='AbortError')return;
+    state.loading=false;
+    $('#loading').innerHTML='학습자료를 불러오지 못했습니다. <button class="next-btn secondary" id="retryLesson" type="button">다시 시도</button>';
+    $('#retryLesson').onclick=()=>loadSelected({historyMode});
+    console.error('[HLL lesson]',err);
+  }finally{
+    if(request===lessonRequest)$('#content').setAttribute('aria-busy','false');
+  }
+}
+function lessonUrl(entry,{preserveView=false}={}){
+  const url=new URL(location.href);
+  url.search='';url.hash='';
+  selectionKeys.forEach(k=>url.searchParams.set(k,entry[k]));
+  if(preserveView&&document.body.classList.contains('infographic-only'))url.searchParams.set('view','infographic');
+  return url;
+}
+function updateLessonUrl(entry,mode){
+  if(mode==='none')return;
+  const url=lessonUrl(entry,{preserveView:true});
+  if(url.href!==location.href)history[mode==='replace'?'replaceState':'pushState'](null,'',url.href);
+}
+function syncModeButtons(){
+  $$('.mode-btn').forEach(b=>{
+    const active=b.dataset.mode===state.mode;
+    b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));
+  });
+  $('.mode-nav').classList.toggle('has-no-quiz',!hasQuiz());
 }
 function bindGlobal(){
-  $$('.mode-btn').forEach(b=>b.onclick=()=>{state.mode=b.dataset.mode;$$('.mode-btn').forEach(x=>x.classList.toggle('active',x===b));render()});
-  $('#themeBtn').onclick=()=>{document.body.classList.toggle('dark');$('#themeBtn').textContent=document.body.classList.contains('dark')?'라이트 모드':'다크 모드'};
-  $('#resetProgress').onclick=()=>{if(!state.lesson)return;localStorage.removeItem(progressKey());state.learnIndex=0;render();updateProgress()};
+  $$('.mode-btn').forEach(b=>b.onclick=()=>{if(!state.lesson)return;state.mode=b.dataset.mode;syncModeButtons();render()});
+  const applyTheme=dark=>{
+    document.body.classList.toggle('dark',dark);$('#themeBtn').textContent=dark?'라이트 모드':'다크 모드';
+    $('#themeBtn').setAttribute('aria-pressed',String(dark));
+    $('meta[name="theme-color"]').content=dark?'#17211e':'#f7f4ed';
+  };
+  applyTheme(storageGet('hll:theme')==='dark');
+  $('#themeBtn').onclick=()=>{const dark=!document.body.classList.contains('dark');applyTheme(dark);storageSet('hll:theme',dark?'dark':'light')};
+  $('#resetProgress').onclick=()=>{if(!state.lesson)return;storageSet(progressKey(),'0');state.learnIndex=0;render();updateProgress()};
   const filterToggle=$('#mobileFilterToggle');
   if(filterToggle){filterToggle.onclick=()=>{const sidebar=document.querySelector('.sidebar');const open=sidebar.classList.toggle('filters-open');filterToggle.setAttribute('aria-expanded',String(open));};}
-  bindExportControls();
+  bindExportControls();bindShareControls();bindDialogKeyboard();
+  window.addEventListener('popstate',()=>{
+    closeDialog($('#shareModal'));closeExportModal();
+    state.mode='overview';restoreSelectionFromUrl();loadSelected({historyMode:'replace'});
+  });
 }
 
 function updateMobileFilterSummary(){
@@ -52,18 +135,23 @@ function updateMobileFilterSummary(){
 }
 
 function progressKey(){const m=state.lesson.metadata;return `hll:${m.school}:${m.year}:${m.semester}:${m.course}:${m.week}`;}
-function setProgress(v){localStorage.setItem(progressKey(),String(v));updateProgress();}
-function getProgress(){return Number(localStorage.getItem(progressKey())||0)}
+const memoryStorage=new Map();
+function storageGet(key){try{return localStorage.getItem(key)??memoryStorage.get(key)}catch{return memoryStorage.get(key)}}
+function storageSet(key,value){memoryStorage.set(key,String(value));try{localStorage.setItem(key,String(value))}catch{}}
+function setProgress(v){storageSet(progressKey(),String(v));updateProgress();}
+function getProgress(){return Number(storageGet(progressKey())||0)||0}
 function updateProgress(){if(!state.lesson)return;const p=Math.max(getProgress(),Math.round(((state.learnIndex+1)/(state.lesson.blocks.length))*100));$('#progressText').textContent=`${Math.min(100,p)}%`;$('#progressBar').style.width=`${Math.min(100,p)}%`;}
 function render(){
   if(!state.lesson)return;
   if(state.mode==='quiz'&&hasQuiz()) renderQuiz();
   else renderLesson(state.mode==='learn');
+  syncModeButtons();
+  $('#shareLessonBtn')?.addEventListener('click',shareLesson);
 }
 function hasQuiz(){return (state.lesson?.finalQuiz?.questions||[]).length>0}
 function banner(){
   const m=state.lesson.metadata;
-  return `<div class="lesson-banner"><div class="week">WEEK ${safe(m.week)}</div><div><div class="title">${safe(m.course)} · ${safe(m.title)}</div><div class="desc">${safe(m.school)} · ${safe(m.year)} · ${safe(m.semester)} · 출처 ${safe(m.sourceSection)}</div></div></div>`;
+  return `<div class="lesson-banner"><div class="lesson-heading"><div class="week">WEEK ${safe(m.week)}</div><div class="lesson-heading-copy"><div class="title">${safe(m.course)} · ${safe(m.title)}</div><div class="desc">${safe(m.school)} · ${safe(m.year)} · ${safe(m.semester)}${m.sourceSection?` · 출처 ${safe(m.sourceSection)}`:''}</div></div></div><button id="shareLessonBtn" class="share-lesson-btn" type="button" aria-label="${safe(m.course)} ${safe(m.week)}주차 학습자료 공유"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4M8.6 13.5l6.8 4"/></svg><span>학습자료 공유</span></button></div>`;
 }
 function renderLesson(learn=false){
   const blocks=state.lesson.blocks||[];
@@ -300,6 +388,97 @@ function updateScore(){
   if(answered===q.length){setProgress(100);const wrong=q.filter(x=>!state.answers[x.id]?.correct);$('#retryLinks').innerHTML=wrong.map(x=>`<button onclick="jumpBlock('${safeJs(x.relatedBlockId)}')">${safe(x.relatedBlockId)} 복습</button>`).join('')}
 }
 
+/* Weekly sharing: stable URLs, native device share sheet, clipboard fallback. */
+let sharePending=false,toastTimer;
+function showToast(message){
+  const toast=$('#toast');if(!toast)return;
+  clearTimeout(toastTimer);toast.textContent=message;toast.hidden=false;
+  toastTimer=setTimeout(()=>{toast.hidden=true},5000);
+}
+async function shareLesson(){
+  if(!state.entry||state.loading||sharePending)return;
+  const entry=state.entry;
+  const data={title:`${entry.course} · ${entry.week}주차`,text:`${entry.title}\n주차별 학습자료를 확인하세요.`,url:lessonUrl(entry).href};
+  const btn=$('#shareLessonBtn');
+  sharePending=true;if(btn)btn.disabled=true;
+  try{
+    // Invoke from the click itself; do not await other work before navigator.share.
+    if(window.isSecureContext&&typeof navigator.share==='function'&&(!navigator.canShare||navigator.canShare(data))){
+      try{await navigator.share(data);return}
+      catch(err){if(err.name==='AbortError')return;}
+      openShareModal(entry,data.url);
+      $('#shareStatus').textContent='기본 공유창을 열 수 없습니다. 링크를 복사해 공유하세요.';
+    }else{
+      openShareModal(entry,data.url);
+      await copyShareLink();
+    }
+  }catch(err){
+    console.error('[HLL share]',err);
+    openShareModal(entry,data.url);
+    $('#shareStatus').textContent='아래 링크를 선택해 직접 복사해 주세요.';
+  }finally{
+    sharePending=false;if(btn)btn.disabled=false;
+  }
+}
+function openShareModal(entry,url){
+  $('#shareWeek').textContent=`WEEK ${entry.week}`;
+  $('#shareLessonTitle').textContent=`${entry.course} · ${entry.title}`;
+  $('#shareLessonContext').textContent=`${entry.school} · ${entry.year} · ${entry.semester}`;
+  $('#shareUrl').value=url;$('#shareStatus').textContent='';
+  $('#shareCopyBtn').textContent='링크 복사';
+  openDialog($('#shareModal'),$('#shareCopyBtn'));
+}
+async function copyShareLink(){
+  const input=$('#shareUrl'),status=$('#shareStatus');
+  let copied=false;
+  try{
+    if(window.isSecureContext&&navigator.clipboard?.writeText){await navigator.clipboard.writeText(input.value);copied=true;}
+  }catch{/* Permission denial falls through to the selected, visible input. */}
+  if(!copied){
+    input.focus();input.select();input.setSelectionRange(0,input.value.length);
+    try{copied=document.execCommand('copy')}catch{}
+  }
+  if($('#shareModal').hidden)return;
+  status.textContent=copied?'링크를 복사했습니다. 원하는 앱에 붙여 넣으세요.':'자동 복사가 제한되어 있습니다. 선택된 링크를 길게 누르거나 Ctrl+C / ⌘C로 복사하세요.';
+  $('#shareCopyBtn').textContent=copied?'다시 복사':'링크 복사';
+}
+function bindShareControls(){
+  $('#shareCopyBtn').onclick=copyShareLink;
+  $('#shareUrl').onclick=e=>{e.target.select();e.target.setSelectionRange(0,e.target.value.length)};
+  $$('[data-share-close]').forEach(el=>el.onclick=()=>closeDialog($('#shareModal')));
+}
+
+// Shared modal behavior keeps keyboard and screen-reader focus inside a dialog.
+const dialogTriggers=new WeakMap();
+function openDialog(modal,focusTarget){
+  dialogTriggers.set(modal,document.activeElement);
+  modal.hidden=false;document.body.classList.add('export-modal-open');
+  $$('.site-header,.app-shell,.skip-link').forEach(el=>el.inert=true);
+  (focusTarget||modal.querySelector('[role="dialog"]')).focus({preventScroll:true});
+}
+function closeDialog(modal){
+  if(!modal||modal.hidden)return;
+  modal.hidden=true;document.body.classList.remove('export-modal-open');
+  $$('.site-header,.app-shell,.skip-link').forEach(el=>el.inert=false);
+  const trigger=dialogTriggers.get(modal);
+  if(trigger?.isConnected)trigger.focus({preventScroll:true});
+}
+function bindDialogKeyboard(){
+  document.addEventListener('keydown',e=>{
+    const modal=$('.export-modal:not([hidden])');if(!modal)return;
+    if(e.key==='Escape'){
+      e.preventDefault();
+      if(modal.id==='exportModal')closeExportModal();else closeDialog(modal);
+    }
+    if(e.key!=='Tab')return;
+    const focusable=[...modal.querySelectorAll('button:not(:disabled),input:not(:disabled),select:not(:disabled),[tabindex="0"]')].filter(el=>el.getClientRects().length);
+    const first=focusable[0],last=focusable[focusable.length-1];
+    if(!first){e.preventDefault();modal.querySelector('[role="dialog"]').focus();return;}
+    if(e.shiftKey&&(document.activeElement===first||!focusable.includes(document.activeElement))){e.preventDefault();last.focus()}
+    else if(!e.shiftKey&&(document.activeElement===last||!focusable.includes(document.activeElement))){e.preventDefault();first.focus()}
+  });
+}
+
 /* ------------------------------------------------------------
    Learning-card export: PNG / JPG / PDF / DOCX
    - The live page can be in any mode. Export always renders all lesson blocks.
@@ -312,25 +491,21 @@ function bindExportControls(){
   openBtn.onclick=()=>openExportModal();
   modal.querySelectorAll('[data-export-close]').forEach(el=>el.onclick=()=>closeExportModal());
   startBtn.onclick=exportLearningCards;
-  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)closeExportModal();});
 }
 
 function openExportModal(){
-  if(!state.lesson)return;
+  if(!state.lesson||state.loading)return;
   const modal=$('#exportModal');
   updateExportFilenamePreview();
   $('#exportStatus').textContent='';
   $('#exportStartBtn').disabled=false;
-  modal.hidden=false;
-  document.body.classList.add('export-modal-open');
-  setTimeout(()=>$('#exportFormat')?.focus(),20);
+  openDialog(modal,$('#exportFormat'));
 }
 
 function closeExportModal(){
   const modal=$('#exportModal');
   if(!modal||$('#exportStartBtn')?.disabled)return;
-  modal.hidden=true;
-  document.body.classList.remove('export-modal-open');
+  closeDialog(modal);
 }
 
 function exportContext(){
@@ -396,4 +571,8 @@ async function exportLearningCards(){
   }finally{btn.disabled=false;}
 }
 
-init().catch(err=>{console.error(err);$('#loading').textContent='자료를 불러오지 못했습니다. 로컬에서는 serve_local.bat로 실행해 주세요.'});
+init().catch(err=>{
+  console.error(err);$('#content').setAttribute('aria-busy','false');
+  $('#loading').innerHTML='자료를 불러오지 못했습니다. 인터넷 연결을 확인한 뒤 새로고침해 주세요. 로컬에서는 serve_local.bat 또는 serve_local.sh로 실행하세요. <button id="reloadApp" class="next-btn secondary" type="button">새로고침</button>';
+  $('#reloadApp').onclick=()=>location.reload();
+});

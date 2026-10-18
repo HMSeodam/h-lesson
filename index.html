@@ -2,12 +2,14 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="theme-color" content="#f7f4ed" />
   <title>Hmseodam Learning Lab</title>
-  <link rel="stylesheet" href="styles.css?v=9.0.0" />
+  <meta name="description" content="주차별 학습 자료와 퀴즈를 확인하고 함께 나누는 Hmseodam Learning Lab" />
+  <link rel="stylesheet" href="styles.css?v=10.0.0" />
 </head>
 <body>
+  <a class="skip-link" href="#content">학습 내용으로 바로 가기</a>
   <header class="site-header">
     <div class="brand-wrap">
       <div class="brand-mark" aria-hidden="true">
@@ -36,18 +38,18 @@
         <span class="mobile-filter-chevron" aria-hidden="true">⌄</span>
       </button>
       <div class="sidebar-card" id="mobileFilterPanel">
-        <div class="field"><label>학교</label><select id="schoolSelect"></select></div>
-        <div class="field"><label>연도</label><select id="yearSelect"></select></div>
-        <div class="field"><label>학기</label><select id="semesterSelect"></select></div>
-        <div class="field"><label>과목</label><select id="courseSelect"></select></div>
-        <div class="field"><label>주차</label><select id="weekSelect"></select></div>
+        <div class="field"><label for="schoolSelect">학교</label><select id="schoolSelect"></select></div>
+        <div class="field"><label for="yearSelect">연도</label><select id="yearSelect"></select></div>
+        <div class="field"><label for="semesterSelect">학기</label><select id="semesterSelect"></select></div>
+        <div class="field"><label for="courseSelect">과목</label><select id="courseSelect"></select></div>
+        <div class="field"><label for="weekSelect">주차</label><select id="weekSelect"></select></div>
       </div>
       <nav class="mode-nav" aria-label="학습 모드">
         <button class="mode-btn active" data-mode="overview">한눈에 보기</button>
         <button class="mode-btn" data-mode="learn">학습하기</button>
         <button class="mode-btn" data-mode="quiz">퀴즈</button>
       </nav>
-      <button id="exportOpenBtn" class="export-open-btn" type="button">
+      <button id="exportOpenBtn" class="export-open-btn" type="button" disabled>
         <span class="export-open-icon" aria-hidden="true">↓</span>
         <span><strong>학습자료 저장</strong><small>PDF · DOCX · PNG · JPG</small></span>
       </button>
@@ -59,14 +61,14 @@
     </aside>
 
     <section class="content-area">
-      <div id="loading" class="loading">자료를 불러오는 중…</div>
-      <div id="content"></div>
+      <div id="loading" class="loading" role="status">자료를 불러오는 중…</div>
+      <div id="content" tabindex="-1" aria-busy="true"></div>
     </section>
   </main>
 
   <div id="exportModal" class="export-modal" hidden>
     <div class="export-modal-backdrop" data-export-close></div>
-    <section class="export-dialog" role="dialog" aria-modal="true" aria-labelledby="exportTitle">
+    <section class="export-dialog" role="dialog" aria-modal="true" aria-labelledby="exportTitle" tabindex="-1">
       <button class="export-close" type="button" data-export-close aria-label="닫기">×</button>
       <div class="export-dialog-head">
         <span class="export-kicker">DOWNLOAD</span>
@@ -95,10 +97,27 @@
     </section>
   </div>
 
-  <template id="toastTemplate"><div class="toast"></div></template>
+  <div id="shareModal" class="export-modal share-modal" hidden>
+    <div class="export-modal-backdrop" data-share-close></div>
+    <section class="export-dialog share-dialog" role="dialog" aria-modal="true" aria-labelledby="shareTitle" aria-describedby="shareDescription" tabindex="-1">
+      <button class="export-close" type="button" data-share-close aria-label="공유 창 닫기">×</button>
+      <div class="export-dialog-head">
+        <span class="export-kicker">SHARE</span>
+        <h2 id="shareTitle">이번 주 학습자료 공유</h2>
+        <p id="shareDescription">링크를 보내면 이 주차의 학습자료가 바로 열립니다.</p>
+      </div>
+      <div class="share-preview"><span id="shareWeek" class="share-week"></span><strong id="shareLessonTitle"></strong><small id="shareLessonContext"></small></div>
+      <label class="export-field" for="shareUrl"><span>공유 링크</span></label>
+      <input id="shareUrl" class="share-url" type="text" inputmode="url" readonly spellcheck="false" />
+      <p id="shareStatus" class="export-status" role="status" aria-live="polite"></p>
+      <button id="shareCopyBtn" class="next-btn share-copy-btn" type="button">링크 복사</button>
+      <p class="share-hint">복사한 링크를 카카오톡·문자·이메일 등에 붙여 넣으세요.</p>
+    </section>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
   <script defer src="vendor/jszip.min.js?v=9.0.0"></script>
   <script defer src="hll-dom-capture.js?v=9.0.0"></script>
   <script defer src="hll-export.js?v=9.0.0"></script>
-  <script defer src="app.js?v=9.0.1"></script>
+  <script defer src="app.js?v=10.0.0"></script>
 </body>
 </html>

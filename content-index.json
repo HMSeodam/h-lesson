@@ -51,6 +51,15 @@
       "school": "동명대학교",
       "year": "2026",
       "semester": "2학기",
+      "course": "동양사상과 인성",
+      "week": "07",
+      "title": "선적의 전승과 수행의 지도",
+      "lessonPath": "content/동명대학교/2026/2학기/동양사상과 인성/week07/lesson.json"
+    },
+    {
+      "school": "동명대학교",
+      "year": "2026",
+      "semester": "2학기",
       "course": "선수행의실제",
       "week": "02",
       "title": "대학·인문학·역사와 문헌학",
@@ -91,6 +100,15 @@
       "week": "06",
       "title": "미래의 인문학과 지관 수행",
       "lessonPath": "content/동명대학교/2026/2학기/선수행의실제/week06/lesson.json"
+    },
+    {
+      "school": "동명대학교",
+      "year": "2026",
+      "semester": "2학기",
+      "course": "선수행의실제",
+      "week": "07",
+      "title": "지관 수행과 AI 시대 문헌 연구",
+      "lessonPath": "content/동명대학교/2026/2학기/선수행의실제/week07/lesson.json"
     }
   ]
 }
