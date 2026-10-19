@@ -60,6 +60,15 @@
       "school": "동명대학교",
       "year": "2026",
       "semester": "2학기",
+      "course": "동양사상과 인성",
+      "week": "08",
+      "title": "휴강 안내 · 중간고사",
+      "lessonPath": "content/동명대학교/2026/2학기/동양사상과 인성/week08/lesson.json"
+    },
+    {
+      "school": "동명대학교",
+      "year": "2026",
+      "semester": "2학기",
       "course": "선수행의실제",
       "week": "02",
       "title": "대학·인문학·역사와 문헌학",
@@ -109,6 +118,15 @@
       "week": "07",
       "title": "지관 수행과 AI 시대 문헌 연구",
       "lessonPath": "content/동명대학교/2026/2학기/선수행의실제/week07/lesson.json"
+    },
+    {
+      "school": "동명대학교",
+      "year": "2026",
+      "semester": "2학기",
+      "course": "선수행의실제",
+      "week": "08",
+      "title": "휴강 안내 · 중간고사",
+      "lessonPath": "content/동명대학교/2026/2학기/선수행의실제/week08/lesson.json"
     }
   ]
 }
