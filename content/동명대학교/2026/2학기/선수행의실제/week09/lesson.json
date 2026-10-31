@@ -1,1 +1,272 @@
-
+{
+  "schemaVersion": "2.0",
+  "metadata": {
+    "school": "동명대학교",
+    "year": "2026",
+    "semester": "2학기",
+    "course": "선수행의실제",
+    "week": "[확인 필요]",
+    "title": "일상 속의 지와 관의 병행",
+    "sourceSection": "교재 90쪽 ‘만약 앉은 자리에서 일어나’부터 91쪽 ‘명상의 장애’ 직전까지; 100쪽 ‘그러나 이 지관 가운데’부터 101쪽 ‘이상의 설명을 정리하면’ 직전까지",
+    "sourceTitle": "선수행의실제(교재)",
+    "sourceAuthor": "한민수(서담)"
+  },
+  "design": {
+    "tone": "calm",
+    "variationPolicy": "일상 수행의 과정, 수행의 성취와 장애, 지관의 비교, 시간별 관찰을 서로 다른 화면으로 구성한다.",
+    "recommendedVariants": {
+      "HERO": ["calm", "poster", "editorial"],
+      "COMPARE": ["dual-lens", "debate", "stacked-contrast", "mirror"],
+      "CHECKPOINT": ["soft", "focus", "compact"],
+      "FLOW": ["path", "ladder", "ribbon"],
+      "CONCEPT_MAP": ["orbit", "constellation", "hub"],
+      "SPECTRUM": ["axis", "thermometer", "steps"],
+      "RECAP": ["magazine", "checklist", "bento"]
+    }
+  },
+  "lesson": {
+    "coreQuestion": "좌선에서 얻은 수행을 어떻게 일상으로 이어 가며, 왜 지와 관을 함께 행해야 할까요?",
+    "oneSentence": "일상에서도 자아와 사물을 실체로 붙잡지 않고 관찰하며, 지의 안주에만 머물지 않고 관을 함께 행해야 합니다.",
+    "estimatedMinutes": 15
+  },
+  "blocks": [
+    {
+      "id": "hero-01",
+      "type": "HERO",
+      "variant": "editorial",
+      "eyebrow": "선수행의실제 · 지관 수행",
+      "title": "앉은 자리 너머의 지와 관",
+      "subtitle": "일상 속 관찰에서 지관의 병행까지, 수행이 이어지는 방식을 살펴봅니다.",
+      "coreQuestion": "좌선에서 일어난 뒤에도 수행은 어떻게 계속될까요?",
+      "sourceRef": "교재·PDF 90~91쪽, 100~101쪽 중 지정 구간"
+    },
+    {
+      "id": "bigidea-01",
+      "type": "BIG_IDEA",
+      "variant": "poster",
+      "title": "일상에서도 관찰은 이어진다",
+      "message": "수행은 좌선하는 시간에만 한정되지 않습니다.",
+      "sourceRef": "교재·PDF 90쪽 ‘만약 앉은 자리에서 일어나’ 이후",
+      "claim": "오가며 행동할 때에도 대상과 마음을 실체로 붙잡지 않고 관찰합니다.",
+      "explain": "일상에서 분별이 생겨도 불생불멸의 진리 세계를 생각하며 관찰을 이어 갑니다.",
+      "evidence": [
+        "대상 세계와 마음 모두 붙잡을 수 있는 것이 없다고 이해합니다.",
+        "자아와 사물에 대한 집착의 허망함을 살핍니다.",
+        "마음도 실체로 여기지 않으며 일상에서 계속 관찰합니다."
+      ]
+    },
+    {
+      "id": "flow-01",
+      "type": "FLOW",
+      "variant": "path",
+      "title": "일상의 관찰이 무르익는 과정",
+      "message": "관찰을 지속하는 과정이 지의 성취로 이어집니다.",
+      "sourceRef": "교재·PDF 90쪽 지정 구간",
+      "steps": [
+        {"kicker": "STEP 1", "title": "좌선에서 일어나기", "text": "오가며 여러 행동을 하는 일상으로 돌아옵니다."},
+        {"kicker": "STEP 2", "title": "붙잡음을 살피기", "text": "자아·사물·마음을 실체로 여기는 집착을 관찰합니다."},
+        {"kicker": "STEP 3", "title": "관찰을 지속하기", "text": "불생불멸의 진리 세계를 생각하며 계속 관찰합니다."},
+        {"kicker": "STEP 4", "title": "지의 성취", "text": "수행이 무르익어 마음이 진여 그 자체에 머무릅니다."}
+      ]
+    },
+    {
+      "id": "bento-01",
+      "type": "BENTO_SUMMARY",
+      "variant": "bento",
+      "title": "진여에 가까워질 때의 변화",
+      "message": "지혜·번뇌·신심의 변화를 함께 살펴봅니다.",
+      "sourceRef": "교재·PDF 91쪽 ‘명상의 장애’ 직전 구간",
+      "items": [
+        {"kicker": "지혜", "title": "날카로워지는 지혜", "text": "진여와 본각을 일체로 보므로 진여에 가까워질수록 지혜의 작용이 날카로워집니다.", "size": "wide"},
+        {"kicker": "삼매", "title": "번뇌가 일어나지 않음", "text": "진여삼매에 들면 번뇌가 일어나는 일이 사라진다고 설명합니다.", "size": "small"},
+        {"kicker": "구별", "title": "복과 단의 차이", "text": "유식에서 복은 번뇌 작용의 억제이며, 단은 남아 있는 번뇌의 종자를 끊는 것입니다.", "size": "small"},
+        {"kicker": "신심", "title": "물러나지 않는 믿음", "text": "진여와 삼보에 대한 믿음이 확립되어 물러나지 않는 불퇴를 성취합니다.", "size": "wide"}
+      ]
+    },
+    {
+      "id": "misconception-01",
+      "type": "MISCONCEPTION",
+      "variant": "flip",
+      "title": "수행을 막는 태도 바로 보기",
+      "message": "교재는 수행의 성취와 함께 그 장애도 설명합니다.",
+      "sourceRef": "교재·PDF 91쪽 ‘명상의 장애’ 직전 구간",
+      "items": [
+        {"misconception": "아만은 힘든 일을 참아 내는 인내입니다.", "correction": "여기서 아만은 자아가 있다는 생각에 빠져 자신을 믿고 교만한 마음을 갖는 것입니다."},
+        {"misconception": "교만하거나 게을러도 지의 성취에는 영향이 없습니다.", "correction": "교재는 의심·비방·무거운 죄업의 장애와 함께 교만·게으름을 지의 성취를 막는 조건으로 듭니다."}
+      ]
+    },
+    {
+      "id": "checkpoint-01",
+      "type": "CHECKPOINT",
+      "variant": "soft",
+      "sourceRef": "교재·PDF 91쪽 ‘명상의 장애’ 직전 구간",
+      "question": "앞의 설명에 비추어 지의 성취를 가로막는 태도는 무엇인가요?",
+      "choices": ["일상에서도 관찰을 지속하는 태도", "마음을 실체로 붙잡지 않는 태도", "자신을 대단하게 여기며 게을리하는 태도", "진여와 삼보에 대한 믿음을 확립하는 태도"],
+      "answer": 2,
+      "explanation": "교만과 게으름은 지의 수행을 성취할 수 없게 하는 조건으로 제시됩니다."
+    },
+    {
+      "id": "compare-01",
+      "type": "COMPARE",
+      "variant": "dual-lens",
+      "title": "지에만 머물기와 지관의 병행",
+      "message": "교재가 경계하는 것은 지 자체가 아니라 지만을 수행하는 것입니다.",
+      "sourceRef": "교재·PDF 100쪽 ‘그러나 이 지관 가운데’ 이후",
+      "left": {
+        "title": "지만 수행할 때",
+        "tag": "안락함에 머무는 문제",
+        "items": [
+          {"label": "활동", "value": "마음이 활동하지 않게 됩니다."},
+          {"label": "의욕", "value": "수행 의욕이 사라져 게으른 마음이 생길 수 있습니다."},
+          {"label": "자비", "value": "중생을 구제하려는 마음이 없어질 수 있습니다."}
+        ]
+      },
+      "right": {
+        "title": "지와 관을 함께",
+        "tag": "양쪽을 모두 행하기",
+        "items": [
+          {"label": "방향", "value": "지뿐 아니라 관도 행하는 것이 중요합니다."},
+          {"label": "지속", "value": "관을 반복하고 지속하여 수습합니다."},
+          {"label": "관찰", "value": "변화하는 현상과 그 실체 없음을 관찰합니다."}
+        ]
+      }
+    },
+    {
+      "id": "term-01",
+      "type": "TERM_DECK",
+      "variant": "flash",
+      "title": "관찰의 출발점인 변화",
+      "message": "변화하는 현상과 마음에서 관찰을 시작합니다.",
+      "sourceRef": "교재·PDF 100쪽 지정 구간",
+      "terms": [
+        {"term": "수습", "original": "修習", "definition": "수행을 지속하고 반복해 나가는 것을 뜻합니다."},
+        {"term": "유위법", "original": "有爲法", "definition": "생겨나 잠시 형태를 유지하다 변화하고 사라지는 현상과 사물입니다."},
+        {"term": "제행무상", "original": "諸行無常", "definition": "유위의 제법은 본체를 계속 유지하지 못하며 마음의 작용도 순간순간 생멸합니다."},
+        {"term": "고", "original": "苦", "definition": "바람과 이상조차 유지하지 못하는 세계가 자기 뜻대로 되지 않는 괴로움임을 관찰합니다."}
+      ]
+    },
+    {
+      "id": "timeline-01",
+      "type": "TIMELINE",
+      "variant": "rail",
+      "title": "과거·현재·미래의 관찰",
+      "message": "세 시간대의 비유는 제법의 실체 없음을 가리킵니다.",
+      "sourceRef": "교재·PDF 100쪽 하단~101쪽 첫 문단",
+      "items": [
+        {"date": "과거", "title": "꿈과 같음", "description": "이미 사라져 현실적인 존재가 아니며 실재성이 희박하다고 관찰합니다."},
+        {"date": "현재", "title": "번갯불과 같음", "description": "한순간에 사라져 버리는, 실체를 갖지 않는 것으로 관찰합니다."},
+        {"date": "미래", "title": "구름과 같음", "description": "갑자기 일었다가 어디론가 가 버리듯 본체를 갖지 않는 것으로 관찰합니다."}
+      ]
+    },
+    {
+      "id": "checkpoint-02",
+      "type": "CHECKPOINT",
+      "variant": "focus",
+      "sourceRef": "교재·PDF 100~101쪽 지정 구간",
+      "question": "과거·현재·미래를 설명한 비유의 연결로 맞는 것은 무엇인가요?",
+      "choices": ["과거는 구름, 현재는 꿈, 미래는 번갯불", "과거는 꿈, 현재는 번갯불, 미래는 구름", "과거는 번갯불, 현재는 구름, 미래는 꿈", "과거는 꿈, 현재는 구름, 미래는 번갯불"],
+      "answer": 1,
+      "explanation": "과거는 꿈, 현재는 번갯불, 미래는 구름에 비유되며 모두 실체 없음을 관찰하게 합니다."
+    },
+    {
+      "id": "bento-02",
+      "type": "BENTO_SUMMARY",
+      "variant": "bento",
+      "title": "실체 없음과 몸의 관찰",
+      "message": "시간에 걸친 관찰은 공·무아와 신체의 관찰로 이어집니다.",
+      "sourceRef": "교재·PDF 101쪽 ‘이상의 설명을 정리하면’ 직전 구간",
+      "items": [
+        {"kicker": "공", "title": "모든 존재의 공", "text": "과거·현재·미래에 걸쳐 각각 실재성이 없음을 관찰합니다.", "size": "wide"},
+        {"kicker": "무아", "title": "실체적인 나 없음", "text": "실체로서의 나가 없다는 인무아·법무아를 관찰합니다.", "size": "small"},
+        {"kicker": "신체", "title": "몸의 더러움", "text": "생명체의 신체에 더럽거나 오염된 것이 있음을 보며 즐거워할 만한 것으로 보지 않습니다.", "size": "small"}
+      ]
+    },
+    {
+      "id": "recap-01",
+      "type": "RECAP",
+      "variant": "checklist",
+      "title": "지의 성취와 관의 병행",
+      "message": "일상에서의 지속과 관찰의 방향을 함께 기억합니다.",
+      "sourceRef": "교재·PDF 90~91쪽, 100~101쪽 중 지정 구간",
+      "mustRemember": [
+        "일상에서도 자아·사물·마음을 실체로 붙잡지 않고 관찰을 지속합니다.",
+        "진여에 가까워질수록 지혜가 날카로워지고 신심이 확립되며, 교만·게으름은 수행을 막습니다.",
+        "지의 안락함에만 머물면 의욕과 자비에서 멀어질 수 있으므로 관도 함께 행합니다.",
+        "변화하는 현상과 마음, 세 시간대의 실체 없음, 무아와 몸의 더러움을 관찰합니다."
+      ],
+      "keywords": ["일상 관찰", "진여", "신심", "지관", "유위법", "무아"],
+      "coreRelation": "일상의 관찰을 지속하여 지를 성취하되, 지에만 머물지 않고 관도 함께 행합니다."
+    }
+  ],
+  "finalQuiz": {
+    "title": "종합 퀴즈 · 일상 속 지관",
+    "questions": [
+      {
+        "id": "q01", "type": "multiple_choice", "category": "concept", "variant": "concept",
+        "question": "좌선에서 일어나 일상생활을 할 때 권하는 수행은 무엇인가요?",
+        "choices": ["분별이 생기면 일상의 모든 행동을 중단하기", "대상은 버리되 마음은 고정된 실체로 붙잡기", "좌선 밖에서는 관찰을 모두 중지하기", "대상과 마음을 실체로 붙잡지 않고 관찰하기"],
+        "answer": 3,
+        "explanation": "대상 세계와 마음 모두 붙잡을 것이 없음을 이해하고 일상에서도 계속 관찰하라고 권합니다.",
+        "relatedBlockId": "bigidea-01"
+      },
+      {
+        "id": "q02", "type": "multiple_choice", "category": "flow", "variant": "flow",
+        "question": "일상의 관찰이 지속되어 무르익을 때의 결과로 맞는 것은 무엇인가요?",
+        "choices": ["마음이 진여 그 자체에 머물러 지가 성취됩니다.", "마음이 영원한 소유물로 확정됩니다.", "자아에 대한 집착이 수행의 목표가 됩니다.", "지관 가운데 관은 더 이상 필요하지 않습니다."],
+        "answer": 0,
+        "explanation": "90쪽은 관찰이 무르익어 마음이 진여에 머물 때 지의 성취에 도달한다고 설명합니다.",
+        "relatedBlockId": "flow-01"
+      },
+      {
+        "id": "q03", "type": "multiple_choice", "category": "compare", "variant": "compare",
+        "question": "교재가 설명하는 유식의 복과 단의 구별은 무엇인가요?",
+        "choices": ["복은 종자를 끊음, 단은 번뇌 작용의 억제", "복과 단은 모두 신체의 더러움에 대한 관찰", "복은 번뇌 작용의 억제, 단은 종자를 끊음", "복과 단은 번뇌의 종자가 없다는 같은 뜻"],
+        "answer": 2,
+        "explanation": "복은 현실의 번뇌 작용이 억제된 상태이며, 단은 남아 있는 번뇌의 종자를 끊고 멸하는 것을 가리킵니다.",
+        "relatedBlockId": "bento-01"
+      },
+      {
+        "id": "q04", "type": "multiple_choice", "category": "misconception", "variant": "misconception",
+        "question": "이 구간의 아만에 대한 설명으로 맞는 것은 무엇인가요?",
+        "choices": ["일상에서도 관찰을 지속하는 끈기입니다.", "자아가 있다는 생각에 빠져 교만해지는 것입니다.", "힘든 상황을 참고 견디는 인내입니다.", "중생을 구제하려는 자비로운 마음입니다."],
+        "answer": 1,
+        "explanation": "교재는 아만을 인내와 구분하며, 자아에 대한 생각과 교만한 마음으로 설명합니다.",
+        "relatedBlockId": "misconception-01"
+      },
+      {
+        "id": "q05", "type": "multiple_choice", "category": "cause_effect", "variant": "cause-effect",
+        "question": "지뿐 아니라 관도 행해야 한다고 설명하는 이유는 무엇인가요?",
+        "choices": ["지가 지혜와 신심을 반드시 없애기 때문입니다.", "관을 행하면 미래의 현상이 영원해지기 때문입니다.", "중생 구제의 마음을 없애는 것이 목표이기 때문입니다.", "지에만 머물면 의욕과 자비에서 멀어질 수 있기 때문입니다."],
+        "answer": 3,
+        "explanation": "지의 안락함에 이끌려 좌선만 하면 수행 의욕이나 중생 구제의 마음을 잃을 수 있다고 경계합니다.",
+        "relatedBlockId": "compare-01"
+      },
+      {
+        "id": "q06", "type": "multiple_choice", "category": "author_claim", "variant": "concept",
+        "question": "과거·현재·미래의 비유가 공통으로 가리키는 관찰은 무엇인가요?",
+        "choices": ["세 시간대의 제법은 고정된 실체를 갖지 않습니다.", "과거의 존재만 영원한 실체를 갖습니다.", "현재의 제법은 변하지 않고 유지됩니다.", "미래의 제법은 이미 고정된 본체를 갖습니다."],
+        "answer": 0,
+        "explanation": "꿈·번갯불·구름의 비유는 과거·현재·미래 모두 실체를 갖지 않음을 보여 줍니다.",
+        "relatedBlockId": "timeline-01"
+      },
+      {
+        "id": "q07", "type": "short_answer", "category": "keyword", "variant": "short",
+        "question": "생겨나 잠시 형태를 유지하다 변화하고 사라지는 현상과 사물을 무엇이라고 하나요?",
+        "acceptableAnswers": ["유위법", "有爲法"],
+        "requiredKeywords": ["유위법"],
+        "answer_text": "유위법(有爲法)",
+        "explanation": "교재는 유위법이 본체를 계속 유지하지 못하며 짧은 시간에 변화하거나 사라진다고 설명합니다.",
+        "relatedBlockId": "term-01"
+      },
+      {
+        "id": "q08", "type": "short_answer", "category": "keyword", "variant": "short",
+        "question": "실체로서의 나가 없음을 가리키며 인무아·법무아로 제시된 개념은 무엇인가요?",
+        "acceptableAnswers": ["무아", "無我", "인무아·법무아", "인무아와 법무아"],
+        "requiredKeywords": ["무아"],
+        "answer_text": "무아(無我)",
+        "explanation": "101쪽 지정 구간은 모든 존재가 공이며 실체적인 나가 없다는 무아를 관찰한다고 설명합니다.",
+        "relatedBlockId": "bento-02"
+      }
+    ]
+  }
+}
