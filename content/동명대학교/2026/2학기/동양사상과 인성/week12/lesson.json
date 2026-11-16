@@ -1,1 +1,508 @@
-
+{
+  "schemaVersion": "2.0",
+  "metadata": {
+    "school": "동명대학교",
+    "year": "2026",
+    "semester": "2학기",
+    "course": "동양사상과 인성",
+    "week": "[확인 필요]",
+    "title": "마조에서 대혜·굉지까지: 선의 전승과 사상",
+    "sourceSection": "제2장. 오늘날까지 이어지는 선종의 역사와 사상 > 중국 선종 조사의 소전집 ~ 중국 선종사의 특수성 / 교재 PDF 44쪽 「마조도일」부터 49쪽 「다음 세 가지를 주장한다」까지",
+    "sourceTitle": "임제종・황벽종 종학개론, 문자에서 시작하는 선(文字からはじめる禅)",
+    "sourceAuthor": "공익재단법인 선문화연구소 편집・발행"
+  },
+  "design": {
+    "tone": "calm",
+    "variationPolicy": "학습 흐름 안에서 같은 화면 형식이 반복되지 않도록 block type과 variant를 섞는다. COMPARE만 반복하지 않는다.",
+    "recommendedVariants": {
+      "HERO": [
+        "calm",
+        "poster",
+        "editorial"
+      ],
+      "COMPARE": [
+        "dual-lens",
+        "debate",
+        "stacked-contrast",
+        "mirror"
+      ],
+      "CHECKPOINT": [
+        "soft",
+        "focus",
+        "compact"
+      ],
+      "FLOW": [
+        "path",
+        "ladder",
+        "ribbon"
+      ],
+      "CONCEPT_MAP": [
+        "orbit",
+        "constellation",
+        "hub"
+      ],
+      "SPECTRUM": [
+        "axis",
+        "thermometer",
+        "steps"
+      ],
+      "RECAP": [
+        "magazine",
+        "checklist",
+        "bento"
+      ]
+    }
+  },
+  "lesson": {
+    "coreQuestion": "마조 이후 선의 가르침은 어떤 조사들을 통해 전해졌으며, 그 계보를 역사와 사상으로 어떻게 읽어야 할까?",
+    "oneSentence": "마조의 일상적 선은 여러 조사와 수행 방식으로 이어졌고, 교재는 전등 설화를 역사적 사실과 구분하여 그 사상적 의미를 읽도록 이끈다.",
+    "estimatedMinutes": 15
+  },
+  "blocks": [
+    {
+      "id": "hero-01",
+      "type": "HERO",
+      "variant": "editorial",
+      "eyebrow": "ZEN MASTERS · TEXTBOOK 44–49",
+      "title": "선은 어떻게 전해졌는가",
+      "subtitle": "마조·백장·황벽·임제에서 원오·대혜·굉지까지, 조사와 수행법의 연결을 읽는다.",
+      "coreQuestion": "전해 내려온 계보는 역사인 동시에 어떤 사상을 말하는가?"
+    },
+    {
+      "id": "timeline-01",
+      "type": "TIMELINE",
+      "variant": "rail",
+      "title": "마조에서 임제까지, 네 대의 법맥",
+      "message": "교재가 제시한 스승과 제자의 전승을 따라간다.",
+      "sourceRef": "교재 PDF 44~46쪽",
+      "items": [
+        {
+          "date": "709–788",
+          "title": "마조도일",
+          "description": "남악회양의 법을 이었으며 홍주종을 열었다."
+        },
+        {
+          "date": "749–814",
+          "title": "백장회해",
+          "description": "마조에게 사사하고 선원 청규를 정비했다고 전한다."
+        },
+        {
+          "date": "?–850년 무렵",
+          "title": "황벽희운",
+          "description": "백장의 법을 이었고, 배휴가 설법을 기록했다."
+        },
+        {
+          "date": "?–867",
+          "title": "임제의현",
+          "description": "황벽의 법을 이어 임제종의 조사가 되었다."
+        }
+      ]
+    },
+    {
+      "id": "bigidea-01",
+      "type": "BIG_IDEA",
+      "variant": "poster",
+      "title": "마조: 마음과 일상의 선",
+      "message": "마조의 가르침을 대표하는 두 문장을 연결해 읽는다.",
+      "sourceRef": "교재 PDF 44~45쪽",
+      "claim": "마음 그대로가 부처이고, 평상한 마음 그대로가 도이다.",
+      "explain": "교재는 ‘즉심시불’과 ‘평상심시도’를 마조선의 특징을 드러내는 말로 제시한다.",
+      "evidence": [
+        "마조는 남악회양에게 참학해 남종선을 계승했다.",
+        "홍주 개원사에 주지하여 그 일파가 홍주종이라 불렸다.",
+        "제자 백장회해·남천보원 등이 선풍을 이어 갔다."
+      ]
+    },
+    {
+      "id": "checkpoint-01",
+      "type": "CHECKPOINT",
+      "variant": "soft",
+      "sourceRef": "교재 PDF 45쪽",
+      "question": "마조선의 특징을 나타내는 구절은?",
+      "choices": [
+        "일일부작 일일불식",
+        "즉심시불·평상심시도",
+        "무위진인",
+        "조주무자"
+      ],
+      "answer": 1,
+      "explanation": "교재는 ‘즉심시불’과 ‘평상심시도’를 마조선의 대표 표현으로 든다."
+    },
+    {
+      "id": "bento-01",
+      "type": "BENTO_SUMMARY",
+      "variant": "bento",
+      "title": "백장·황벽·임제의 가르침",
+      "message": "마조 이후 세 조사가 남긴 제도·기록·접화의 특징을 본다.",
+      "sourceRef": "교재 PDF 45~46쪽",
+      "items": [
+        {
+          "kicker": "선원 규범",
+          "title": "백장회해",
+          "text": "청규를 정비했다고 전하며, 원본 『백장청규』는 현존하지 않는다.",
+          "size": "wide"
+        },
+        {
+          "kicker": "수행과 노동",
+          "title": "일일부작 일일불식",
+          "text": "백장의 말로 전하는 “하루 일하지 않으면 하루 먹지 않는다”.",
+          "size": "small"
+        },
+        {
+          "kicker": "어록",
+          "title": "황벽희운",
+          "text": "배휴가 기록한 설법이 『전심법요』와 『완릉록』으로 전한다.",
+          "size": "small"
+        },
+        {
+          "kicker": "접화와 깨달음",
+          "title": "임제의현",
+          "text": "황벽과 대우를 거쳐 깨달았으며 ‘무위진인’과 ‘할’로 알려졌다.",
+          "size": "wide"
+        }
+      ]
+    },
+    {
+      "id": "term-01",
+      "type": "TERM_DECK",
+      "variant": "flash",
+      "title": "덕산·조주·양기, 세 조사",
+      "message": "후대에 전승된 접화 방식과 문파의 특징을 구분한다.",
+      "sourceRef": "교재 PDF 46~47쪽",
+      "terms": [
+        {
+          "term": "덕산선감",
+          "original": "徳山宣鑑",
+          "definition": "『금강경』에 정통했고, 방망이로 학인을 지도하는 ‘덕산의 방’으로 알려졌다."
+        },
+        {
+          "term": "조주종심",
+          "original": "趙州従諗",
+          "definition": "남천보원을 시봉했고 ‘조주무자’·‘조주끽다거’ 등 여러 공안이 전해진다."
+        },
+        {
+          "term": "양기방회",
+          "original": "楊岐方会",
+          "definition": "임제종 양기파의 조사로, 황룡파와 함께 임제종의 큰 문파를 이루었다."
+        }
+      ]
+    },
+    {
+      "id": "concept-01",
+      "type": "CONCEPT_MAP",
+      "variant": "constellation",
+      "title": "『벽암록』에서 간화선으로",
+      "message": "설두의 공안집, 원오의 주석, 대혜의 공안 수행을 연결한다.",
+      "sourceRef": "교재 PDF 47~48쪽",
+      "nodes": [
+        {
+          "id": "center",
+          "role": "center",
+          "label": "원오극근",
+          "description": "『설두송고』에 수시·착어·평창을 붙이고 대혜에게 법을 전했다."
+        },
+        {
+          "id": "n1",
+          "role": "left",
+          "label": "『설두송고』",
+          "description": "설두중현이 100칙을 뽑아 송을 붙인 책."
+        },
+        {
+          "id": "n2",
+          "role": "right",
+          "label": "『벽암록』",
+          "description": "원오의 주석을 더해 성립한 대표 공안집."
+        },
+        {
+          "id": "n3",
+          "role": "bottom",
+          "label": "대혜종고",
+          "description": "원오의 법을 잇고 공안으로 지도하며 간화선을 확립했다."
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "center",
+          "relation": "주석의 바탕"
+        },
+        {
+          "from": "center",
+          "to": "n2",
+          "relation": "수시·착어·평창"
+        },
+        {
+          "from": "center",
+          "to": "n3",
+          "relation": "법의 전승"
+        }
+      ]
+    },
+    {
+      "id": "checkpoint-02",
+      "type": "CHECKPOINT",
+      "variant": "focus",
+      "sourceRef": "교재 PDF 47쪽",
+      "question": "원오가 『설두송고』에 주석을 더해 만든 책은?",
+      "choices": [
+        "『조주록』",
+        "『전심법요』",
+        "『벽암록』",
+        "『굉지선사광록』"
+      ],
+      "answer": 2,
+      "explanation": "원오는 설두의 100칙에 수시·착어·평창을 덧붙여 『벽암록』을 이루었다."
+    },
+    {
+      "id": "compare-01",
+      "type": "COMPARE",
+      "variant": "dual-lens",
+      "title": "대혜의 간화선과 굉지의 묵조선",
+      "message": "교재는 두 수행 경향을 서로 뚜렷하게 대조한다.",
+      "sourceRef": "교재 PDF 48쪽",
+      "left": {
+        "title": "대혜종고",
+        "tag": "공안·간화선",
+        "items": [
+          {
+            "label": "계통",
+            "value": "임제종 양기파, 원오극근의 법을 이음"
+          },
+          {
+            "label": "수행 초점",
+            "value": "「조주무자」 등 공안으로 수행자를 지도"
+          },
+          {
+            "label": "비판",
+            "value": "깨달음을 가볍게 여기는 묵조선 경향을 ‘사선’이라 비판"
+          }
+        ]
+      },
+      "right": {
+        "title": "굉지정각",
+        "tag": "좌선·묵조선",
+        "items": [
+          {
+            "label": "계통",
+            "value": "조동종 승려, 굉지파의 조사"
+          },
+          {
+            "label": "수행 초점",
+            "value": "좌선을 중시하는 묵조선 선풍"
+          },
+          {
+            "label": "저술",
+            "value": "「천동백칙송고」는 『종용록』의 바탕이 됨"
+          }
+        ]
+      }
+    },
+    {
+      "id": "flow-01",
+      "type": "FLOW",
+      "variant": "ribbon",
+      "title": "전통이 설명한 선의 전승",
+      "message": "역사적 사실로 확정된 사건이 아니라 교재가 소개하는 ‘전통설’이다.",
+      "sourceRef": "교재 PDF 48~49쪽 「다음 세 가지를 주장한다」 이전",
+      "steps": [
+        {
+          "kicker": "1",
+          "title": "석존의 염화",
+          "text": "영취산에서 석존이 꽃을 들어 보인다는 이야기."
+        },
+        {
+          "kicker": "2",
+          "title": "가섭의 미소와 인가",
+          "text": "마하가섭이 미소 지으며 깨달음을 인정받았다는 이야기."
+        },
+        {
+          "kicker": "3",
+          "title": "이심전심의 계보",
+          "text": "법이 대대로 전해져 제28대 보리달마에 이른다는 전승."
+        },
+        {
+          "kicker": "4",
+          "title": "중국에서의 전수",
+          "text": "달마가 중국에 와 제자 혜가에게 전했다는 전승."
+        }
+      ]
+    },
+    {
+      "id": "misconception-01",
+      "type": "MISCONCEPTION",
+      "variant": "flip",
+      "title": "전등 설화는 역사일까?",
+      "message": "교재는 설화의 역사성에 비판적이지만 사상적 의미는 인정한다.",
+      "sourceRef": "교재 PDF 48~49쪽 「다음 세 가지를 주장한다」 이전",
+      "items": [
+        {
+          "misconception": "염화미소와 28조의 전승을 검증된 역사적 사실로 읽는다.",
+          "correction": "교재는 그 전통설을 역사적 사실로 보기 어렵다고 분명히 말한다."
+        },
+        {
+          "misconception": "설화가 창작이라면 선종사에서 아무 가치도 없다.",
+          "correction": "교재는 역사적 사실이 아니어도 선사상을 표현하는 가치가 남는다고 본다."
+        }
+      ]
+    },
+    {
+      "id": "recap-01",
+      "type": "RECAP",
+      "variant": "checklist",
+      "title": "오늘의 정리",
+      "message": "조사의 법맥과 수행의 차이를 읽고, 전승 설화를 비판적으로 이해한다.",
+      "sourceRef": "교재 PDF 44쪽 「마조도일」~49쪽 지정 문장",
+      "mustRemember": [
+        "마조의 ‘즉심시불·평상심시도’는 홍주종의 선풍을 대표한다.",
+        "백장·황벽·임제는 청규·어록·접화의 특징을 이어 갔다.",
+        "원오의 『벽암록』, 대혜의 간화선, 굉지의 묵조선은 구분해야 한다.",
+        "전통 전등 설화는 역사적 사실과 사상적 의미를 나누어 읽는다."
+      ],
+      "keywords": [
+        "마조",
+        "청규",
+        "무위진인",
+        "벽암록",
+        "간화선",
+        "묵조선"
+      ],
+      "coreRelation": "마조의 가르침 → 조사들의 법맥 → 공안과 좌선의 수행 → 전등 설화의 사상적 독해"
+    }
+  ],
+  "finalQuiz": {
+    "title": "교재 44~49쪽 종합 퀴즈",
+    "questions": [
+      {
+        "id": "q01",
+        "type": "multiple_choice",
+        "category": "concept",
+        "variant": "concept",
+        "question": "마조도일의 선풍을 대표하는 두 표현은?",
+        "choices": [
+          "무위진인·할",
+          "조주무자·끽다거",
+          "즉심시불·평상심시도",
+          "일일부작·일일불식"
+        ],
+        "answer": 2,
+        "explanation": "교재는 ‘즉심시불’과 ‘평상심시도’를 마조선의 핵심 표현으로 든다.",
+        "relatedBlockId": "bigidea-01"
+      },
+      {
+        "id": "q02",
+        "type": "multiple_choice",
+        "category": "cause_effect",
+        "variant": "classification",
+        "question": "청규를 정비하고 ‘일일부작 일일불식’으로 알려진 조사는?",
+        "choices": [
+          "백장회해",
+          "황벽희운",
+          "임제의현",
+          "덕산선감"
+        ],
+        "answer": 0,
+        "explanation": "백장은 청규를 정비했다고 전하며 작무의 중요성을 설한 말로 유명하다.",
+        "relatedBlockId": "bento-01"
+      },
+      {
+        "id": "q03",
+        "type": "multiple_choice",
+        "category": "source",
+        "variant": "classification",
+        "question": "황벽희운의 설법을 전하는 두 책은?",
+        "choices": [
+          "『조주록』·『무문관』",
+          "『임제록』·『선원청규』",
+          "『벽암록』·『종용록』",
+          "『전심법요』·『완릉록』"
+        ],
+        "answer": 3,
+        "explanation": "두 어록은 배휴가 기록한 황벽의 설법을 중심으로 전해진다.",
+        "relatedBlockId": "bento-01"
+      },
+      {
+        "id": "q04",
+        "type": "multiple_choice",
+        "category": "compare",
+        "variant": "compare",
+        "question": "엄격한 지도 방식을 나타내는 올바른 짝은?",
+        "choices": [
+          "임제의 방·덕산의 할",
+          "임제의 할·덕산의 방",
+          "조주의 방·양기의 할",
+          "황벽의 방·원오의 할"
+        ],
+        "answer": 1,
+        "explanation": "교재는 두 선사를 ‘임제의 할, 덕산의 방’으로 병칭한다.",
+        "relatedBlockId": "term-01"
+      },
+      {
+        "id": "q05",
+        "type": "multiple_choice",
+        "category": "flow",
+        "variant": "sequence",
+        "question": "『설두송고』에 주석을 더해 『벽암록』을 이룬 조사는?",
+        "choices": [
+          "양기방회",
+          "조주종심",
+          "원오극근",
+          "굉지정각"
+        ],
+        "answer": 2,
+        "explanation": "원오는 설두의 100칙에 수시·착어·평창을 더했다.",
+        "relatedBlockId": "concept-01"
+      },
+      {
+        "id": "q06",
+        "type": "multiple_choice",
+        "category": "compare",
+        "variant": "contrast",
+        "question": "교재가 제시한 대혜와 굉지의 대비는?",
+        "choices": [
+          "대혜 묵조선·굉지 간화선",
+          "대혜 간화선·굉지 묵조선",
+          "둘 다 공안을 배척",
+          "둘 다 좌선을 부정"
+        ],
+        "answer": 1,
+        "explanation": "대혜는 공안의 간화선을, 굉지는 좌선을 중시하는 묵조선을 대표한다.",
+        "relatedBlockId": "compare-01"
+      },
+      {
+        "id": "q07",
+        "type": "multiple_choice",
+        "category": "misconception",
+        "variant": "interpretation",
+        "question": "전등 설화를 읽는 교재의 태도에 가장 가까운 것은?",
+        "choices": [
+          "전통설은 전부 역사적 사실이다",
+          "설화는 역사와 사상 모두 무가치하다",
+          "설화는 역사 검증이 필요 없다는 뜻이다",
+          "역사성에 비판적이되 사상적 의미를 읽는다"
+        ],
+        "answer": 3,
+        "explanation": "교재는 설화를 검증된 역사로 보지 않으면서 그 사상적 가치를 강조한다.",
+        "relatedBlockId": "misconception-01"
+      },
+      {
+        "id": "q08",
+        "type": "short_answer",
+        "category": "keyword",
+        "variant": "short",
+        "question": "교재는 전통 전등 설화가 ‘역사’보다 무엇을 말하려 했다고 보는가?",
+        "acceptableAnswers": [
+          "사상",
+          "선사상",
+          "사상적 의미",
+          "사상적 의의"
+        ],
+        "requiredKeywords": [
+          "사상"
+        ],
+        "answer_text": "사상",
+        "explanation": "교재는 전등 설화가 전달하려던 것은 ‘역사’보다 ‘사상’이라고 설명한다.",
+        "relatedBlockId": "misconception-01"
+      }
+    ]
+  }
+}
